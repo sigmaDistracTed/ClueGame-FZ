@@ -3,6 +3,16 @@ package experiment;
 import java.util.Set;
 import java.util.HashSet;
 
+/**
+* TestBoardCell Class
+*
+* @author Alexandra Field
+* @author Aiden Zeigler
+*
+* Purpose: Creates the TestBoardCell class, which provides the list for cells
+* and setters and getters for rooms
+*/
+
 public class TestBoardCell {
 	//variable initializing
 	private int row; 
