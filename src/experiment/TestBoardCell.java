@@ -1,44 +1,47 @@
 package experiment;
 
 import java.util.Set;
+import java.util.HashSet;
 
 public class TestBoardCell {
 	//variable initializing
 	private int row; 
 	private int col; 
+
 	boolean isRoom; 
 	boolean isOccupied; 
 	
-	Set<TestBoardCell> adjList; 
+	Set<TestBoardCell> adjList = new HashSet<>();
 	
 	//functions
 	public TestBoardCell(int row, int col) { 
 		this.row = row;
 		this.col = col;
 	}
+
 	//setter for adjacency list
-	void addAdjacency(TestBoardCell cell) {
+	public void addAdjacency(TestBoardCell cell) {
 		
 	}
 	
-	Set<TestBoardCell> getAdjList() {
+	public Set<TestBoardCell> getAdjList() {
 		return adjList;
 		
 	}
-	void setRoom(boolean isRoom) {
+	public void setRoom(boolean isRoom) {
 		this.isRoom = isRoom;
 	}
 	
-	boolean getRoom(boolean isRoom) {
-		return false;
+	public boolean isRoom() {
+		return isRoom;
 	}
 	
-	void setOccupied(boolean isOccupied) { 
+	public void setOccupied(boolean isOccupied) { 
 		this.isOccupied = isOccupied; 
 	}
 	
-	boolean getOccupied(boolean isOccupied) {
-		return false;
+	public boolean getOccupied() {
+		return isOccupied;
 	}
 
 }
