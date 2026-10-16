@@ -35,9 +35,9 @@ public class TestBoardCell {
 	}
 	
 	public Set<TestBoardCell> getAdjList() {
-		return adjList;
-		
+		return adjList;	
 	}
+	
 	public void setRoom(boolean isRoom) {
 		this.isRoom = isRoom;
 	}
