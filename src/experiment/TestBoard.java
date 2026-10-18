@@ -14,12 +14,12 @@ import java.util.HashSet;
 */
 
 public class TestBoard {
-    private TestBoardCell[][] grid;
     private Set<TestBoardCell> targets = new HashSet<>();
     private Set<TestBoardCell> visited = new HashSet<>();
 
     final static int ROWS = 4;
     final static int COLS = 4;
+    private TestBoardCell[][] grid = new TestBoardCell[ROWS][COLS];
 
     // Builds the grid for the board
     public TestBoard() {
@@ -28,6 +28,26 @@ public class TestBoard {
                 grid[row][col] = new TestBoardCell(row, col);
             }
         }
+    }
+    
+    public void calcAdj() { 
+    	for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+            	TestBoardCell cell = grid[row][col];
+            	if (row -1 > -1 ) {
+            		cell.addAdjacency(getCell(row-1, col)); //up 	
+            	}
+            	if (row +1 < ROWS ) {
+            		cell.addAdjacency(getCell(row+1, col)); //down 
+            	}
+            	if (col -1 > -1  ) {
+            		cell.addAdjacency(getCell(row, col-1)); //left 
+            	}
+            	if (col +1 < COLS ) {
+            		cell.addAdjacency(getCell(row, col+1)); //right 
+            	}
+            }
+    	}
     }
 
     // Calculate valid targets
@@ -60,6 +80,7 @@ public class TestBoard {
 
     public TestBoardCell getCell(int row, int col) {
         return grid[row][col];
+        
     }
 
     public Set<TestBoardCell> getTargets() {

@@ -31,7 +31,7 @@ public class TestBoardCell {
 
 	//setter for adjacency list
 	public void addAdjacency(TestBoardCell cell) {
-		
+		adjList.add(cell);
 	}
 	
 	public Set<TestBoardCell> getAdjList() {
@@ -52,6 +52,11 @@ public class TestBoardCell {
 	
 	public boolean getOccupied() {
 		return isOccupied;
+	}
+	
+	@Override
+	public String toString() {
+		return(this.row + "," + this.col);
 	}
 
 }

@@ -34,7 +34,7 @@ public class BoardTestsExp {
     @Test 
     public void testAdjacencyTopLeft() {
         TestBoardCell cell = board.getCell(0, 0);
-
+        board.calcAdj();
         Set<TestBoardCell> testList = cell.getAdjList();
         assertTrue(testList.contains(board.getCell(1,0)));
         assertTrue(testList.contains(board.getCell(0,1)));
@@ -45,7 +45,7 @@ public class BoardTestsExp {
     @Test 
     public void testAdjacencyBottomRight() {
         TestBoardCell cell = board.getCell(3, 3);
-
+        board.calcAdj();
         Set<TestBoardCell> testList = cell.getAdjList();
         assertTrue(testList.contains(board.getCell(3,2)));
         assertTrue(testList.contains(board.getCell(2,3)));
@@ -56,7 +56,7 @@ public class BoardTestsExp {
     @Test 
     public void testAdjacencyRightEdge() {
         TestBoardCell cell = board.getCell(1, 3);
-
+        board.calcAdj();
         Set<TestBoardCell> testList = cell.getAdjList();
         assertTrue(testList.contains(board.getCell(0,3)));
         assertTrue(testList.contains(board.getCell(2,3)));
@@ -68,7 +68,7 @@ public class BoardTestsExp {
     @Test 
     public void testAdjacencyLeftEdge() {
         TestBoardCell cell = board.getCell(2, 0);
-
+        board.calcAdj();
         Set<TestBoardCell> testList = cell.getAdjList();
         assertTrue(testList.contains(board.getCell(1,0)));
         assertTrue(testList.contains(board.getCell(2,1)));
@@ -80,7 +80,7 @@ public class BoardTestsExp {
     @Test 
     public void testAdjacencyMiddle() {
         TestBoardCell cell = board.getCell(2, 2);
-
+        board.calcAdj();
         Set<TestBoardCell> testList = cell.getAdjList();
         assertTrue(testList.contains(board.getCell(2,1)));
         assertTrue(testList.contains(board.getCell(3,2)));
@@ -94,7 +94,7 @@ public class BoardTestsExp {
     public void testTargetsNormal() {
         TestBoardCell cell = board.getCell(0, 0);
         board.calcTargets(cell, 3);
-
+        board.calcAdj();
         Set<TestBoardCell> targets = board.getTargets();
         assertEquals(6, targets.size());
         assertTrue(targets.contains(board.getCell(3, 0)));
@@ -110,7 +110,7 @@ public class BoardTestsExp {
     public void testTargetsMaxRoll() {
         TestBoardCell cell = board.getCell(3, 3);
         board.calcTargets(cell, 6);
-
+        board.calcAdj();
         Set<TestBoardCell> targets = board.getTargets();
         assertEquals(7, targets.size());
         assertTrue(targets.contains(board.getCell(0, 0)));
