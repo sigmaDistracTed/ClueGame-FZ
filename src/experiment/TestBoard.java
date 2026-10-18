@@ -63,8 +63,11 @@ public class TestBoard {
     // Find all possible targets
     public void findAllTargets(TestBoardCell startCell, int pathLength) {
         for (TestBoardCell adjCell: startCell.getAdjList()) {
-        	//ignore if cell is occupied
-        	
+        	//ignore if cell is occupied or if its a room 
+        	if (adjCell.getOccupied()) {
+        		continue;
+        	}
+
         	//if visited test
             if (visited.contains(adjCell)) {
                 continue;
