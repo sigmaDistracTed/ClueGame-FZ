@@ -30,7 +30,7 @@ public class TestBoard {
         }
     }
     
-    public void calcAdj() { 
+    public void calcAdj() { //function to calculate adj for cells 
     	for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
             	TestBoardCell cell = grid[row][col];
@@ -63,18 +63,23 @@ public class TestBoard {
     // Find all possible targets
     public void findAllTargets(TestBoardCell startCell, int pathLength) {
         for (TestBoardCell adjCell: startCell.getAdjList()) {
+        	//ignore if cell is occupied
+        	
+        	//if visited test
             if (visited.contains(adjCell)) {
-                break;
+                continue;
             }
-
-            visited.add(adjCell);
             
+            visited.add(adjCell);
+           
             if (pathLength == 1) {
                 targets.add(adjCell);
             }
             else {
                 findAllTargets(adjCell, pathLength - 1);
             }
+            
+            visited.remove(adjCell);
         }
     }
 
