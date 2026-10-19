@@ -68,6 +68,10 @@ public class TestBoard {
         		continue;
         	}
 
+            if (adjCell.isRoom()) {
+                continue;
+            }
+
         	//if visited test
             if (visited.contains(adjCell)) {
                 continue;
