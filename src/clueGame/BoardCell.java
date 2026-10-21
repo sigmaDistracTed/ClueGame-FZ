@@ -1,10 +1,13 @@
 package clueGame;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class BoardCell {
 
 }
 =======
+=======
+>>>>>>> da932ab458d77079bae5648e693a3602d5d18267
 import java.util.Set;
 import java.util.HashSet;
 
@@ -69,5 +72,9 @@ public class BoardCell {
 		return(this.row + "," + this.col);
 	}
 
+<<<<<<< HEAD
+}
+>>>>>>> da932ab458d77079bae5648e693a3602d5d18267
+=======
 }
 >>>>>>> da932ab458d77079bae5648e693a3602d5d18267
