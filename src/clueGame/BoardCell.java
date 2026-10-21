@@ -16,7 +16,12 @@ import java.util.HashSet;
 public class BoardCell {
 	//variable initializing
 	private int row; 
-	private int col; 
+	private int col;
+	private char initial;
+	private DoorDirection doorDirection;
+	private boolean roomLabel;
+	private boolean roomCenter;
+	private char secretPassage;
 
 	boolean isRoom; 
 	boolean isOccupied; 
