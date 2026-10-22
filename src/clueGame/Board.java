@@ -2,6 +2,7 @@ package clueGame;
 
 import java.io.FileReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,9 +12,13 @@ import clueGame.Room;
 import experiment.TestBoardCell; 
 
 public class Board {
-	private Map<String, Character> roomMap; 
+	private Map<Character, Room> roomMap; 
 	private String setupConfigFile;
-	private String layoutConfigFile; 
+	private String layoutConfigFile;
+
+       private BoardCell[][] grid;
+       private int rows;
+       private int cols;
 	
     /*
      * variable and methods used for singleton pattern
@@ -39,31 +44,32 @@ public class Board {
     	 this.setupConfigFile = txt;
     	 
      }
-     
+
      //Read in setup file and connect room characters to names
      public void loadSetupConfig() throws BadConfigFormatException {
-    	 Scanner in = new Scanner(setupConfigFile);
-    	 
-    	 while(in.hasNextLine()) {
-    		 String line = in.nextLine(); 
-    		 if(line.charAt(0) != '/') { //safeguarding with format from class
-	    		 String[] info = line.split(",");
-	    		 if(info[0] == "Room") {
-	    			 char icon = info[2].charAt(0);
-	    			 roomMap.put(info[1], icon);
-	    			 
-	    		 }
-	    	 }
-    	 }
+       try (Scanner in = new Scanner(new File("data", setupConfigFile))) {
+              while(in.hasNextLine()) {
+                     String line = in.nextLine();
+                     if(line.charAt(0) != '/') { //Comment safeguard from class
+                            String[] info = line.split(",");
+                            if(info[0].trim().equals("Room")) {
+                                   char icon = info[2].trim().charAt(0);
+                                   roomMap.put(icon, new Room(info[1]));
+                            }
+                     }
+              }
+       } catch (FileNotFoundException err) {
+              throw new BadConfigFormatException("Cannot open setup file: " + setupConfigFile);
+       }
      }
      
      public void loadLayoutConfig() throws BadConfigFormatException { 
     	 //placeholder for compilation
      }
      
-     public String getRoom(char icon) {
-    	 return(roomMap.get(icon)); //Rusty on hashmaps and how to get this to work
-    	 //since there's the .get.get
+     // Retrieves room name from character
+     public Room getRoom(char icon) {
+    	 return(roomMap.get(icon));
      }
      
      public String getName() { 
