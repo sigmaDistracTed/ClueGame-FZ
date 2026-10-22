@@ -1,12 +1,13 @@
 package clueGame;
 
 import java.io.FileReader;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Board {
-	private Map<String, String> roomMap; 
+	private Map<String, Character> roomMap; 
 	private String setupConfigFile;
 	private String layoutConfigFile; 
 	
@@ -28,6 +29,7 @@ public class Board {
      public void initialize() {
      }
      
+     //setting config files
      public void setConfigFiles(String csv, String txt) {
     	 this.layoutConfigFile = csv;
     	 this.setupConfigFile = txt;
@@ -36,17 +38,40 @@ public class Board {
      
      //Read in setup file and connect room characters to names
      public void loadsetupConfig() {
-    	 FileReader fr = null; 
-    	 Scanner in = new Scanner(fr);
+    	 Scanner in = new Scanner(setupConfigFile);
     	 
     	 while(in.hasNextLine()) {
     		 String line = in.nextLine(); 
-    		 String[] info = line.split(",");
-    		 if(info[0] == "Room") {
-    			 roomMap.put(info[1], info[2]);
-    		 }
+    		 if(line.charAt(0) != '/') { //safeguarding with format from class
+	    		 String[] info = line.split(",");
+	    		 if(info[0] == "Room") {
+	    			 char icon = info[2].charAt(0);
+	    			 roomMap.put(info[1], icon);
+	    			 
+	    		 }
+	    	 }
     	 }
      }
      
+     public String getRoom(char icon) {
+    	 return(roomMap.get(icon)); //Rusty on hashmaps and how to get this to work
+    	 //since there's the .get.get
+     }
+     
+     public String getName() { 
+    	 return "";
+     }
+     
+     public int getNumRows() {
+    	 return -1; 
+     }
+     
+     public int getNumColumns() {
+    	 return -1; 
+     }
+     
+     public BoardCell getBoardCell() { 
+    	 return new BoardCell(0, 0); //placeholder to get tests to fail then pass
+     }
 
 }
