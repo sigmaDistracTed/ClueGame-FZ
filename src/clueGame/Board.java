@@ -3,22 +3,36 @@ package clueGame;
 import java.io.FileReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
 import clueGame.Room;
-import experiment.TestBoardCell; 
+
+/**
+* Board Class
+*
+* @author Alexandra Field
+* @author Aiden Zeigler
+*
+* Purpose: Creates the Board class, which sets up the board.
+*/
 
 public class Board {
-	private Map<Character, Room> roomMap; 
+       private Set<BoardCell> targets = new HashSet<>();
+       private Set<BoardCell> visited = new HashSet<>();
+
+	private Map<Character, Room> roomMap = new HashMap<>(); 
 	private String setupConfigFile;
 	private String layoutConfigFile;
 
        private BoardCell[][] grid;
-       private int rows;
-       private int cols;
+       private int numRows;
+       private int numCols;
 	
     /*
      * variable and methods used for singleton pattern
@@ -36,6 +50,12 @@ public class Board {
       * initialize the board (since we are using singleton pattern)
       */
      public void initialize() {
+       try {
+              loadSetupConfig();
+              loadLayoutConfig();
+       } catch (BadConfigFormatException e) {
+              throw new IllegalStateException("Could not initialize board.", e);
+       }
      }
      
      //setting config files
@@ -63,9 +83,98 @@ public class Board {
        }
      }
      
+     // Load the layout config file
      public void loadLayoutConfig() throws BadConfigFormatException { 
-    	 //placeholder for compilation
+       List<String[]> rows = new ArrayList<>();
+
+    	 try (Scanner in = new Scanner(new File("data", layoutConfigFile))) {
+              while (in.hasNextLine()) {
+                     rows.add(in.nextLine().split(","));
+              }
+        } catch (FileNotFoundException e) {
+              throw new BadConfigFormatException("Cannot open setup file: " + layoutConfigFile);
+        }
+
+        if (rows.isEmpty()) {
+              throw new BadConfigFormatException("Layout is empty.");
+        }
+
+        numRows = rows.size();
+        numCols = rows.get(0).length;
+        grid = new BoardCell[numRows][numCols];
+
+        for (int row = 0; row < numRows; row++) {
+              for (int col = 0; col < numCols; col++) {
+                     String info = rows.get(row)[col].trim();
+
+                     BoardCell cell = new BoardCell(row, col);
+                     cell.setInital(info.charAt(0));
+                     grid[row][col] = cell;
+              }
+        }
      }
+
+     // Calculate adjacency list for cell
+     public void calcAdj() {
+       for (int row = 0; row < numRows; row++) {
+              for (int col = 0; col < numCols; col++) {
+                     BoardCell cell = grid[row][col];
+                     if (row - 1 >= 0) {
+                            cell.addAdjacency(getCell(row - 1, col));
+                     }
+                     if (row + 1 < numRows) {
+                            cell.addAdjacency(getCell(row + 1, col));
+                     }
+                     if (col - 1 >= 0) {
+                            cell.addAdjacency(getCell(row, col - 1));
+                     }
+                     if (col + 1 < numCols) {
+                            cell.addAdjacency(getCell(row, col + 1));
+                     }
+              }
+       }
+     }
+
+     // Calculate valid targets
+
+     public void calcTargets(BoardCell startCell, int pathLength) {
+       visited.clear();
+       targets.clear();
+
+       visited.add(startCell);
+
+       findAllTargets(startCell, pathLength);
+       }
+
+    // Find all possible targets
+    public void findAllTargets(BoardCell startCell, int pathLength) {
+        for (BoardCell adjCell: startCell.getAdjList()) {
+        	//ignore if cell is occupied or if its a room 
+        	if (adjCell.getIsOccupied()) {
+        		continue;
+        	}
+
+            if (adjCell.getIsRoom()) {
+                continue;
+            }
+
+        	//if visited test
+            if (visited.contains(adjCell)) {
+                continue;
+            }
+            
+            visited.add(adjCell);
+           
+            if (pathLength == 1) {
+                targets.add(adjCell);
+            }
+            else {
+                findAllTargets(adjCell, pathLength - 1);
+            }
+            
+            visited.remove(adjCell);
+        }
+    }
      
      // Retrieves room name from character
      public Room getRoom(char icon) {
@@ -76,24 +185,31 @@ public class Board {
     	 return "";
      }
      
+     // Return number of rows in board
      public int getNumRows() {
-    	 return -1; 
+       return numRows;
      }
      
+     // Return number of columns in the board
      public int getNumColumns() {
-    	 return -1; 
+       return numCols;
      }
      
-     public BoardCell getCell(int x, int y) { 
-    	 return new BoardCell(x, y); //placeholder to get tests to fail then pass
+     // Return a cell
+     public BoardCell getCell(int row, int col) { 
+    	 return grid[row][col];
+     }
+
+     // Get cell targets
+     public Set<BoardCell> getTargets() {
+       return targets;
      }
      
      public Room getRoom(BoardCell cell) {
-    	 Room room = null;
-    	 return room; //placeholder for compilation
-    	 
+       return roomMap.get(cell.getInitial());
      }
      
+     // Return cell's adjacency list
      public Set<BoardCell> getAdjList(int x, int y) {
     	 BoardCell cell = getCell(x, y);
  		return cell.adjList;	
