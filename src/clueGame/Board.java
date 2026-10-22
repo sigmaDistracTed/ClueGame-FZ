@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import clueGame.Room; 
+
 public class Board {
 	private Map<String, Character> roomMap; 
 	private String setupConfigFile;
@@ -70,8 +72,14 @@ public class Board {
     	 return -1; 
      }
      
-     public BoardCell getBoardCell() { 
-    	 return new BoardCell(0, 0); //placeholder to get tests to fail then pass
+     public BoardCell getCell(int x, int y) { 
+    	 return new BoardCell(x, y); //placeholder to get tests to fail then pass
+     }
+     
+     public Room getRoom(BoardCell cell) {
+    	 Room room = null;
+    	 return room; //placeholder for compilation
+    	 
      }
 
 }

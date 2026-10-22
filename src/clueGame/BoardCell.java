@@ -1,13 +1,6 @@
 package clueGame;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class BoardCell {
 
-}
-=======
-=======
->>>>>>> da932ab458d77079bae5648e693a3602d5d18267
 import java.util.Set;
 import java.util.HashSet;
 
@@ -29,6 +22,7 @@ public class BoardCell {
 	private DoorDirection doorDirection;
 	private boolean roomLabel;
 	private boolean roomCenter;
+	private boolean isDoorway;
 	private char secretPassage;
 
 	boolean isRoom; 
@@ -67,14 +61,29 @@ public class BoardCell {
 		return isOccupied;
 	}
 	
+	public boolean isDoorway() {
+		return isDoorway;
+	}
+	
+	public DoorDirection getDoorDirection() { 
+		return doorDirection;
+	}
+	
+	public boolean isLabel() { 
+		return roomLabel; 
+	}
+	
+	public boolean isRoomCenter() { 
+		return roomCenter; 
+	}
+	
+	public char getSecretPassage() { 
+		return secretPassage;
+	}
+	
 	@Override
 	public String toString() {
 		return(this.row + "," + this.col);
 	}
 
-<<<<<<< HEAD
 }
->>>>>>> da932ab458d77079bae5648e693a3602d5d18267
-=======
-}
->>>>>>> da932ab458d77079bae5648e693a3602d5d18267
