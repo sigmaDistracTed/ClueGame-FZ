@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
 
-public class ExceptionTests306 {
+public class ExceptionTests306 { //errors on my end when trying to run about not finding junit?? 
 
 	// Test that an exception is thrown for a layout file that does not
 	// have the same number of columns for each row

@@ -39,7 +39,7 @@ public class Board {
      }
      
      //Read in setup file and connect room characters to names
-     public void loadsetupConfig() {
+     public void loadSetupConfig() throws BadConfigFormatException {
     	 Scanner in = new Scanner(setupConfigFile);
     	 
     	 while(in.hasNextLine()) {
@@ -53,6 +53,10 @@ public class Board {
 	    		 }
 	    	 }
     	 }
+     }
+     
+     public void loadLayoutConfig() throws BadConfigFormatException { 
+    	 //placeholder for compilation
      }
      
      public String getRoom(char icon) {
