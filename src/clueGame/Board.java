@@ -5,8 +5,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
-import clueGame.Room; 
+import clueGame.Room;
+import experiment.TestBoardCell; 
 
 public class Board {
 	private Map<String, Character> roomMap; 
@@ -85,5 +87,10 @@ public class Board {
     	 return room; //placeholder for compilation
     	 
      }
+     
+     public Set<BoardCell> getAdjList(int x, int y) {
+    	 BoardCell cell = getCell(x, y);
+ 		return cell.adjList;	
+ 	}
 
 }
