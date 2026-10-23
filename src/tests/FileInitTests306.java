@@ -44,7 +44,7 @@ public class FileInitTests306 {
 		assertEquals("Conservatory", board.getRoom('C').getName() );
 		assertEquals("Ballroom", board.getRoom('B').getName() );
 		assertEquals("Billiard Room", board.getRoom('R').getName() );
-		assertEquals("Dining Room", board.getRoom('D').getName() );
+		assertEquals("Dining Room", board.getRoom('D').getName() ); 
 		assertEquals("Walkway", board.getRoom('W').getName() );
 	}
 

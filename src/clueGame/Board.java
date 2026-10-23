@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-//import clueGame.Room;
 
 /**
 * Board Class
@@ -77,7 +76,7 @@ public class Board {
                                    String roomName = info[1].trim();
                                    roomMap.put(icon, new Room(roomName));
                             }
-                            else if(info[0].trim().equals("Walkway")) {
+                            else if(info[0].trim().equals("Space")) {
                                    char icon = info[2].trim().charAt(0);
                                    String roomName = info[1].trim();
                                    roomMap.put(icon, new Room(roomName));
@@ -143,17 +142,31 @@ public class Board {
                      
                      //checking to see if we need to label anything
                      if(info.charAt(info.length() - 1) == '#') {
+                    	 Room room = getRoom(info.charAt(0));
                     	 cell.setIsRoomLabel(true);
+                    	 room.setLabelCell(cell);
                      }
                      
                      else if (info.charAt(info.length() - 1) == '*' ) {
+                    	 Room room = getRoom(info.charAt(0));
                     	 cell.setIsRoomCenter(true);
+                    	 room.setCenterCell(cell);
                      }
+                     
+                     else if(Character.isLetter(info.charAt(info.length() - 1))) {
+                    	 cell.setSecretPassage(info.charAt(info.length() - 1));
+                     }
+                     
+                    
                     
                      
                      else { 
                     	 cell.setIsRoomLabel(false);
                     	 cell.setIsRoomCenter(false);
+                     }
+                     char c = info.charAt(info.length() - 1); 
+                     if(Character.isLetter(c)) { 
+                    	 
                      }
                  
               }
