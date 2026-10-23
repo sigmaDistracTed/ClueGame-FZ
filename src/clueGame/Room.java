@@ -13,6 +13,7 @@ public class Room {
 	// Get room name
 	public String getName() {
 		return name;
+		
 	}
 
 	// Set room name

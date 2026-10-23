@@ -42,6 +42,7 @@ public class FileInitTests306 {
 		// To ensure data is correctly loaded, test retrieving a few rooms
 		// from the hash, including the first and last in the file and a few others
 		assertEquals("Conservatory", board.getRoom('C').getName() );
+		System.out.println(board.getRoom('C').getName());
 		assertEquals("Ballroom", board.getRoom('B').getName() );
 		assertEquals("Billiard Room", board.getRoom('R').getName() );
 		assertEquals("Dining Room", board.getRoom('D').getName() );
@@ -98,7 +99,7 @@ public class FileInitTests306 {
 		BoardCell cell = board.getCell( 23, 23);
 		Room room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Kitchen" ) ;
+		assertEquals( room.getName(), "Kitchen" ) ; 
 		assertFalse( cell.isLabel() );
 		assertFalse( cell.isRoomCenter() ) ;
 		assertFalse( cell.isDoorway()) ;
@@ -141,7 +142,7 @@ public class FileInitTests306 {
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Unused" ) ;
 		assertFalse( cell.isRoomCenter() );
-		assertFalse( cell.isLabel() );
+		assertFalse( cell.isLabel() ); 
 		
 	}
 

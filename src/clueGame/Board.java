@@ -110,6 +110,41 @@ public class Board {
                      BoardCell cell = new BoardCell(row, col);
                      cell.setInital(info.charAt(0));
                      grid[row][col] = cell;
+                     
+                     //doorway checking
+                     switch(info.charAt(info.length() - 1)) {
+                     case '^': 
+                    	 cell.setIsDoorway(true);
+                    	 break;
+                     case 'V':
+                    	 cell.setIsDoorway(true);
+                    	 break;
+                     case '>':
+                    	 cell.setIsDoorway(true);
+                    	 break;
+                     case '<': 
+                    	 cell.setIsDoorway(true);
+                    	 break;
+                    default: 
+                    	cell.setIsDoorway(false);
+                    	break;
+                     }
+                     
+                     //checking to see if we need to label anything
+                     if(info.charAt(info.length() - 1) == '#') {
+                    	 cell.setIsRoomLabel(true);
+                     }
+                     
+                     else if (info.charAt(info.length() - 1) == '*' ) {
+                    	 cell.setIsRoomCenter(true);
+                     }
+                    
+                     
+                     else { 
+                    	 cell.setIsRoomLabel(false);
+                    	 cell.setIsRoomCenter(false);
+                     }
+                 
               }
         }
      }

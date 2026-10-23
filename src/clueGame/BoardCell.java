@@ -92,7 +92,7 @@ public class BoardCell {
 	}
 
 	// Set cell isDoorway
-	public void getIsDoorway(boolean isDoorway) {
+	public void setIsDoorway(boolean isDoorway) {
 		this.isDoorway = isDoorway;
 	}
 
@@ -114,6 +114,7 @@ public class BoardCell {
 	// Set cell isRoom
 	public void setIsRoom(boolean isRoom) {
 		this.isRoom = isRoom;
+		//current problem: getting the room names to call correctly
 	}
 
 	// Get cell isOccupied
