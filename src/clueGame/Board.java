@@ -144,13 +144,21 @@ public class Board {
                      if(info.charAt(info.length() - 1) == '#') {
                     	 Room room = getRoom(info.charAt(0));
                     	 cell.setIsRoomLabel(true);
+<<<<<<< HEAD
                     	 room.setLabelCell(cell);
+=======
+                      getRoom(cell).setLabelCell(cell);
+>>>>>>> 26670d65a8544bac8b641fd30d6f3d92adddcfa9
                      }
                      
                      else if (info.charAt(info.length() - 1) == '*' ) {
                     	 Room room = getRoom(info.charAt(0));
                     	 cell.setIsRoomCenter(true);
+<<<<<<< HEAD
                     	 room.setCenterCell(cell);
+=======
+                      getRoom(cell).setCenterCell(cell);
+>>>>>>> 26670d65a8544bac8b641fd30d6f3d92adddcfa9
                      }
                      
                      else if(Character.isLetter(info.charAt(info.length() - 1))) {
