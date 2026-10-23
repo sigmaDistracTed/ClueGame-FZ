@@ -74,7 +74,13 @@ public class Board {
                             String[] info = line.split(",");
                             if(info[0].trim().equals("Room")) {
                                    char icon = info[2].trim().charAt(0);
-                                   roomMap.put(icon, new Room(info[1]));
+                                   String roomName = info[1].trim();
+                                   roomMap.put(icon, new Room(roomName));
+                            }
+                            else if(info[0].trim().equals("Walkway")) {
+                                   char icon = info[2].trim().charAt(0);
+                                   String roomName = info[1].trim();
+                                   roomMap.put(icon, new Room(roomName));
                             }
                      }
               }
