@@ -15,7 +15,7 @@ import java.util.HashSet;
 */
 
 public class BoardCell {
-	//variable initializing
+	// Variable initializing
 	private int row; 
 	private int col;
 	private char initial;

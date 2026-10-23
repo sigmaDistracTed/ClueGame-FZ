@@ -1,8 +1,8 @@
 package clueGame;
 
 public class BadConfigFormatException extends Exception {
-	public BadConfigFormatException(String err) { 
+	public BadConfigFormatException(String err) {
 		super(err);
 	}
-    
+
 }

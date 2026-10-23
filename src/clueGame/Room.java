@@ -3,26 +3,26 @@ package clueGame;
 public class Room {
 	private String name;
 	private BoardCell centerCell;
-	private BoardCell labelCell; 
+	private BoardCell labelCell;
 
 	// Constructor
-    public Room(String name) {
-        this.name = name;
-    }
+	public Room(String name) {
+		this.name = name;
+	}
 
 	// Get room name
 	public String getName() {
 		return name;
-		
+
 	}
 
 	// Set room name
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	// Get room center cell
-	public BoardCell getCenterCell() { 
+	public BoardCell getCenterCell() {
 		return centerCell;
 	}
 
@@ -32,7 +32,7 @@ public class Room {
 	}
 
 	// Get room board cell
-	public BoardCell getLabelCell() { 
+	public BoardCell getLabelCell() {
 		return labelCell;
 	}
 
@@ -40,5 +40,5 @@ public class Room {
 	public void setLabelCell(BoardCell labelCell) {
 		this.labelCell = labelCell;
 	}
-    
+
 }
