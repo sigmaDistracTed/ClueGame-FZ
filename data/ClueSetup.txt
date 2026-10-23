@@ -1,0 +1,13 @@
+// Room and room cards
+Room, Hedge Maze, H
+Room, Observatory, O
+Room, Greenhouse, G
+Room, Library, L
+Room, Main Office, M
+Room, Alchemy Lab, A
+Room, Foyer, F
+Room, Rooftop, R
+Room, Tower, T
+// Other spaces on board
+Space, Unused, X
+Space, Walkway, W
