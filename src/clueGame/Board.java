@@ -139,6 +139,7 @@ public class Board {
                     	cell.setDoorDirection(DoorDirection.NONE);
                     	break;
                      }
+<<<<<<< HEAD
                      
                      //checking to see if we need to label anything
                      if(info.charAt(info.length() - 1) == '#') {
@@ -149,9 +150,22 @@ public class Board {
 =======
                       getRoom(cell).setLabelCell(cell);
 >>>>>>> 26670d65a8544bac8b641fd30d6f3d92adddcfa9
+=======
+
+                     // If the cell isn't a room label, center, or passage
+                     if (info.length() == 1) {
+                            cell.setIsRoomLabel(false);
+                    	       cell.setIsRoomCenter(false);
+>>>>>>> b09586bbb9e19e38ffc4d0ebc47d96b4a151fe94
                      }
-                     
+                     // Check if the cell is the label cell of the room
+                     else if(info.charAt(info.length() - 1) == '#') {
+                    	       cell.setIsRoomLabel(true);
+                            getRoom(cell).setLabelCell(cell);
+                     }
+                     // Check if the cell is the center of the room
                      else if (info.charAt(info.length() - 1) == '*' ) {
+<<<<<<< HEAD
                     	 Room room = getRoom(info.charAt(0));
                     	 cell.setIsRoomCenter(true);
 <<<<<<< HEAD
@@ -177,6 +191,15 @@ public class Board {
                     	 
                      }
                  
+=======
+                    	       cell.setIsRoomCenter(true);
+                            getRoom(cell).setCenterCell(cell);
+                     }
+                     // Otherwise, it's a secret passage
+                     else {
+                    	       cell.setSecretPassage(info.charAt(info.length() - 1));
+                     }
+>>>>>>> b09586bbb9e19e38ffc4d0ebc47d96b4a151fe94
               }
         }
      }
