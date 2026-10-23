@@ -1,0 +1,6 @@
+Alexandra Field
+Aiden Ziegler 
+
+For some reason, my code is not compiling due to errors relating to junit not being found.
+As a result, I wasn't able to get any tests passing. 
+However, I used the debugger in the TestBoard tests to get adjacency lists to pass. 
