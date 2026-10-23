@@ -115,18 +115,23 @@ public class Board {
                      switch(info.charAt(info.length() - 1)) {
                      case '^': 
                     	 cell.setIsDoorway(true);
+                    	 cell.setDoorDirection(DoorDirection.UP);
                     	 break;
-                     case 'V':
+                     case 'v':
                     	 cell.setIsDoorway(true);
+                    	 cell.setDoorDirection(DoorDirection.DOWN);
                     	 break;
                      case '>':
                     	 cell.setIsDoorway(true);
+                    	 cell.setDoorDirection(DoorDirection.RIGHT);
                     	 break;
                      case '<': 
                     	 cell.setIsDoorway(true);
+                    	 cell.setDoorDirection(DoorDirection.LEFT);
                     	 break;
                     default: 
                     	cell.setIsDoorway(false);
+                    	cell.setDoorDirection(DoorDirection.NONE);
                     	break;
                      }
                      
