@@ -77,7 +77,7 @@ public class Board {
                                    String roomName = info[1].trim();
                                    roomMap.put(icon, new Room(roomName));
                             }
-                            else if(info[0].trim().equals("Walkway")) {
+                            else if(info[0].trim().equals("Space")) {
                                    char icon = info[2].trim().charAt(0);
                                    String roomName = info[1].trim();
                                    roomMap.put(icon, new Room(roomName));
@@ -144,10 +144,12 @@ public class Board {
                      //checking to see if we need to label anything
                      if(info.charAt(info.length() - 1) == '#') {
                     	 cell.setIsRoomLabel(true);
+                      getRoom(cell).setLabelCell(cell);
                      }
                      
                      else if (info.charAt(info.length() - 1) == '*' ) {
                     	 cell.setIsRoomCenter(true);
+                      getRoom(cell).setCenterCell(cell);
                      }
                     
                      
