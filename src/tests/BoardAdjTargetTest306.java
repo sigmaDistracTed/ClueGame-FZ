@@ -25,6 +25,7 @@ public class BoardAdjTargetTest306 {
 		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");		
 		// Initialize will load config files 
 		board.initialize();
+		board.calcAdj();
 	}
 
 	// Ensure that player does not move around within room
@@ -35,6 +36,7 @@ public class BoardAdjTargetTest306 {
 		// we want to test a couple of different rooms.
 		// First, the study that only has a single door but a secret room
 		Set<BoardCell> testList = board.getAdjList(2, 2); 
+		System.out.println(testList);
 		assertEquals(2, testList.size());
 		assertTrue(testList.contains(board.getCell(4, 6)));
 		assertTrue(testList.contains(board.getCell(20, 19)));
@@ -48,7 +50,7 @@ public class BoardAdjTargetTest306 {
 		testList = board.getAdjList(20, 19);
 		assertEquals(2, testList.size());
 		assertTrue(testList.contains(board.getCell(17, 18)));
-		assertTrue(testList.contains(board.getCell(2, 2)));
+		assertTrue(testList.contains(board.getCell(2, 2))); 
 	}
 
 	
