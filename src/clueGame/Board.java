@@ -166,7 +166,7 @@ public class Board {
 			for (int col = 0; col < numCols; col++) {
 				BoardCell cell = grid[row][col];
 
-				// If the cell is a secret passage
+				// Add adjacencies for secret passage
 				if (cell.isSecretPassage()) {
 					BoardCell sourceCenter = getRoom(cell).getCenterCell();
 					BoardCell destinationCenter = getRoom(cell.getSecretPassage()).getCenterCell();
@@ -174,6 +174,7 @@ public class Board {
 					sourceCenter.addAdjacency(destinationCenter);
 				}
 
+				// Add adjacencies for secret passage
 				if (cell.getInitial() == 'W') {
 					if (row > 0 && getCell(row - 1, col).getInitial() == 'W') {
 						cell.addAdjacency(getCell(row - 1, col));
@@ -235,12 +236,8 @@ public class Board {
 	// Find all possible targets
 	public void findAllTargets(BoardCell startCell, int pathLength) {
 		for (BoardCell adjCell : startCell.getAdjList()) {
-			// ignore if cell is occupied or if its a room
-			if (adjCell.getIsOccupied()) {
-				continue;
-			}
-
-			if (adjCell.getIsRoom()) {
+			// Continue if the room is occupied but isn't a room
+			if (adjCell.getIsOccupied() && !adjCell.isRoomCenter()) {
 				continue;
 			}
 
@@ -251,7 +248,7 @@ public class Board {
 
 			visited.add(adjCell);
 
-			if (pathLength == 1) {
+			if (pathLength == 1 || adjCell.isRoomCenter()) {
 				targets.add(adjCell);
 			} else {
 				findAllTargets(adjCell, pathLength - 1);
