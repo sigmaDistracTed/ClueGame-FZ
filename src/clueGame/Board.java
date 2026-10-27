@@ -10,10 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 1520fe363f872a7daf2aca4b642e1ea8460161a7
 /**
  * Board Class
  *
@@ -63,79 +60,8 @@ public class Board {
 		this.layoutConfigFile = csv;
 		this.setupConfigFile = txt;
 
-<<<<<<< HEAD
-                     BoardCell cell = new BoardCell(row, col);
-                     cell.setInital(info.charAt(0));
-                     grid[row][col] = cell;
-                     
-                     //doorway checking
-                     switch(info.charAt(info.length() - 1)) {
-                     case '^': 
-                    	 cell.setIsDoorway(true);
-                    	 cell.setDoorDirection(DoorDirection.UP);
-                    	 break;
-                     case 'v':
-                    	 cell.setIsDoorway(true);
-                    	 cell.setDoorDirection(DoorDirection.DOWN);
-                    	 break;
-                     case '>':
-                    	 cell.setIsDoorway(true);
-                    	 cell.setDoorDirection(DoorDirection.RIGHT);
-                    	 break;
-                     case '<': 
-                    	 cell.setIsDoorway(true);
-                    	 cell.setDoorDirection(DoorDirection.LEFT);
-                    	 break;
-                    default: 
-                    	cell.setIsDoorway(false);
-                    	cell.setDoorDirection(DoorDirection.NONE);
-                    	break;
-                     }
-                     
-
-                     // If the cell isn't a room label, center, or passage
-                     if (info.length() == 1) {
-                            cell.setIsRoomLabel(false);
-                    	    cell.setIsRoomCenter(false);
-                     }
-                     // Check if the cell is the label cell of the room
-                     else if(info.charAt(info.length() - 1) == '#') {
-                    	    cell.setIsRoomLabel(true);
-                            getRoom(cell).setLabelCell(cell);
-                     }
-                     
-                     // Check if the cell is the center of the room
-                     else if (info.charAt(info.length() - 1) == '*' ) {
-                    	 cell.setIsRoomCenter(true);
-                         getRoom(cell).setCenterCell(cell);
-                     }
-                     
-                     else if(Character.isLetter(info.charAt(info.length() - 1))) {
-                    	 cell.setSecretPassage(info.charAt(info.length() - 1));
-                     }
-                     
-                    
-                  
-             
-                     // Otherwise, it's a secret passage
-                     else {
-                    	  cell.setSecretPassage(info.charAt(info.length() - 1));
-                     }
-              }
-        }
-     }
-
-     // Calculate adjacency list for cell
-     public void calcAdj() {
-       for (int row = 0; row < numRows; row++) {
-              for (int col = 0; col < numCols; col++) {
-                     BoardCell cell = grid[row][col];
-	       }
-	     }
-     }
-=======
 	}
-
+		
 	// Read in setup file and connect room characters to names
 	public void loadSetupConfig() throws BadConfigFormatException {
 		try (Scanner in = new Scanner(new File("data", setupConfigFile))) {
@@ -162,7 +88,6 @@ public class Board {
 	// Load the layout config file
 	public void loadLayoutConfig() throws BadConfigFormatException {
 		List<String[]> rows = new ArrayList<>();
->>>>>>> 1520fe363f872a7daf2aca4b642e1ea8460161a7
 
 		try (Scanner in = new Scanner(new File("data", layoutConfigFile))) {
 			while (in.hasNextLine()) {
@@ -230,9 +155,9 @@ public class Board {
 				// Otherwise, it's a secret passage
 				else if (!cell.isDoorway()) {
 					cell.setSecretPassage(info.charAt(info.length() - 1));
-					cell.setIsSecretPassage(true);
+					cell.setIsSecretPassagey(true);
 				}
-			}
+			}S
 		}
 	}
 

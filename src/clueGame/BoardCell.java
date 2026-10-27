@@ -103,7 +103,7 @@ public class BoardCell {
 	}
 
 	// Set cell isSecretPassage
-	public void setIsSecretPassage(boolean isSecretPassage) {
+	public void setIsSecretPassagey(boolean isSecretPassage) {
 		this.isSecretPassage = isSecretPassage;
 	}
 
