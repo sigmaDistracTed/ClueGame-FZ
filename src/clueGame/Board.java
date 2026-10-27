@@ -48,6 +48,7 @@ public class Board {
 		try {
 			loadSetupConfig();
 			loadLayoutConfig();
+			calcAdj();
 		} catch (BadConfigFormatException e) {
 			throw new IllegalStateException("Could not initialize board.", e);
 		}
@@ -151,8 +152,9 @@ public class Board {
 					getRoom(cell).setCenterCell(cell);
 				}
 				// Otherwise, it's a secret passage
-				else {
+				else if (!cell.isDoorway()) {
 					cell.setSecretPassage(info.charAt(info.length() - 1));
+					cell.setIsSecretPassage(true);
 				}
 			}
 		}
@@ -163,17 +165,58 @@ public class Board {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
 				BoardCell cell = grid[row][col];
-				if (row - 1 >= 0) {
-					cell.addAdjacency(getCell(row - 1, col));
+
+				// If the cell is a secret passage
+				if (cell.isSecretPassage()) {
+					BoardCell sourceCenter = getRoom(cell).getCenterCell();
+					BoardCell destinationCenter = getRoom(cell.getSecretPassage()).getCenterCell();
+
+					sourceCenter.addAdjacency(destinationCenter);
 				}
-				if (row + 1 < numRows) {
-					cell.addAdjacency(getCell(row + 1, col));
+
+				if (cell.getInitial() == 'W') {
+					if (row > 0 && getCell(row - 1, col).getInitial() == 'W') {
+						cell.addAdjacency(getCell(row - 1, col));
+					}
+					if (row + 1 < numRows && getCell(row + 1, col).getInitial() == 'W') {
+						cell.addAdjacency(getCell(row + 1, col));
+					}
+					if (col > 0 && getCell(row, col - 1).getInitial() == 'W') {
+						cell.addAdjacency(getCell(row, col - 1));
+					}
+					if (col + 1 < numCols && getCell(row, col + 1).getInitial() == 'W') {
+						cell.addAdjacency(getCell(row, col + 1));
+					}
 				}
-				if (col - 1 >= 0) {
-					cell.addAdjacency(getCell(row, col - 1));
-				}
-				if (col + 1 < numCols) {
-					cell.addAdjacency(getCell(row, col + 1));
+
+				// If the cell is a doorway
+				if (cell.isDoorway()) {
+					int roomRow = row;
+					int roomCol = col;
+
+					switch (cell.getDoorDirection()) {
+						case UP:
+							roomRow--;
+							break;
+						case DOWN:
+							roomRow++;
+							break;
+						case LEFT:
+							roomCol--;
+							break;
+						case RIGHT:
+							roomCol++;
+							break;
+						default:
+							break;
+					}
+
+					BoardCell roomCell = getCell(roomRow, roomCol);
+					Room room = roomMap.get(roomCell.getInitial());
+					BoardCell centerCell = room.getCenterCell();
+
+					cell.addAdjacency(centerCell);
+					centerCell.addAdjacency(cell);
 				}
 			}
 		}
