@@ -15,7 +15,7 @@ import java.util.HashSet;
 */
 
 public class BoardCell {
-	//variable initializing
+	// Variable initializing
 	private int row; 
 	private int col;
 	private char initial;
@@ -23,6 +23,7 @@ public class BoardCell {
 	private boolean isRoomLabel;
 	private boolean isRoomCenter;
 	private boolean isDoorway;
+	private boolean isSecretPassage;
 	private char secretPassage;
 
 	boolean isRoom; 
@@ -94,6 +95,16 @@ public class BoardCell {
 	// Set cell isDoorway
 	public void setIsDoorway(boolean isDoorway) {
 		this.isDoorway = isDoorway;
+	}
+
+	// Get cell isSecretPassage
+	public boolean isSecretPassage() {
+		return isSecretPassage;
+	}
+
+	// Set cell isSecretPassage
+	public void setIsSecretPassage(boolean isSecretPassage) {
+		this.isSecretPassage = isSecretPassage;
 	}
 
 	// Get cell secretPassage
