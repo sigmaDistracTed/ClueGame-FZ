@@ -157,7 +157,7 @@ public class Board {
 					cell.setSecretPassage(info.charAt(info.length() - 1));
 					cell.setIsSecretPassagey(true);
 				}
-			}S
+			}
 		}
 	}
 
