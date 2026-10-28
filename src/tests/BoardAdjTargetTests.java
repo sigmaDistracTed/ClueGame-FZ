@@ -178,6 +178,107 @@ private static Board board;
 		
 	}
 	
+	//Target tests
+	
+	@Test
+	public void testTargetsWalkwayShort() { //testing roll of 1 at several squares
+				board.calcTargets(board.getCell(7, 3), 1);
+				Set<BoardCell> targets= board.getTargets(); //surrounded by walkways
+				assertEquals(4, targets.size());
+				assertTrue(targets.contains(board.getCell(7, 4)));
+				assertTrue(targets.contains(board.getCell(7, 2)));	
+				assertTrue(targets.contains(board.getCell(8, 3)));
+				assertTrue(targets.contains(board.getCell(6, 3)));
+				
+				board.calcTargets(board.getCell(8, 20), 1); //next to a room
+				targets= board.getTargets();
+				assertEquals(3, targets.size());
+				assertTrue(targets.contains(board.getCell(7, 20)));
+				assertTrue(targets.contains(board.getCell(8, 21)));
+				assertTrue(targets.contains(board.getCell(8, 19)));	
+				
+				board.calcTargets(board.getCell(25, 17), 1); //by edge with walls
+				targets= board.getTargets();
+				assertEquals(1, targets.size());
+				assertTrue(targets.contains(board.getCell(24, 17)));
+	
+	}
+	
+	@Test
+	public void testTargetsWalkwaysMed() { //rolls of 3
+		//Im not to sure on finding the targets logic manually, so I'll leave that for now
+		board.calcTargets(board.getCell(7, 3), 3); //walkway
+		Set<BoardCell> targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		board.calcTargets(board.getCell(8, 20), 3); //next to a room
+		targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		board.calcTargets(board.getCell(25, 17), 3); //by edge with walls
+		targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		
+	}
+	
+	@Test
+	public void testTargetsWalkwaysMax() { //rolls of 6
+		//Im not to sure on finding the targets logic manually, so I'll leave that for now
+		board.calcTargets(board.getCell(7, 3), 6); //walkway
+		Set<BoardCell> targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		board.calcTargets(board.getCell(8, 20), 6); //next to a room
+		targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		board.calcTargets(board.getCell(25, 17), 6); //by edge with walls
+		targets= board.getTargets();
+		
+		//assert equals/true block here
+		
+		
+	}
+	
+	@Test
+	public void testEntrances() { //Targets that allow the user to enter a room
+		//on a doorway
+		board.calcTargets(board.getCell(3, 8), 1);
+		Set<BoardCell> targets= board.getTargets(); 
+		assertEquals(4, targets.size());
+		assertTrue(targets.contains(board.getCell(3, 12)));
+		assertTrue(targets.contains(board.getCell(3, 7)));	
+		assertTrue(targets.contains(board.getCell(2, 8)));
+		assertTrue(targets.contains(board.getCell(4, 8)));
+		
+		//Nearby a doorway
+		
+		//far from a doorway 
+		
+	}
+	
+	@Test
+	public void testExits() { 
+		
+	}
+	
+	@Test
+	public void testExitSecretPassage() { 
+		
+	}
+	
+	@Test
+	public void testOccupied() { 
+		
+	}
+	
+	
 	
 
 }
