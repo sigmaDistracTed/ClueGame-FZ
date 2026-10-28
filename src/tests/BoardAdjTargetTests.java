@@ -147,6 +147,33 @@ private static Board board;
 		assertTrue(testList.contains(board.getCell(17, 4)));
 		assertTrue(testList.contains(board.getCell(13, 3)));
 		
+	
+		
+	}
+	
+	@Test
+	public void testSecretPassages() { //Locations that are connected by secret passage
+		Set<BoardCell> testList = board.getAdjList(22, 3); //center of rooftop
+		assertEquals(2, testList.size());
+		assertTrue(testList.contains(board.getCell(21, 6))); //doorway
+		assertTrue(testList.contains(board.getCell(1, 3))); //observatory
+		
+		testList = board.getAdjList(1, 3); //center of observatory
+		assertEquals(2, testList.size());
+		assertTrue(testList.contains(board.getCell(3, 1))); //doorway
+		assertTrue(testList.contains(board.getCell(22, 3))); //rooftop
+		
+		testList = board.getAdjList(13, 11); //center of main office
+		assertEquals(3, testList.size());
+		assertTrue(testList.contains(board.getCell(12, 13))); //doorway
+		assertTrue(testList.contains(board.getCell(13, 8))); //doorway
+		assertTrue(testList.contains(board.getCell(24, 23))); //tower
+		
+		testList = board.getAdjList(24, 23); //center of tower
+		assertEquals(2, testList.size());
+		assertTrue(testList.contains(board.getCell(21, 24))); //doorway
+		assertTrue(testList.contains(board.getCell(13, 11))); //main office
+		
 		
 		
 	}
