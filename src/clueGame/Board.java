@@ -110,6 +110,7 @@ public class Board {
 				String info = rows.get(row)[col].trim();
 
 				BoardCell cell = new BoardCell(row, col);
+			//	System.out.println(row + ", " +col + ": "+ info.charAt(0));
 				cell.setInital(info.charAt(0));
 				grid[row][col] = cell;
 
@@ -140,7 +141,7 @@ public class Board {
 				// If the cell isn't a room label, center, or passage
 				if (info.length() == 1) {
 					cell.setIsRoomLabel(false);
-					cell.setIsRoomCenter(false);
+					cell.setIsRoomCenter(false);  
 				}
 				// Check if the cell is the label cell of the room
 				else if (info.charAt(info.length() - 1) == '#') {
@@ -166,7 +167,7 @@ public class Board {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
 				BoardCell cell = grid[row][col];
-				
+		
 
 				// Add adjacencies for secret passage
 				if (cell.isSecretPassage()) {
