@@ -52,7 +52,7 @@ private static Board board;
 		assertTrue(testList.contains(board.getCell(14, 14)));
 		assertTrue(testList.contains(board.getCell(12, 14)));
 	} //currently fails
-/*	
+	
 //Locations within rooms not center. Note, this test is allowed to pass even for failing test. 
 	//(Should have empty adjacency list)  
 	@Test
@@ -278,7 +278,6 @@ private static Board board;
 		
 	}
 	
-	*/
 	
 
 } 
