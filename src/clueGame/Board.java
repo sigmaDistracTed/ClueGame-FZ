@@ -108,6 +108,7 @@ public class Board {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
 				String info = rows.get(row)[col].trim();
+				char lastChar = (info.charAt(info.length() - 1);
 
 				BoardCell cell = new BoardCell(row, col);
 			//	System.out.println(row + ", " +col + ": "+ info.charAt(0));
@@ -144,12 +145,12 @@ public class Board {
 					cell.setIsRoomCenter(false);  
 				}
 				// Check if the cell is the label cell of the room
-				else if (info.charAt(info.length() - 1) == '#') {
+				else if (lastChar == '#') {
 					cell.setIsRoomLabel(true);
 					getRoom(cell).setLabelCell(cell);
 				}
 				// Check if the cell is the center of the room
-				else if (info.charAt(info.length() - 1) == '*') {
+				else if (lastChar == '*') {
 					cell.setIsRoomCenter(true);
 					getRoom(cell).setCenterCell(cell);
 				}

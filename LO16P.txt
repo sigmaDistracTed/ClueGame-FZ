@@ -1,0 +1,14 @@
+Alexandra Field 
+Aiden Zeigler 
+
+1) There should be 6 player objects of type Player
+2) There should be 6 players, 6 weapons, and 9 rooms for our current setup. 
+They would be respresented correctly if there is one card of each, they are all 
+properly read in, and they are all the correct type. 
+3) The requirements for the solution is that it should have one player, one weapon,
+and one room. None of these cards can be in the hands of any player. 
+4) The requirements for a correct deal is that the solution is properly decided, 
+players have roughly the same number of cards (likely dealt iteratively), and there 
+are no repeat instances of cards. This can be checked by running tests counting 
+the cards players have, making sure they have one of each type, and making sure there
+is only one card per player. 
