@@ -67,18 +67,23 @@ public class Board {
 		try (Scanner in = new Scanner(new File("data", setupConfigFile))) {
 			while (in.hasNextLine()) {
 				String line = in.nextLine();
-				if (line.charAt(0) != '/') { // Comment safeguard from class
-					String[] info = line.split(",");
-					if (info[0].trim().equals("Room")) {
+				String[] info = line.split(",");
+				String type = info[0].trim();
+				//Checking type
+				switch (type) {
+					case "Room":
 						char icon = info[2].trim().charAt(0);
 						String roomName = info[1].trim();
 						roomMap.put(icon, new Room(roomName));
-					} else if (info[0].trim().equals("Space")) {
-						char icon = info[2].trim().charAt(0);
-						String roomName = info[1].trim();
-						roomMap.put(icon, new Room(roomName));
-					}
+						break; 
+					case "Space":
+						char iconSpace = info[2].trim().charAt(0);
+						String roomNameSpace = info[1].trim();
+						roomMap.put(iconSpace, new Room(roomNameSpace));
+					default: 
+						break;
 				}
+				
 			}
 		} catch (FileNotFoundException err) {
 			throw new BadConfigFormatException("Cannot open setup file: " + setupConfigFile);
@@ -108,7 +113,7 @@ public class Board {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
 				String info = rows.get(row)[col].trim();
-				char lastChar = (info.charAt(info.length() - 1);
+				char lastChar = (info.charAt(info.length() - 1));
 
 				BoardCell cell = new BoardCell(row, col);
 			//	System.out.println(row + ", " +col + ": "+ info.charAt(0));
