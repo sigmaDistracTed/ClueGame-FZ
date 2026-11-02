@@ -116,7 +116,6 @@ public class Board {
 				char lastChar = (info.charAt(info.length() - 1));
 
 				BoardCell cell = new BoardCell(row, col);
-			//	System.out.println(row + ", " +col + ": "+ info.charAt(0));
 				cell.setInital(info.charAt(0));
 				grid[row][col] = cell;
 

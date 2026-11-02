@@ -1,0 +1,6 @@
+1. Line 14 in DoorDirection.java:
+    @Override should be used on toString().
+2. Line 302 in BoardAdjTargetTest.java:
+    Removed a print statement line in one of the tests.
+3. Line 113 in Board.java:
+    Removed a commented out line that removes focus from rest of function.

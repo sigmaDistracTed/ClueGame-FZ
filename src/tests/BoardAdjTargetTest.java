@@ -299,7 +299,6 @@ private static Board board;
 		// By edge with walls
 		board.calcTargets(board.getCell(25, 18), 6);
 		targets= board.getTargets();
-		System.out.println(targets);
 		assertTrue(targets.contains(board.getCell(22, 17)));
 		assertTrue(targets.contains(board.getCell(21, 18)));
 		assertTrue(targets.contains(board.getCell(19, 18)));
