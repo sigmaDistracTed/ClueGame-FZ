@@ -4,3 +4,28 @@
     Removed a print statement line in one of the tests.
 3. Line 113 in Board.java:
     Removed a commented out line that removes focus from rest of function.
+
+Before:
+	// Read in setup file and connect room characters to names
+	public void loadSetupConfig() throws BadConfigFormatException {
+		try (Scanner in = new Scanner(new File("data", setupConfigFile))) {
+			while (in.hasNextLine()) {
+				String line = in.nextLine();
+				if (line.charAt(0) != '/') { // Comment safeguard from class
+					String[] info = line.split(",");
+					if (info[0].trim().equals("Room")) {
+						char icon = info[2].trim().charAt(0);
+						String roomName = info[1].trim();
+						roomMap.put(icon, new Room(roomName));
+					} else if (info[0].trim().equals("Space")) {
+						char icon = info[2].trim().charAt(0);
+						String roomName = info[1].trim();
+						roomMap.put(icon, new Room(roomName));
+					}
+				}
+			}
+		} catch (FileNotFoundException err) {
+			throw new BadConfigFormatException("Cannot open setup file: " + setupConfigFile);
+		}
+	}
+After:
