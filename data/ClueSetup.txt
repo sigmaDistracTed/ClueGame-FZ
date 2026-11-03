@@ -11,3 +11,17 @@ Room, Tower, T
 // Other spaces on board
 Space, Unused, X
 Space, Walkway, W
+// Player cards
+Person, Numerologist Night, BLACK, 0, 7
+Person, Astrologer Azure, CYAN, 0, 18
+Person, Inspector Irratino, MAGENTA, 7, 25
+Person, Cryptozoologist Cloud, GRAY, 25, 18
+Person, Sociologist Umber, ORANGE, 25, 7
+Person, Dr. Seashell DDS, WHITE, 17, 0
+//Weapon cards
+Weapon, Crystal Ball
+Weapon, ??
+Weapon, ??
+Weapon, ??
+Weapon, ??
+Weapon, ??

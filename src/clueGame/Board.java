@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ public class Board {
 	private BoardCell[][] grid;
 	private int numRows;
 	private int numCols;
+	
+	private Set<Player> players = new HashSet<>();
+	private Set<Card> cards = new HashSet<>();
 
 	private static Board theInstance = new Board();
 
@@ -64,6 +68,11 @@ public class Board {
 		
 	// Read in setup file and connect room characters to names
 	public void loadSetupConfig() throws BadConfigFormatException {
+		//loading one random integer to determine who is the human player
+		int randomNum = (int)(Math.random() * 6); //range of 0-5, index of playerList
+		int playerNum = 0;
+		
+		//file reading
 		try (Scanner in = new Scanner(new File("data", setupConfigFile))) {
 			while (in.hasNextLine()) {
 				String line = in.nextLine();
@@ -75,11 +84,40 @@ public class Board {
 						char icon = info[2].trim().charAt(0);
 						String roomName = info[1].trim();
 						roomMap.put(icon, new Room(roomName));
+						Card rCard = new Card(roomName, CardType.ROOM);
+						cards.add(rCard);
 						break; 
+						
 					case "Space":
 						char iconSpace = info[2].trim().charAt(0);
 						String roomNameSpace = info[1].trim();
 						roomMap.put(iconSpace, new Room(roomNameSpace));
+						break; 
+						
+					case "Person":
+						String playerName = info[1].trim();
+						String color = info[2].trim();
+						int row = Integer.parseInt(info[3].trim());
+						int col = Integer.parseInt(info[4].trim());
+						if(randomNum == playerNum) {
+							HumanPlayer huP = new HumanPlayer(playerName, color, row, col);
+							players.add(huP);
+						}
+						else { 
+							ComputerPlayer coP = new ComputerPlayer(playerName, color, row, col);
+							players.add(coP);
+						}
+						playerNum++;
+						Card pCard = new Card(playerName, CardType.PERSON);
+						cards.add(pCard);
+						break;
+						
+					case "Weapon": 
+						String weaponName = info[1].trim();
+						Card wCard = new Card(weaponName, CardType.WEAPON);
+						cards.add(wCard);
+						break;
+						
 					default: 
 						break;
 				}

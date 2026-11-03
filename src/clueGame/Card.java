@@ -5,8 +5,9 @@ public class Card {
     private CardType ct;
 
     // Constructor
-    public Card(String cardName) {
+    public Card(String cardName, CardType ct) {
         this.cardName = cardName;
+        this.ct = ct;
     }
 
     // Get cardName

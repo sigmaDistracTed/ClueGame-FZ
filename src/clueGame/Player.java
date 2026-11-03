@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.awt.Color;
+
 public abstract class Player {
     private String name;
     private String color;
@@ -8,9 +10,11 @@ public abstract class Player {
     private int col;
 
     // Constructor
-    public Player(String name, String color) {
+    public Player(String name, String color, int row, int col) {
         this.name = name;
-        this.color = name;
+        this.color = color;
+        this.row = row;
+        this.col = col;
     }
 
     // Get player name
