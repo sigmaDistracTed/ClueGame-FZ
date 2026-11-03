@@ -244,13 +244,8 @@ public class Board {
 	// Find all possible targets
 	public void findAllTargets(BoardCell startCell, int pathLength) {
 		for (BoardCell adjCell : startCell.getAdjList()) {
-			// Continue if the room is occupied but isn't a room
-			if (adjCell.getIsOccupied() && !adjCell.isRoomCenter()) {
-				continue;
-			}
-
-			// if visited test
-			if (visited.contains(adjCell)) {
+			// Continue if the room is occupied but isn't a room, or if visited.
+			if ((adjCell.getIsOccupied() && !adjCell.isRoomCenter()) || visited.contains(adjCell)) {
 				continue;
 			}
 
