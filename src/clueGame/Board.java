@@ -300,5 +300,13 @@ public class Board {
 		BoardCell cell = getCell(x, y);
 		return cell.adjList;
 	}
+	
+	public Set<Player> getPlayers() { 
+		return new HashSet<Player>(); 
+	}
+	
+	public Set<Card> getCards() {
+		return new HashSet<Card>();
+	}
 
 }

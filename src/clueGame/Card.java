@@ -2,6 +2,7 @@ package clueGame;
 
 public class Card {
     private String cardName;
+    private CardType ct;
 
     // Constructor
     public Card(String cardName) {
@@ -25,6 +26,16 @@ public class Card {
         } else {
             return false;
         }
+    }
+    
+    //Set cardType
+    public void setCardType(CardType ct) {
+    	this.ct = ct;
+    }
+    
+    //get cardType
+    public CardType getCardType() {
+    	return ct;
     }
 
 }
