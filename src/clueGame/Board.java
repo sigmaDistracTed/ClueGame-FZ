@@ -120,7 +120,7 @@ public class Board {
 				grid[row][col] = cell;
 
 				// doorway checking
-				switch (info.charAt(info.length() - 1)) {
+				switch (lastChar) {
 					case '^':
 						cell.setIsDoorway(true);
 						cell.setDoorDirection(DoorDirection.UP);
