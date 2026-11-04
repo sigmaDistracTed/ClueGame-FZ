@@ -9,6 +9,10 @@ public class Card {
         this.cardName = cardName;
         this.ct = ct;
     }
+    
+    public Card() {
+    	
+    }
 
     // Get cardName
     public String getCardName() {

@@ -39,7 +39,7 @@ private static Board board;
 		int nn, ii, aa, cc, su, ds;
 		nn = ii = aa = cc = su = ds = 0;
 		Set<Player> playerList = board.getPlayers();
-		Set<Card> cardList = board.getCards();
+		Set<Card> cardList = board.getCards(); //otherwise, the set is way too big
 		for (int i = 0; i < 200; i++) {
 			try {
 				playerList.clear(); //new player list every time
@@ -136,6 +136,12 @@ private static Board board;
 		assertEquals(6, weaponCount);
 				 
 	} 
+	
+	@Test
+	public void dealCardsTest() { 
+		Set<Card> cardList = board.getCards();
+		board.dealCards(cardList);
+	}
 	
 	
 

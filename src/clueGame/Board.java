@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Collections;
 
 
 /**
@@ -37,6 +38,18 @@ public class Board {
 	private Set<Card> cards = new HashSet<>();
 
 	private static Board theInstance = new Board();
+	
+	private class Solution { //nested class b/c composition? 
+		private Card room;
+		private Card person;
+		private Card weapon; 
+		
+		public Solution(Card room, Card person, Card weapon) { 
+			this.room = room;
+			this.person = person;
+			this.weapon = weapon;
+		}
+	}
 
 	// Constructor is private to ensure only one can be created
 	private Board() {
@@ -297,6 +310,73 @@ public class Board {
 
 			visited.remove(adjCell);
 		}
+	}
+	
+	public void dealCards(Set<Card> cards) { 
+		//make a deck for different functionality like shuffling for extra randomness
+		ArrayList<Card> cardDeck = new ArrayList<Card>();
+		for (Card c :cards) {
+			cardDeck.add(c);
+		}
+		Collections.shuffle(cardDeck);
+		int rCount, pCount, wCount; 
+		rCount = pCount = wCount = 0;
+		Card room, person, weapon;
+		room = person = weapon = new Card();
+		//getting the room card
+		int randomNum = (int)(Math.random() * cardDeck.size());
+		while(rCount < 1) {
+			Card rCandidate = cardDeck.get(randomNum);
+			if(rCandidate.getCardType() == CardType.ROOM) {
+				room = rCandidate;
+				cardDeck.remove(rCandidate);
+				rCount = 1;
+			}
+			else { 
+				randomNum = (int)(Math.random() * cardDeck.size());
+			}
+			
+			//getting person
+			
+		}
+		
+		while(pCount < 1) {
+			Card pCandidate = cardDeck.get(randomNum);
+			if(pCandidate.getCardType() == CardType.PERSON) {
+				person = pCandidate;
+				cardDeck.remove(pCandidate);
+				pCount = 1;
+			}
+			
+			else { 
+				randomNum = (int)(Math.random() * cardDeck.size());
+			}
+	}
+		while(wCount < 1) {
+			Card wCandidate = cardDeck.get(randomNum);
+			if(wCandidate.getCardType() == CardType.WEAPON) {
+				weapon = wCandidate;
+				cardDeck.remove(wCandidate);
+				wCount = 1;
+			}
+			
+			else { 
+				randomNum = (int)(Math.random() * cardDeck.size());
+			}
+			
+		}
+		
+		Solution sol = new Solution(room, person, weapon);
+		
+		Set<Player> playerList = getPlayers();
+		
+		for(int i = 0; i < cardDeck.size(); i++) {
+			int playerIdx = 0; // hmmm v
+			playerList.at(playerIdx % playerList.size()).updateHand(cardDeck.get(i));
+			cardDeck.remove(i);
+			playerIdx++;
+		}
+		
 	}
 
 	// Retrieves room name from character
