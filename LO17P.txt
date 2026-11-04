@@ -1,0 +1,7 @@
+Alexandra Field
+Aiden Zeigler
+
+For "Check accusation functionality, we can implement that by setting a 
+solution of our choosing, and then running at least four assert tests: one 
+to check if a matching accusation is true, and at least three others 
+changing up one or multiple cards from the solution
