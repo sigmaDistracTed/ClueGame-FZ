@@ -38,28 +38,9 @@ public class Board {
 	private Set<Card> cards = new HashSet<>();
 
 	private static Board theInstance = new Board();
-	
-	private class Solution { //nested class b/c composition? 
-		private Card room;
-		private Card person;
-		private Card weapon;
-		
-		private static Solution theSol;
-		
-		public Solution(Card room, Card person, Card weapon) { 
-			this.room = room;
-			this.person = person;
-			this.weapon = weapon;
-		}
-		
-		public static Solution getSol() {
-			return theSol;
-		}
 
-		
-	}
+	private static Solution theAnswer;
 	
-
 	// Constructor is private to ensure only one can be created
 	private Board() {
 		super();
@@ -386,6 +367,14 @@ public class Board {
 			playerIdx++;
 		}
 		
+	}
+
+	// Checks an accusation to the answer
+	public boolean checkAccusation(Card room, Card person, Card weapon) {
+		if (room == theAnswer.getRoom() && person == theAnswer.getPerson() && weapon == theAnswer.getWeapon() ) {
+			return true;
+		}
+		return false;
 	}
 
 	// Retrieves room name from character
