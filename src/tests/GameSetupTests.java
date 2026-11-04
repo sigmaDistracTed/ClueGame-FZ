@@ -2,10 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clueGame.BadConfigFormatException;
@@ -28,6 +30,65 @@ private static Board board;
 		// Initialize will load config files 
 		board.initialize();
 		board.calcAdj();
+	}
+	
+	
+	@Test
+	public void testRandomHumanPlayer() { 
+		//Counts for each player
+		int nn, ii, aa, cc, su, ds;
+		nn = ii = aa = cc = su = ds = 0;
+		Set<Player> playerList = board.getPlayers();
+		Set<Card> cardList = board.getCards();
+		for (int i = 0; i < 200; i++) {
+			try {
+				playerList.clear(); //new player list every time
+				cardList.clear();
+				board.loadSetupConfig(); 
+				playerList = board.getPlayers();
+			//	System.out.println(playerList.size());
+				for(Player p : playerList) {
+					if (p instanceof HumanPlayer) { 
+					switch (p.getName()) {
+						case "Numerologist Night":
+							nn++; 
+							break;
+						case "Inspector Irratino":
+							ii++;
+							break;
+						case "Astrologer Azure":
+							aa++;
+							break;
+						case "Cryptozoologist Cloud":
+							cc++;
+							break;
+						case "Sociologist Umber": 
+							su++;
+							break;
+						case "Dr. Seashell DDS":
+							ds++;
+							break;
+						default:
+							break;
+						}	//end of switch block;
+				
+					} // if p is human player
+				} // for player in player list
+			} //end of try block
+			catch (BadConfigFormatException e) {
+				
+			}
+			
+		} //end of for loop
+		
+		assertEquals(200, nn+ii+aa+cc+su+ds);
+		assertTrue(nn > 10);
+		assertTrue(ii > 10);
+		assertTrue(aa > 10);
+		assertTrue(cc > 10);
+		assertTrue(su > 10);
+		assertTrue(ds > 10);
+		
 	}
 	
 	@Test
@@ -76,57 +137,6 @@ private static Board board;
 				 
 	} 
 	
-	@Test
-	public void testRandomHumanPlayer() { 
-		//Counts for each player
-		int nn, ii, aa, cc, su, ds;
-		nn = ii = aa = cc = su = ds = 0;
-		
-		for (int i = 0; i < 5; i++) {
-			try {
-				board.loadSetupConfig(); //todo: new playerlist every time
-				Set<Player> playerList = board.getPlayers();
-				System.out.println(playerList.size());
-				for(Player p : playerList) {
-					if (p instanceof HumanPlayer) { 
-					switch (p.getName()) {
-						case "Numerologist Night":
-							nn++; 
-							break;
-						case "Inspector Irratino":
-							ii++;
-							break;
-						case "Astrologer Azure":
-							aa++;
-							break;
-						case "Cryptozoologist Cloud":
-							cc++;
-							break;
-						case "Sociologist Umber": 
-							su++;
-							break;
-						case "Dr. Seashell DDS":
-							ds++;
-							break;
-						default:
-							break;
-						}	//end of switch block;
-				
-					} // if p is human player
-				} // for player in player list
-			} //end of try block
-			catch (BadConfigFormatException e) {
-				
-			}
-			
-		} //end of for loop
-/*	System.out.println(nn);
-	System.out.println(ii);
-	System.out.println(aa);
-	System.out.println(cc);
-	System.out.println(su);
-	System.out.println(ds); */
-	}
 	
 
 }
