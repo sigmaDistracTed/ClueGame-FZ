@@ -39,6 +39,7 @@ private static Board board;
 		for(Player p : playerList) {
 			if (p instanceof HumanPlayer) { 
 				humanCount++; 
+				System.out.println(p);
 			}
 			else if (p instanceof ComputerPlayer) {
 				computerCount++;
@@ -54,7 +55,7 @@ private static Board board;
 		int roomCount, playerCount, weaponCount;
 		roomCount =  playerCount = weaponCount = 0;
 		
-		for(Card c : cardList) { 
+		for(Card c : cardList) {
 			switch (c.getCardType()) {
 				case ROOM:
 					roomCount++;
@@ -67,12 +68,12 @@ private static Board board;
 					break;
 				default: 
 					break;
-			}
+			} 
+		}
 		assertEquals(9, roomCount);
 		assertEquals(6, playerCount);
 		assertEquals(6, weaponCount);
-				
-		}
-	}
+				 
+	} 
 
 }

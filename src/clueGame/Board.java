@@ -340,11 +340,11 @@ public class Board {
 	}
 	
 	public Set<Player> getPlayers() { 
-		return new HashSet<Player>(); 
+		return players; 
 	}
 	
 	public Set<Card> getCards() {
-		return new HashSet<Card>();
+		return cards;
 	}
 
 }

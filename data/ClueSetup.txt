@@ -20,8 +20,8 @@ Person, Sociologist Umber, ORANGE, 25, 7
 Person, Dr. Seashell DDS, WHITE, 17, 0
 //Weapon cards
 Weapon, Crystal Ball
-Weapon, ??
-Weapon, ??
-Weapon, ??
-Weapon, ??
-Weapon, ??
+Weapon, Murder Tarot (Marot)
+Weapon, Dowsing Rod
+Weapon, Cursed Dagger
+Weapon, Selenite Wand
+Weapon, Poisonous Plant

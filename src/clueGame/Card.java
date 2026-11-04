@@ -38,5 +38,10 @@ public class Card {
     public CardType getCardType() {
     	return ct;
     }
+    
+    @Override
+    public String toString() { 
+    	return (this.cardName + " " + this.ct);
+    }
 
 }
