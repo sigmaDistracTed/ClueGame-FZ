@@ -42,14 +42,23 @@ public class Board {
 	private class Solution { //nested class b/c composition? 
 		private Card room;
 		private Card person;
-		private Card weapon; 
+		private Card weapon;
+		
+		private static Solution theSol;
 		
 		public Solution(Card room, Card person, Card weapon) { 
 			this.room = room;
 			this.person = person;
 			this.weapon = weapon;
 		}
+		
+		public static Solution getSol() {
+			return theSol;
+		}
+
+		
 	}
+	
 
 	// Constructor is private to ensure only one can be created
 	private Board() {
@@ -426,5 +435,7 @@ public class Board {
 	public Set<Card> getCards() {
 		return cards;
 	}
+	
+	
 
 }

@@ -141,6 +141,7 @@ private static Board board;
 	public void dealCardsTest() { 
 		Set<Card> cardList = board.getCards();
 		board.dealCards(cardList);
+		Solution s = board.getSol();
 	}
 	
 	
