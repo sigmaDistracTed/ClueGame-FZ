@@ -50,5 +50,11 @@ public abstract class Player {
     public void updateHand(Card card) {
 
     }
+    
+    @Override
+    public String toString() { 
+    	return(this.name + " " + this.color + " " + this.row + " " +this.col);
+    			 
+    }
 
 }
