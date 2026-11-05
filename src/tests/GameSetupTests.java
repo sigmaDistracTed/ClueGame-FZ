@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ import clueGame.Board;
 import clueGame.Card;
 import clueGame.CardType;
 import clueGame.Player;
+import clueGame.Solution;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 
@@ -140,8 +142,35 @@ private static Board board;
 	@Test
 	public void dealCardsTest() { 
 		Set<Card> cardList = board.getCards();
+		Set<Player> playerList = board.getPlayers();
 		board.dealCards(cardList);
 		Solution s = board.getSol();
+		Card sp = s.getPerson();
+		Card sr = s.getRoom();
+		Card sw = s.getWeapon();
+		
+		//Making sure no player has the solution
+		for(Player p : playerList) {
+			Set<Card> hand = p.getHand();
+			assertFalse(hand.contains(sp));
+			assertFalse(hand.contains(sr));
+			assertFalse(hand.contains(sw));
+		}
+		
+		ArrayList<Integer> handSizes = new ArrayList<Integer>();
+		for(Player p : playerList) { 
+			Set<Card> hand = p.getHand();
+			handSizes.add(hand.size());
+		}
+		System.out.println(handSizes);
+		for(int size : handSizes) {
+			assertTrue(size > 0 && size < cardList.size()/4);
+		}
+		
+		//Making sure every player has roughly the same size hand
+		
+		
+
 	}
 	
 	

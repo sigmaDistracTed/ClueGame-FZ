@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -57,6 +58,7 @@ public class Board {
 			loadSetupConfig();
 			loadLayoutConfig();
 			calcAdj();
+			dealCards(cards);
 		} catch (BadConfigFormatException e) {
 			throw new IllegalStateException("Could not initialize board.", e);
 		}
@@ -331,6 +333,7 @@ public class Board {
 		}
 		
 		while(pCount < 1) {
+			randomNum = (int)(Math.random() * cardDeck.size());
 			Card pCandidate = cardDeck.get(randomNum);
 			if(pCandidate.getCardType() == CardType.PERSON) {
 				person = pCandidate;
@@ -343,6 +346,7 @@ public class Board {
 			}
 	}
 		while(wCount < 1) {
+			randomNum = (int)(Math.random() * cardDeck.size());
 			Card wCandidate = cardDeck.get(randomNum);
 			if(wCandidate.getCardType() == CardType.WEAPON) {
 				weapon = wCandidate;
@@ -356,18 +360,18 @@ public class Board {
 			
 		}
 		
-		Solution sol = new Solution(room, person, weapon);
+		theAnswer = new Solution(room, person, weapon);
 		
 		Set<Player> playerList = getPlayers();
 		
-		for(int i = 0; i < cardDeck.size(); i++) {
-			int playerIdx = 0; // hmmm v
-			playerList.at(playerIdx % playerList.size()).updateHand(cardDeck.get(i));
-			cardDeck.remove(i);
-			playerIdx++;
+		while(!cardDeck.isEmpty()) {
+			for(Player p : playerList) {
+				p.updateHand(cardDeck.get(0));
+				cardDeck.remove(0);
+			}
 		}
-		
 	}
+		
 
 	// Checks an accusation to the answer
 	public boolean checkAccusation(Card room, Card person, Card weapon) {
@@ -423,6 +427,10 @@ public class Board {
 	
 	public Set<Card> getCards() {
 		return cards;
+	}
+	
+	public Solution getSol() {
+		return theAnswer;
 	}
 	
 	
