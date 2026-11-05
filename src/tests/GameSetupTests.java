@@ -34,6 +34,44 @@ private static Board board;
 		board.calcAdj();
 	}
 	
+	@Test
+	public void testLoading() {
+		boolean foundPlayer = false;
+		boolean foundRoom = false;
+		boolean foundPerson = false;
+		boolean foundWeapon = false;
+
+		for (Player p : board.getPlayers()) {
+			if (p.getName().equals("Numerologist Night")) {
+				foundPlayer = true;
+				assertEquals("BLACK", p.getColor());
+				assertEquals(0, p.getRow());
+				assertEquals(7, p.getCol());
+			}
+		}
+
+		for (Card c : board.getCards()) {
+			if (c.getCardName().equals("Hedge Maze")) {
+				foundRoom = true;
+				assertEquals(CardType.ROOM, c.getCardType());
+			}
+
+			if (c.getCardName().equals("Numerologist Night")) {
+				foundPerson = true;
+				assertEquals(CardType.PERSON, c.getCardType());
+			}
+
+			if (c.getCardName().equals("Crystal Ball")) {
+				foundWeapon = true;
+				assertEquals(CardType.WEAPON, c.getCardType());
+			}
+		}
+
+		assertTrue(foundPlayer);
+		assertTrue(foundRoom);
+		assertTrue(foundPerson);
+		assertTrue(foundWeapon);
+	}
 	
 	@Test
 	public void testRandomHumanPlayer() { 
