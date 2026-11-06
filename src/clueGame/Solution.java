@@ -4,7 +4,10 @@ public class Solution {
     private Card room;
     private Card person;
     private Card weapon;
-        
+    private static int solSize = 0;
+    
+    {solSize += 3;} //increases sol size every time its called by the three cards
+    
     public Solution(Card room, Card person, Card weapon) { 
         this.room = room;
         this.person = person;
@@ -21,6 +24,10 @@ public class Solution {
 
     public Card getWeapon() {
         return weapon;
+    }
+    
+    public int getSolSize() {
+    	return solSize;
     }
         
     @Override 

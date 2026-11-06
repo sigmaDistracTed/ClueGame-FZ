@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
@@ -22,6 +23,7 @@ import clueGame.Player;
 import clueGame.Solution;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
+
 
 public class GameSetupTests {
 private static Board board;
@@ -34,7 +36,10 @@ private static Board board;
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
-		board.calcAdj();
+	//	board.calcAdj(); already in initialize, we should remove
+		for(Player p : board.getPlayers()) {
+			System.out.println(p.getHand());
+		}
 	}
 	
 	@Test
@@ -43,6 +48,11 @@ private static Board board;
 		boolean foundRoom = false;
 		boolean foundPerson = false;
 		boolean foundWeapon = false;
+		
+		System.out.println("testLoading");
+		for(Player p : board.getPlayers()) {
+			System.out.println(p.getHand());
+		}
 
 		for (Player p : board.getPlayers()) {
 			if (p.getName().equals("Numerologist Night")) {
@@ -78,6 +88,11 @@ private static Board board;
 	
 	@Test
 	public void testRandomHumanPlayer() { 
+		
+		System.out.println("randomHumanPlayer");
+		for(Player p : board.getPlayers()) {
+			System.out.println(p.getHand());
+		}
 		//Counts for each player
 		int nn, ii, aa, cc, su, ds;
 		nn = ii = aa = cc = su = ds = 0;
@@ -131,11 +146,16 @@ private static Board board;
 		assertTrue(cc > 10);
 		assertTrue(su > 10);
 		assertTrue(ds > 10);
-		
+
 	}
 	
 	@Test
 	public void countTests() {
+		
+		System.out.println("countTests");
+		for(Player p : board.getPlayers()) {
+			System.out.println(p.getHand());
+		}
 		//Counting number of players
 		Set<Player> playerList = board.getPlayers();
 		assertEquals(6, playerList.size()); 
@@ -182,13 +202,20 @@ private static Board board;
 	
 	@Test
 	public void dealCardsTest() { 
+		System.out.println("dealCardsTest");
+		for(Player p : board.getPlayers()) {
+			System.out.println(p.getHand());
+		}
 		Set<Card> cardList = board.getCards();
 		Set<Player> playerList = board.getPlayers();
-		board.dealCards(cardList);
+
+	
 		Solution s = board.getSol();
 		Card sp = s.getPerson();
 		Card sr = s.getRoom();
 		Card sw = s.getWeapon();
+	
+		assertEquals(s.getSolSize(), 3);
 		
 		//Making sure no player has the solution
 		for(Player p : playerList) {
@@ -204,12 +231,12 @@ private static Board board;
 			Set<Card> hand = p.getHand();
 			handSizes.add(hand.size());
 		}
-	//	System.out.println(handSizes);
+		
 		for(int size : handSizes) {
+			System.out.println(size);
 			assertTrue(size > 0 && size < cardList.size()/4);
 		}
 		Integer sum = handSizes.stream().reduce(0, (a, b) -> a + b); //source: https://www.baeldung.com/java-stream-sum
-		System.out.println(sum);
 		assertTrue(sum.equals(cardList.size()-3)); //all cards but 3 were dealt
 		
 		//Testing to see if all cards were dealt and dealt only once
@@ -226,11 +253,6 @@ private static Board board;
 		}
 		
 		assertEquals(cardCount, cardList.size()-3);
-		
-		
-		
-		//Unsure of how to check solution is size 3 -> thoughts?
-		
 		
 
 	}
