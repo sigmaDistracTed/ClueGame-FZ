@@ -1,10 +1,13 @@
 package tests;
 
 import static org.junit.Assert.*;
+import java.util.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
@@ -201,10 +204,30 @@ private static Board board;
 			Set<Card> hand = p.getHand();
 			handSizes.add(hand.size());
 		}
-		System.out.println(handSizes);
+	//	System.out.println(handSizes);
 		for(int size : handSizes) {
 			assertTrue(size > 0 && size < cardList.size()/4);
 		}
+		Integer sum = handSizes.stream().reduce(0, (a, b) -> a + b); //source: https://www.baeldung.com/java-stream-sum
+		System.out.println(sum);
+		assertTrue(sum.equals(cardList.size()-3)); //all cards but 3 were dealt
+		
+		//Testing to see if all cards were dealt and dealt only once
+		//Adds 1 each time a card is recognized. Should be equal to size -3
+		int cardCount = 0;
+		for(Player p : playerList) { 
+			Set<Card> hand = p.getHand();
+			for(Card c : hand) {
+				if(cardList.contains(c)) {
+					cardCount++;
+				}
+				
+			}
+		}
+		
+		assertEquals(cardCount, cardList.size()-3);
+		
+		
 		
 		//Unsure of how to check solution is size 3 -> thoughts?
 		
