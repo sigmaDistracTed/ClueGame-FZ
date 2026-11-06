@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,12 +35,15 @@ private static Board board;
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
-		// Initialize will load config files 
+	}
+
+	@BeforeEach
+	void setUpCards() {
+		board.getPlayers().clear();
+		board.getCards().clear();
+		// Initalize each time so that our player and card lists will remain constant
 		board.initialize();
-	//	board.calcAdj(); already in initialize, we should remove
-		for(Player p : board.getPlayers()) {
-			System.out.println(p.getHand());
-		}
+		board.dealCards(board.getCards());
 	}
 	
 	@Test
@@ -202,10 +206,7 @@ private static Board board;
 	
 	@Test
 	public void dealCardsTest() { 
-		System.out.println("dealCardsTest");
-		for(Player p : board.getPlayers()) {
-			System.out.println(p.getHand());
-		}
+
 		Set<Card> cardList = board.getCards();
 		Set<Player> playerList = board.getPlayers();
 
@@ -233,7 +234,6 @@ private static Board board;
 		}
 		
 		for(int size : handSizes) {
-			System.out.println(size);
 			assertTrue(size > 0 && size < cardList.size()/4);
 		}
 		Integer sum = handSizes.stream().reduce(0, (a, b) -> a + b); //source: https://www.baeldung.com/java-stream-sum
