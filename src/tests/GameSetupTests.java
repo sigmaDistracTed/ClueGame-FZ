@@ -216,7 +216,7 @@ private static Board board;
 		Card sr = s.getRoom();
 		Card sw = s.getWeapon();
 	
-		assertEquals(s.getSolSize(), 3);
+		assertEquals(3, s.getSolSize());
 		
 		//Making sure no player has the solution
 		for(Player p : playerList) {
