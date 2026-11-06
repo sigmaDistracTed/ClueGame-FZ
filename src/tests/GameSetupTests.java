@@ -157,6 +157,7 @@ private static Board board;
 			assertFalse(hand.contains(sw));
 		}
 		
+		//Making sure every player has roughly the same size hand
 		ArrayList<Integer> handSizes = new ArrayList<Integer>();
 		for(Player p : playerList) { 
 			Set<Card> hand = p.getHand();
@@ -167,7 +168,7 @@ private static Board board;
 			assertTrue(size > 0 && size < cardList.size()/4);
 		}
 		
-		//Making sure every player has roughly the same size hand
+		//Unsure of how to check solution is size 3 -> thoughts?
 		
 		
 
