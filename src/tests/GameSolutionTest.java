@@ -90,6 +90,7 @@ is returned at least once.*/
 		pTest.updateHand(testWeapon);
 		
 		Player pOneCard = new HumanPlayer("Known", "White", 0,0);
+		Player pManyCard = new HumanPlayer("Many", "White", 0,0);
 		
 		//testing if one card matches
 		Card seenCard = pTest.disproveSuggestion(testRoom, person2, weapon2);
@@ -127,10 +128,10 @@ is returned at least once.*/
 		//testing if multiple cards match, only one is returned
 		seenCard = pTest.disproveSuggestion(testRoom, testPerson, testWeapon);
 		if(seenCard != null) {
-			pOneCard.updateSeen(seenCard);
+			pManyCard.updateSeen(seenCard);
 		}
 
-		assertEquals(pOneCard.getSeen().size(), 4); //may get fucky
+		assertEquals(pManyCard.getSeen().size(), 1); //may get fucky
 		
 	}
 	
