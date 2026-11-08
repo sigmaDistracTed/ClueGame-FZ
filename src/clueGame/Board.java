@@ -381,6 +381,10 @@ public class Board {
 		}
 		return false;
 	}
+	
+	public Card handleSuggestion(Player suggesting, Set<Player> playerList, Card room, Card person, Card weapon) { 
+		return null;
+	}
 
 	// Retrieves room name from character
 	public Room getRoom(char icon) {

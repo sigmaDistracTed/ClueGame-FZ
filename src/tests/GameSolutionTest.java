@@ -65,16 +65,7 @@ private static Board board;
 	
 	@Test
 	public void testDisproveSuggestion() {
-		/* If a player has one matching card, return it. 
-		 * Simple way to test: create a player with known cards, call the disprove method, 
-		 * ensure desired card is returned. Consider testing returning a room, 
-		 * a weapon and a person, but this may be overkill 
-		 * (does ensure matches happen regardless of card type).
-If a player has no matching cards, return null. Test as above, but 
-obviously with no matching card.
-If the player has multiple cards that match, return should be random. 
-How to test? Set up player, use a loop, ensure that each matching card 
-is returned at least once.*/
+
 		
 		//creating person with known hand
 		Card testPerson = new Card("PCJ", CardType.PERSON);
@@ -137,6 +128,52 @@ is returned at least once.*/
 	
 	@Test
 	public void testHandleSuggestion() { 
+		/*  Handle a suggestion made, tests include:
+Suggestion no one can disprove returns null
+Suggestion only suggesting player can disprove returns null
+Suggestion only human can disprove returns answer 
+	(i.e., card that disproves suggestion)
+Suggestion that two players can disprove, 
+	correct player (based on starting with next player in list) returns answer
+*/
+	Player sp = new ComputerPlayer("Suggesting", "White", 0,0);
+	Player p1 = new HumanPlayer("Player 1", "White", 0,0);
+	Player p2 = new ComputerPlayer("Player 2", "White", 0,0);
+	
+	Set<Player> playerList = new HashSet<Player>();
+	playerList.add(sp);
+	playerList.add(p1);
+	playerList.add(p2);
+	
+	Card p = new Card("PCJ", CardType.PERSON);
+	Card r = new Card ("Coolbaugh 209", CardType.ROOM);
+	Card w = new Card ("Notebook", CardType.WEAPON);
+	Card person2 = new Card("Blaster", CardType.PERSON); 
+	Card room2 = new Card("Green Center", CardType.ROOM); 
+	Card weapon2 = new Card("Protractor", CardType.WEAPON); 
+	
+	sp.updateHand(p);
+	p1.updateHand(r);
+	p2.updateHand(w);
+	
+	//no one can disprove, returns null
+	Card noProof = board.handleSuggestion(sp, playerList, room2, person2, weapon2);
+	assertEquals(noProof, null);
+	
+	//suggesting player can disprove, returns null
+	Card suggestingDisproves = board.handleSuggestion(sp, playerList, room2, p, weapon2);
+	assertEquals(suggestingDisproves, null);
+	
+	//only human player can disprove, returns answer
+	//???? 
+	
+	//suggestion two players can disprove
+	Card twoPlayers = board.handleSuggestion(sp, playerList, r, p, weapon2);
+	
+	
+	
+			
+		
 		
 	}
 
