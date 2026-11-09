@@ -36,7 +36,6 @@ private static Board board;
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize();
-		board.dealCards(board.getCards());
 	}
 	
 	@Test
