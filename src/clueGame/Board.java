@@ -382,7 +382,18 @@ public class Board {
 		return false;
 	}
 	
-	public Card handleSuggestion(Player suggesting, Set<Player> playerList, Card room, Card person, Card weapon) { 
+	public Card handleSuggestion(Player suggesting, Set<Player> playerList, Card room, Card person, Card weapon) {
+		for(Player p : playerList) {
+			if(p == suggesting) {
+				continue; //or continue? 
+			}
+			Set<Card> playerHand = p.getHand();
+			for(Card c : playerHand) { 
+				if(c == room || c == person || c == weapon) {
+					return c;
+				}
+			}
+		}
 		return null;
 	}
 

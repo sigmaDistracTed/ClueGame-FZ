@@ -165,10 +165,13 @@ Suggestion that two players can disprove,
 	assertEquals(suggestingDisproves, null);
 	
 	//only human player can disprove, returns answer
-	//???? 
+	Card humanDisproves = board.handleSuggestion(sp, playerList, r, person2, weapon2);
+	assertEquals(humanDisproves, r);
 	
-	//suggestion two players can disprove
+	//suggestion two players can disprove, returns first card
 	Card twoPlayers = board.handleSuggestion(sp, playerList, r, p, weapon2);
+	assertEquals(twoPlayers, r);
+	
 	
 	
 	
