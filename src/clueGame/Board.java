@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Collections;
 
-
 /**
  * Board Class
  *
@@ -54,12 +53,16 @@ public class Board {
 
 	// Initialize the board (since we are using singleton pattern)
 	public void initialize() {
+		players.clear();
+		cards.clear();
+
 		try {
 			loadSetupConfig();
 			loadLayoutConfig();
 			calcAdj();
-			//dealCards(cards); // Earlier tests fail because it tries to deal cards.
-			// Eventually, something should call dealCards for the game
+			if (!players.isEmpty()) {
+				dealCards(cards);
+			}
 		} catch (BadConfigFormatException e) {
 			throw new IllegalStateException("Could not initialize board.", e);
 		}
@@ -367,6 +370,9 @@ public class Board {
 		
 		while(!cardDeck.isEmpty()) {
 			for(Player p : playerList) {
+				if (cardDeck.isEmpty()) {
+					break;
+				}
 				p.updateHand(cardDeck.get(0));
 				cardDeck.remove(0);
 			}

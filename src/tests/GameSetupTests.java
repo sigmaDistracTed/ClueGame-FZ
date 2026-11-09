@@ -39,11 +39,7 @@ private static Board board;
 
 	@BeforeEach
 	void setUpCards() {
-		board.getPlayers().clear();
-		board.getCards().clear();
-		// Initalize each time so that our player and card lists will remain constant
 		board.initialize();
-		board.dealCards(board.getCards());
 	}
 	
 	@Test
