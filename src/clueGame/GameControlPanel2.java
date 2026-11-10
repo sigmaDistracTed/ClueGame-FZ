@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
 
+import clueGame.GameControlPanel.ButtonListener;
+
 public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
     private JTextField nameTF;
@@ -43,6 +45,8 @@ public class GameControlPanel2 extends JPanel {
 		
 		JButton makeAccusation = new JButton("Make Accusation"); 
 		JButton next = new JButton("Next Turn"); 
+		makeAccusation.addActionListener(new ButtonListener());
+		next.addActionListener(new ButtonListener());
 		
 		
 		topHalf.add(rollp);
@@ -53,7 +57,26 @@ public class GameControlPanel2 extends JPanel {
 		
 	}
 	
+	private class ButtonListener implements ActionListener {
+        @Override 
+        public void actionPerformed(ActionEvent e) {
+            String message = "Hello, " + nameTF.getText();
+            JOptionPane.showMessageDialog(gui, message);
+
+            String ageStr = JOptionPane.showInputDialog("Enter your age: ");
+            int num = Integer.parseInt(ageStr);
+            JOptionPane.showMessageDialog(gui, "You are " + num + " years old.");
+            int ready = JOptionPane.showConfirmDialog(gui, "Are you ready?");
+
+            if (ready == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(gui, "Here we go!");
+            } else {
+                JOptionPane.showMessageDialog(gui, "Ok, I'll wait!");
+            }
+        }
+	}
 	
+
 	
 	public static void main(String[] args) {
 		GameControlPanel2 panel = new GameControlPanel2();  // create the panel
