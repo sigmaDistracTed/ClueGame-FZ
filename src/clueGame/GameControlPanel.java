@@ -36,7 +36,7 @@ public class GameControlPanel extends JFrame {
 
         nameButton.addActionListener(new ButtonListener());
 
-        setTitle("My First GUI");
+        setTitle("Clue Control");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
