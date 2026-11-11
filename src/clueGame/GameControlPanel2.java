@@ -22,9 +22,10 @@ public class GameControlPanel2 extends JPanel {
 	
 	public GameControlPanel2()  {
 		gui = this;
+		setLayout(new GridLayout(2, 0));
 		
 		//Initial panels
-		JPanel gcp = new JPanel(new GridLayout(2, 0)); 
+	//	JPanel gcp = new JPanel(new GridLayout(2, 0)); 
 		JPanel topHalf = new JPanel(new GridLayout(1, 4));
 		JPanel bottomHalf = new JPanel(new GridLayout(0,2));
 		
@@ -97,7 +98,7 @@ public class GameControlPanel2 extends JPanel {
 		GameControlPanel2 panel = new GameControlPanel2();  // create the panel
 		JFrame frame = new JFrame("Clue Controls");  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(750, 180);  // size the frame
+		frame.setSize(950, 180);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 		
