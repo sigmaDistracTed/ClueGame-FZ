@@ -40,7 +40,8 @@ public class Board {
 	private static Board theInstance = new Board();
 
 	private static Solution theAnswer;
-	
+	private int humanPlayerIndex;
+
 	// Constructor is private to ensure only one can be created
 	private Board() {
 		super();
@@ -453,6 +454,10 @@ public class Board {
 	
 	public Solution getSol() {
 		return theAnswer;
+	}
+
+	private void setHumanPlayerIndex(int index) {
+		humanPlayerIndex = index;
 	}
 	
 	

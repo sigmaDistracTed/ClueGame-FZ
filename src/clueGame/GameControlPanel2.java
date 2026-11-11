@@ -26,16 +26,15 @@ public class GameControlPanel2 extends JPanel {
 		//Initial panels
 		JPanel gcp = new JPanel(new GridLayout(2, 0)); 
 		JPanel topHalf = new JPanel(new GridLayout(1, 4));
+		JPanel bottomHalf = new JPanel(new GridLayout(0,2));
 		
 		//Turn tracking -> may add sprites here? 
 		JPanel turns = new JPanel(); 
 		JLabel whosTurn = new JLabel("Who's turn is it?: "); 
 		JTextField nameTF = new JTextField(20);
-	
 		turns.add(whosTurn);
 		turns.add(nameTF);
-		topHalf.add(turns);
-		
+
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
@@ -43,16 +42,32 @@ public class GameControlPanel2 extends JPanel {
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
 		
+		// Buttons
 		JButton makeAccusation = new JButton("Make Accusation"); 
 		JButton next = new JButton("Next Turn"); 
 		makeAccusation.addActionListener(new ButtonListener());
 		next.addActionListener(new ButtonListener());
-		
-		
+
+		// Guess
+		JPanel guessPanel = new JPanel(new GridLayout(1,0));
+
+
+/* 		// In hand and seen
+		JPanel tempName = new JPanel();
+		JLabel knownCards = new JLabel("Known Cards");
+		JTextField inHand = new JTextField(20);
+		tempName.add(knownCards);
+		tempName.add(inHand);
+		rightSide.add(tempName); */
+
+		topHalf.add(turns);
 		topHalf.add(rollp);
 		topHalf.add(makeAccusation);
 		topHalf.add(next);
 		add(topHalf);
+
+
+		//add(rightSide, BorderLayout.EAST);
 
 		
 	}

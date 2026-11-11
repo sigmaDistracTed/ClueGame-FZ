@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.ImageIcon;
 
 public class GameControlPanel extends JFrame {
     private GameControlPanel gui;
@@ -36,12 +37,15 @@ public class GameControlPanel extends JFrame {
 
         nameButton.addActionListener(new ButtonListener());
 
+        // To load a sprite
+        ImageIcon original = new ImageIcon("Sprites/Astrologer Azure.png");
+
         setTitle("Clue Control");
-        setSize(300, 150);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-    private class ButtonListener implements ActionListener {
+    public class ButtonListener implements ActionListener {
         @Override 
         public void actionPerformed(ActionEvent e) {
             String message = "Hello, " + nameTF.getText();
