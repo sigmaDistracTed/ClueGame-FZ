@@ -13,8 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
-
-import clueGame.GameControlPanel.ButtonListener;
+import javax.swing.BorderFactory;
 
 public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
@@ -22,9 +21,10 @@ public class GameControlPanel2 extends JPanel {
 	
 	public GameControlPanel2()  {
 		gui = this;
+		setLayout(new GridLayout(2, 0));
 		
 		//Initial panels
-		JPanel gcp = new JPanel(new GridLayout(2, 0)); 
+	//	JPanel gcp = new JPanel(new GridLayout(2, 0)); 
 		JPanel topHalf = new JPanel(new GridLayout(1, 4));
 		JPanel bottomHalf = new JPanel(new GridLayout(0,2));
 		
@@ -38,7 +38,7 @@ public class GameControlPanel2 extends JPanel {
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
-		JTextField rollTF = new JTextField(20);
+		JTextField rollTF = new JTextField(10);
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
 		
@@ -50,6 +50,17 @@ public class GameControlPanel2 extends JPanel {
 
 		// Guess
 		JPanel guessPanel = new JPanel(new GridLayout(1,0));
+		JTextField guessField = new JTextField("No Guess!");
+		guessPanel.setBorder(BorderFactory.createTitledBorder("Guess"));
+		guessPanel.setName("Guess");
+		guessPanel.add(guessField);
+
+		// Guess Result
+		JPanel guessResultPanel = new JPanel(new GridLayout(1,0));
+		JTextField guessResultField = new JTextField("So you have nothing?");
+		guessResultPanel.setBorder(BorderFactory.createTitledBorder("Guess Result"));
+		guessResultPanel.setName("Guess Result");
+		guessResultPanel.add(guessResultField);
 
 
 /* 		// In hand and seen
@@ -66,9 +77,12 @@ public class GameControlPanel2 extends JPanel {
 		topHalf.add(next);
 		add(topHalf);
 
+		bottomHalf.add(guessPanel);
+		bottomHalf.add(guessResultPanel);
+		add(bottomHalf);
+
 
 		//add(rightSide, BorderLayout.EAST);
-
 		
 	}
 	
@@ -97,7 +111,7 @@ public class GameControlPanel2 extends JPanel {
 		GameControlPanel2 panel = new GameControlPanel2();  // create the panel
 		JFrame frame = new JFrame("Clue Controls");  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(750, 180);  // size the frame
+		frame.setSize(950, 180);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 		
@@ -108,5 +122,3 @@ public class GameControlPanel2 extends JPanel {
 	}
 
 }
-
-
