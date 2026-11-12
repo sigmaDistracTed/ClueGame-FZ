@@ -13,8 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
-
-import clueGame.GameControlPanel.ButtonListener;
+import javax.swing.BorderFactory;
 
 public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
@@ -39,7 +38,7 @@ public class GameControlPanel2 extends JPanel {
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
-		JTextField rollTF = new JTextField(20);
+		JTextField rollTF = new JTextField(10);
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
 		
@@ -51,6 +50,17 @@ public class GameControlPanel2 extends JPanel {
 
 		// Guess
 		JPanel guessPanel = new JPanel(new GridLayout(1,0));
+		JTextField guessField = new JTextField("No Guess!");
+		guessPanel.setBorder(BorderFactory.createTitledBorder("Guess"));
+		guessPanel.setName("Guess");
+		guessPanel.add(guessField);
+
+		// Guess Result
+		JPanel guessResultPanel = new JPanel(new GridLayout(1,0));
+		JTextField guessResultField = new JTextField("So you have nothing?");
+		guessResultPanel.setBorder(BorderFactory.createTitledBorder("Guess Result"));
+		guessResultPanel.setName("Guess Result");
+		guessResultPanel.add(guessResultField);
 
 
 /* 		// In hand and seen
@@ -67,9 +77,12 @@ public class GameControlPanel2 extends JPanel {
 		topHalf.add(next);
 		add(topHalf);
 
+		bottomHalf.add(guessPanel);
+		bottomHalf.add(guessResultPanel);
+		add(bottomHalf);
+
 
 		//add(rightSide, BorderLayout.EAST);
-
 		
 	}
 	
@@ -109,5 +122,3 @@ public class GameControlPanel2 extends JPanel {
 	}
 
 }
-
-
