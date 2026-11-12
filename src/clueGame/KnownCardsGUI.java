@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.border.TitledBorder;
 
 public class KnownCardsGUI extends JPanel {
 	private KnownCardsGUI gui;
@@ -42,6 +44,8 @@ public class KnownCardsGUI extends JPanel {
 		gui = this;
 		setLayout(new GridLayout(3, 1));
 		setBorder(BorderFactory.createTitledBorder("Known Cards"));
+		((TitledBorder) getBorder()).setTitleFont(getFont().deriveFont(Font.BOLD));
+		((TitledBorder) getBorder()).setTitleJustification(TitledBorder.CENTER);
 
 		// Find the human player
 		for (Player player : Board.getInstance().getPlayers()) {
@@ -56,9 +60,19 @@ public class KnownCardsGUI extends JPanel {
 		roomsPanel = new JPanel(new GridBagLayout());
 		weaponsPanel = new JPanel(new GridBagLayout());
 
-		peoplePanel.setBorder(BorderFactory.createTitledBorder("People"));
+		TitledBorder peopleBorder = BorderFactory.createTitledBorder("People");
+		peopleBorder.setTitleFont(peoplePanel.getFont().deriveFont(Font.BOLD));
+		peoplePanel.setBorder(peopleBorder);
+		TitledBorder roomsBorder = BorderFactory.createTitledBorder("Rooms");
+		roomsBorder.setTitleFont(roomsPanel.getFont().deriveFont(Font.BOLD));
+		roomsPanel.setBorder(roomsBorder);
+		TitledBorder weaponsBorder = BorderFactory.createTitledBorder("Weapons");
+		weaponsBorder.setTitleFont(weaponsPanel.getFont().deriveFont(Font.BOLD));
+		weaponsPanel.setBorder(weaponsBorder);
+
+/* 		peoplePanel.setBorder(BorderFactory.createTitledBorder("People"));
 		roomsPanel.setBorder(BorderFactory.createTitledBorder("Rooms"));
-		weaponsPanel.setBorder(BorderFactory.createTitledBorder("Weapons"));
+		weaponsPanel.setBorder(BorderFactory.createTitledBorder("Weapons")); */
 
 		// Create card containers
 		peopleHandPanel = new JPanel(new GridLayout(0, 1, 0, 1));
@@ -96,41 +110,56 @@ public class KnownCardsGUI extends JPanel {
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(2, 4, 2, 4);
 
+		JLabel handLabel;
+		JLabel seenLabel;
+
 		// People
 		c.gridy = 0;
-		peoplePanel.add(new JLabel("In Hand:"), c);
+		handLabel = new JLabel("In Hand:");
+		handLabel.setFont(handLabel.getFont().deriveFont(Font.BOLD));
+		peoplePanel.add(handLabel, c);
 
 		c.gridy = 1;
 		peoplePanel.add(peopleHandPanel, c);
 
 		c.gridy = 2;
-		peoplePanel.add(new JLabel("Seen:"), c);
+		seenLabel = new JLabel("Seen:");
+		seenLabel.setFont(seenLabel.getFont().deriveFont(Font.BOLD));
+		peoplePanel.add(seenLabel, c);
 
 		c.gridy = 3;
 		peoplePanel.add(peopleSeenPanel, c);
 
 		// Rooms
 		c.gridy = 0;
-		roomsPanel.add(new JLabel("In Hand:"), c);
+		handLabel = new JLabel("In Hand:");
+		handLabel.setFont(handLabel.getFont().deriveFont(Font.BOLD));
+		roomsPanel.add(handLabel, c);
 
 		c.gridy = 1;
 		roomsPanel.add(roomsHandPanel, c);
 
 		c.gridy = 2;
-		roomsPanel.add(new JLabel("Seen:"), c);
+		seenLabel = new JLabel("Seen:");
+		seenLabel.setFont(seenLabel.getFont().deriveFont(Font.BOLD));
+		roomsPanel.add(seenLabel, c);
 
 		c.gridy = 3;
 		roomsPanel.add(roomsSeenPanel, c);
 
 		// Weapons
 		c.gridy = 0;
-		weaponsPanel.add(new JLabel("In Hand:"), c);
+		handLabel = new JLabel("In Hand:");
+		handLabel.setFont(handLabel.getFont().deriveFont(Font.BOLD));
+		weaponsPanel.add(handLabel, c);
 
 		c.gridy = 1;
 		weaponsPanel.add(weaponsHandPanel, c);
 
 		c.gridy = 2;
-		weaponsPanel.add(new JLabel("Seen:"), c);
+		seenLabel = new JLabel("Seen:");
+		seenLabel.setFont(seenLabel.getFont().deriveFont(Font.BOLD));
+		weaponsPanel.add(seenLabel, c);
 
 		c.gridy = 3;
 		weaponsPanel.add(weaponsSeenPanel, c);
