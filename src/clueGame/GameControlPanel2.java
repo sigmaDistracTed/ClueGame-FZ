@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.JButton;
@@ -23,8 +24,11 @@ public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
 	private static Board board;
     private final JTextField nameTF;
+    private final JTextField rollTF;
 	private JButton next;
-	private Set<Player> playerList; //replace w/actual players
+	private ArrayList<Player> playerList = new ArrayList<Player>(); 
+	private int idx;
+	private int roll;
 	
 	public GameControlPanel2() {
 		gui = this;
@@ -34,7 +38,18 @@ public class GameControlPanel2 extends JPanel {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize(); //so we have the players
 		
-		playerList = board.getPlayers();
+		for (Player p : board.getPlayers()) {
+			playerList.add(p);
+			if(p instanceof HumanPlayer) {
+				idx = playerList.indexOf(p);
+			}
+		}
+		
+
+		/*turn into an arraylist and then 
+		 * from there, get the loc of a human player, use that for button 
+		 * listeners??? and change to hez codes
+		 */
 		
 		//Initial panels
 	//	JPanel gcp = new JPanel(new GridLayout(2, 0)); 
@@ -45,16 +60,18 @@ public class GameControlPanel2 extends JPanel {
 		JPanel turns = new JPanel(); 
 		JLabel whosTurn = new JLabel("Who's turn is it?: "); 
 		nameTF = new JTextField(20);
-		//putting in player
-		Player p = playerList.iterator().next();
+		
+		//putting in human player to start
+		Player p = playerList.get(idx);
 		nameTF.setText(p.getName());
-		nameTF.setBackground(p.getColor());
+		nameTF.setBackground(p.getColor());;
 		if(p.getColor() == Color.BLACK) { 
-			nameTF.setForeground(Color.WHITE);
+			nameTF.setForeground(Color.WHITE); //not quite working
 		}
 		else { 
 			nameTF.setForeground(Color.BLACK);
 		}
+		
 		//adding to panel
 		turns.add(whosTurn);
 		turns.add(nameTF);
@@ -62,7 +79,9 @@ public class GameControlPanel2 extends JPanel {
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
-		JTextField rollTF = new JTextField(10);
+		rollTF = new JTextField(10);
+		roll = (int)(Math.random() * 6);
+		rollTF.setText(String.valueOf(roll));
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
 		
@@ -117,8 +136,8 @@ public class GameControlPanel2 extends JPanel {
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
-        		idx++;
-        		Player nextPlayer = playerList.iterator().next();;
+        		++idx;
+        		Player nextPlayer = playerList.get(idx%playerList.size());
         		nameTF.setBackground(nextPlayer.getColor());
         		if(nextPlayer.getColor() == Color.BLACK) { 
         			nameTF.setForeground(Color.WHITE);
@@ -127,6 +146,8 @@ public class GameControlPanel2 extends JPanel {
         			nameTF.setForeground(Color.BLACK);
         		}
         		nameTF.setText(nextPlayer.getName()); 
+        		roll = (int)(Math.random() * 6);
+        		rollTF.setText(String.valueOf(roll));
         	}
         	
         }

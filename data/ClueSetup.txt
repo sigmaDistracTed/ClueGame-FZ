@@ -12,12 +12,12 @@ Room, Tower, T
 Space, Unused, X
 Space, Walkway, W
 // Player cards
-Person, Numerologist Night, BLACK, 0, 7
-Person, Astrologer Azure, BLUE, 0, 18
-Person, Inspector Irratino, MAGENTA, 7, 25
-Person, Cryptozoologist Cloud, GRAY, 25, 18
-Person, Sociologist Umber, ORANGE, 25, 7
-Person, Dr. Seashell DDS, WHITE, 17, 0
+Person, Numerologist Night, #000000, 0, 7
+Person, Astrologer Azure, #4D6BE4, 0, 18
+Person, Inspector Irratino, #AA74DD, 7, 25
+Person, Cryptozoologist Cloud, #7F7F7F, 25, 18
+Person, Sociologist Umber, #A44310, 25, 7
+Person, Dr. Seashell DDS, #ffffff, 17, 0
 //Weapon cards
 Weapon, Crystal Ball
 Weapon, Murder Tarot (Marot)
