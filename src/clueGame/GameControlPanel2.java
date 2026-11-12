@@ -1,9 +1,13 @@
 package clueGame;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,11 +21,20 @@ import javax.swing.BorderFactory;
 
 public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
-    private JTextField nameTF;
+	private static Board board;
+    private final JTextField nameTF;
+	private JButton next;
+	private Set<Player> playerList; //replace w/actual players
 	
-	public GameControlPanel2()  {
+	public GameControlPanel2() {
 		gui = this;
 		setLayout(new GridLayout(2, 0));
+		
+		board = Board.getInstance(); 
+		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+		board.initialize(); //so we have the players
+		
+		playerList = board.getPlayers();
 		
 		//Initial panels
 	//	JPanel gcp = new JPanel(new GridLayout(2, 0)); 
@@ -31,7 +44,18 @@ public class GameControlPanel2 extends JPanel {
 		//Turn tracking -> may add sprites here? 
 		JPanel turns = new JPanel(); 
 		JLabel whosTurn = new JLabel("Who's turn is it?: "); 
-		JTextField nameTF = new JTextField(20);
+		nameTF = new JTextField(20);
+		//putting in player
+		Player p = playerList.iterator().next();
+		nameTF.setText(p.getName());
+		nameTF.setBackground(p.getColor());
+		if(p.getColor() == Color.BLACK) { 
+			nameTF.setForeground(Color.WHITE);
+		}
+		else { 
+			nameTF.setForeground(Color.BLACK);
+		}
+		//adding to panel
 		turns.add(whosTurn);
 		turns.add(nameTF);
 
@@ -44,7 +68,7 @@ public class GameControlPanel2 extends JPanel {
 		
 		// Buttons
 		JButton makeAccusation = new JButton("Make Accusation"); 
-		JButton next = new JButton("Next Turn"); 
+		next = new JButton("Next Turn"); 
 		makeAccusation.addActionListener(new ButtonListener());
 		next.addActionListener(new ButtonListener());
 
@@ -84,30 +108,34 @@ public class GameControlPanel2 extends JPanel {
 
 		//add(rightSide, BorderLayout.EAST);
 		
+		
+		
 	}
 	
 	private class ButtonListener implements ActionListener {
+		private int idx = 0;
         @Override 
         public void actionPerformed(ActionEvent e) {
-            String message = "Hello, " + nameTF.getText();
-            JOptionPane.showMessageDialog(gui, message);
-
-            String ageStr = JOptionPane.showInputDialog("Enter your age: ");
-            int num = Integer.parseInt(ageStr);
-            JOptionPane.showMessageDialog(gui, "You are " + num + " years old.");
-            int ready = JOptionPane.showConfirmDialog(gui, "Are you ready?");
-
-            if (ready == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(gui, "Here we go!");
-            } else {
-                JOptionPane.showMessageDialog(gui, "Ok, I'll wait!");
-            }
+        	if(e.getSource() == next) {
+        		idx++;
+        		Player nextPlayer = playerList.iterator().next();;
+        		nameTF.setBackground(nextPlayer.getColor());
+        		if(nextPlayer.getColor() == Color.BLACK) { 
+        			nameTF.setForeground(Color.WHITE);
+        		}
+        		else { 
+        			nameTF.setForeground(Color.BLACK);
+        		}
+        		nameTF.setText(nextPlayer.getName()); 
+        	}
+        	
         }
 	}
 	
 
 	
 	public static void main(String[] args) {
+		
 		GameControlPanel2 panel = new GameControlPanel2();  // create the panel
 		JFrame frame = new JFrame("Clue Controls");  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame

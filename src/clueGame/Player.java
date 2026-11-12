@@ -58,8 +58,9 @@ public abstract class Player {
     }
 
     // Get player color
-    public String getColor() {
-        return color;
+    public Color getColor() {
+    	Color c = Color.decode(color);
+        return c;
     }
 
     // Set player color
