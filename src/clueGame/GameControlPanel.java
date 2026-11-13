@@ -3,6 +3,7 @@ package clueGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -19,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class GameControlPanel extends JPanel {
 	private GameControlPanel gui;
@@ -26,9 +29,11 @@ public class GameControlPanel extends JPanel {
     private final JTextField nameTF;
     private final JTextField rollTF;
 	private JButton next;
+	private JPanel turns;
 	private ArrayList<Player> playerList = new ArrayList<Player>(); 
 	private int idx;
 	private int roll;
+	private String path;
 	
 	public GameControlPanel() {
 		gui = this;
@@ -45,28 +50,22 @@ public class GameControlPanel extends JPanel {
 			}
 		}
 		
-
-		/*turn into an arraylist and then 
-		 * from there, get the loc of a human player, use that for button 
-		 * listeners??? and change to hez codes
-		 */
 		
 		//Initial panels
-	//	JPanel gcp = new JPanel(new GridLayout(2, 0)); 
 		JPanel topHalf = new JPanel(new GridLayout(1, 4));
 		JPanel bottomHalf = new JPanel(new GridLayout(0,2));
 		
-		//Turn tracking -> may add sprites here? 
-		JPanel turns = new JPanel(); 
+		//Turn tracking
+		turns = new JPanel(); 
 		JLabel whosTurn = new JLabel("Who's turn is it?: "); 
 		nameTF = new JTextField(20);
 		
 		//putting in human player to start
 		Player p = playerList.get(idx);
 		nameTF.setText(p.getName());
-		nameTF.setBackground(p.getColor());;
-		if(p.getColor() == Color.BLACK) { 
-			nameTF.setForeground(Color.WHITE); //not quite working
+		nameTF.setBackground(p.getColor());
+		if(p.getColor().equals(Color.decode("#000000"))) { 
+			nameTF.setForeground(Color.WHITE); 
 		}
 		else { 
 			nameTF.setForeground(Color.BLACK);
@@ -75,12 +74,13 @@ public class GameControlPanel extends JPanel {
 		//adding to panel
 		turns.add(whosTurn);
 		turns.add(nameTF);
+	//	turns.add(sprites);
 
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
 		rollTF = new JTextField(10);
-		roll = (int)(Math.random() * 6);
+		roll = (int)((Math.random() * 6)+1); 
 		rollTF.setText(String.valueOf(roll));
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
@@ -104,29 +104,18 @@ public class GameControlPanel extends JPanel {
 		guessResultPanel.setBorder(BorderFactory.createTitledBorder("Guess Result"));
 		guessResultPanel.setName("Guess Result");
 		guessResultPanel.add(guessResultField);
-
-
-/* 		// In hand and seen
-		JPanel tempName = new JPanel();
-		JLabel knownCards = new JLabel("Known Cards");
-		JTextField inHand = new JTextField(20);
-		tempName.add(knownCards);
-		tempName.add(inHand);
-		rightSide.add(tempName); */
+		
 
 		topHalf.add(turns);
 		topHalf.add(rollp);
 		topHalf.add(makeAccusation);
 		topHalf.add(next);
+		//topHalf.add(sprites);
 		add(topHalf);
 
 		bottomHalf.add(guessPanel);
 		bottomHalf.add(guessResultPanel);
 		add(bottomHalf);
-
-
-		//add(rightSide, BorderLayout.EAST);
-		
 		
 		
 	}
@@ -136,19 +125,25 @@ public class GameControlPanel extends JPanel {
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
-        		++idx;
+        		++idx; //gets wonky and misses turns somehow?????
         		Player nextPlayer = playerList.get(idx%playerList.size());
         		nameTF.setBackground(nextPlayer.getColor());
-        		if(nextPlayer.getColor() == Color.BLACK) { 
+        		if(nextPlayer.getColor().equals(Color.decode("#000000"))) { 
         			nameTF.setForeground(Color.WHITE);
         		}
         		else { 
         			nameTF.setForeground(Color.BLACK);
         		}
         		nameTF.setText(nextPlayer.getName()); 
-        		roll = (int)(Math.random() * 6);
+        		roll = (int)((Math.random() * 6)+1);
         		rollTF.setText(String.valueOf(roll));
+        	//	sprites.add(new JLabel(new ImageIcon(path+nextPlayer.getName()+".png")));
+        		//turns.add(sprites);
         	}
+        	
+        //	if(e.getSource() == makeAccusation) {
+        		
+        	//}
         	
         }
 	}
@@ -158,8 +153,11 @@ public class GameControlPanel extends JPanel {
 	public static void main(String[] args) {
 		
 		GameControlPanel panel = new GameControlPanel();  // create the panel
-		JFrame frame = new JFrame("Clue Controls");  // create the frame 
-		frame.setContentPane(panel); // put the panel in the frame
+		PlayersPanel players = new PlayersPanel();
+		JFrame frame = new JFrame("Clue Controls"); 
+		frame.add(players, BorderLayout.EAST);// create the frame 
+		frame.add(panel, BorderLayout.CENTER); // put the panel in the frame
+		//dont set content pane
 		frame.setSize(950, 180);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
