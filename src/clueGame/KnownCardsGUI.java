@@ -91,6 +91,8 @@ public class KnownCardsGUI extends JPanel {
 				case ROOM: roomsHandPanel.add(field);
 				case WEAPON: weaponsHandPanel.add(field);
 			}
+
+			field.setBackground(huP.getColor());
 		}
 
 		if (peopleHandPanel.getComponentCount() == 0) {
