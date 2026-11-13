@@ -3,6 +3,7 @@ package clueGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -19,16 +20,21 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class GameControlPanel2 extends JPanel {
 	private GameControlPanel2 gui;
 	private static Board board;
     private final JTextField nameTF;
     private final JTextField rollTF;
+    private JLabel sprites;
 	private JButton next;
+	private JPanel turns;
 	private ArrayList<Player> playerList = new ArrayList<Player>(); 
 	private int idx;
 	private int roll;
+	private String path;
 	
 	public GameControlPanel2() {
 		gui = this;
@@ -57,14 +63,14 @@ public class GameControlPanel2 extends JPanel {
 		JPanel bottomHalf = new JPanel(new GridLayout(0,2));
 		
 		//Turn tracking -> may add sprites here? 
-		JPanel turns = new JPanel(); 
+		turns = new JPanel(); 
 		JLabel whosTurn = new JLabel("Who's turn is it?: "); 
 		nameTF = new JTextField(20);
 		
 		//putting in human player to start
 		Player p = playerList.get(idx);
 		nameTF.setText(p.getName());
-		nameTF.setBackground(p.getColor());;
+		nameTF.setBackground(p.getColor());
 		if(p.getColor() == Color.BLACK) { 
 			nameTF.setForeground(Color.WHITE); //not quite working
 		}
@@ -72,15 +78,21 @@ public class GameControlPanel2 extends JPanel {
 			nameTF.setForeground(Color.BLACK);
 		}
 		
+		//sprites
+		sprites = new JLabel();
+		path = "../ClueGame/Sprites/";
+		sprites.setIcon(new ImageIcon(new ImageIcon("/ClueGame/Sprites/Dr. Seashell DDS.png").getImage().getScaledInstance(800, 800, Image.SCALE_SMOOTH)));
+		System.out.println(path+p.getName()+".png");
 		//adding to panel
 		turns.add(whosTurn);
 		turns.add(nameTF);
+		turns.add(sprites);
 
 		//Roll panel
 		JPanel rollp = new JPanel();
 		JLabel rollLabel = new JLabel("Roll: ");
 		rollTF = new JTextField(10);
-		roll = (int)(Math.random() * 6);
+		roll = (int)((Math.random() * 6)+1); 
 		rollTF.setText(String.valueOf(roll));
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
@@ -104,6 +116,9 @@ public class GameControlPanel2 extends JPanel {
 		guessResultPanel.setBorder(BorderFactory.createTitledBorder("Guess Result"));
 		guessResultPanel.setName("Guess Result");
 		guessResultPanel.add(guessResultField);
+		
+		
+		
 
 
 /* 		// In hand and seen
@@ -118,6 +133,7 @@ public class GameControlPanel2 extends JPanel {
 		topHalf.add(rollp);
 		topHalf.add(makeAccusation);
 		topHalf.add(next);
+		topHalf.add(sprites);
 		add(topHalf);
 
 		bottomHalf.add(guessPanel);
@@ -136,7 +152,7 @@ public class GameControlPanel2 extends JPanel {
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
-        		++idx;
+        		++idx; //gets wonky and misses turns somehow?????
         		Player nextPlayer = playerList.get(idx%playerList.size());
         		nameTF.setBackground(nextPlayer.getColor());
         		if(nextPlayer.getColor() == Color.BLACK) { 
@@ -146,8 +162,10 @@ public class GameControlPanel2 extends JPanel {
         			nameTF.setForeground(Color.BLACK);
         		}
         		nameTF.setText(nextPlayer.getName()); 
-        		roll = (int)(Math.random() * 6);
+        		roll = (int)((Math.random() * 6)+1);
         		rollTF.setText(String.valueOf(roll));
+        		sprites.add(new JLabel(new ImageIcon(path+nextPlayer.getName()+".png")));
+        		turns.add(sprites);
         	}
         	
         }
