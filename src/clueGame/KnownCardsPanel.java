@@ -22,8 +22,8 @@ import javax.swing.BorderFactory;
 import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.border.TitledBorder;
 
-public class KnownCardsGUI extends JPanel {
-	private KnownCardsGUI gui;
+public class KnownCardsPanel extends JPanel {
+	private KnownCardsPanel gui;
 
 	private Player huP;
 
@@ -40,7 +40,7 @@ public class KnownCardsGUI extends JPanel {
 	private JPanel weaponsHandPanel;
 	private JPanel weaponsSeenPanel;
 	
-	public KnownCardsGUI() {
+	public KnownCardsPanel() {
 		gui = this;
 		setLayout(new GridLayout(3, 1));
 		setBorder(BorderFactory.createTitledBorder("Known Cards"));
@@ -69,10 +69,6 @@ public class KnownCardsGUI extends JPanel {
 		TitledBorder weaponsBorder = BorderFactory.createTitledBorder("Weapons");
 		weaponsBorder.setTitleFont(weaponsPanel.getFont().deriveFont(Font.BOLD));
 		weaponsPanel.setBorder(weaponsBorder);
-
-/* 		peoplePanel.setBorder(BorderFactory.createTitledBorder("People"));
-		roomsPanel.setBorder(BorderFactory.createTitledBorder("Rooms"));
-		weaponsPanel.setBorder(BorderFactory.createTitledBorder("Weapons")); */
 
 		// Create card containers
 		peopleHandPanel = new JPanel(new GridLayout(0, 1, 0, 1));
@@ -105,6 +101,7 @@ public class KnownCardsGUI extends JPanel {
 			weaponsHandPanel.add(createCardField("None"));
 		}
 
+		// Constraints
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.weightx = 1;
@@ -173,6 +170,7 @@ public class KnownCardsGUI extends JPanel {
 		refreshCardsGUI();
 	}
 
+	// Will update the seen panels whenever a new card is seen
 	public void refreshCardsGUI() {
 		peopleSeenPanel.removeAll();
 		weaponsSeenPanel.removeAll();
@@ -219,11 +217,10 @@ public class KnownCardsGUI extends JPanel {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize();
 
-		KnownCardsGUI panel = new KnownCardsGUI();  // create the panel
+		KnownCardsPanel panel = new KnownCardsPanel();  // create the panel
 		JFrame frame = new JFrame("Clue Controls");  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
 		frame.setSize(250, 1000);;  // size the frame
-		//frame.pack()
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 	}
