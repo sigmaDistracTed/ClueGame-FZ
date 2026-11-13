@@ -2,10 +2,6 @@ package tests;
 
 import static org.junit.Assert.*;
 import java.util.*;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,6 +18,7 @@ import clueGame.Card;
 import clueGame.CardType;
 import clueGame.Player;
 import clueGame.Solution;
+import clueGame.Board.SuggestionResult;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 

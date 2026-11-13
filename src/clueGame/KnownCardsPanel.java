@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.plaf.basic.BasicButtonListener;
@@ -81,11 +82,11 @@ public class KnownCardsPanel extends JPanel {
 		// Fill hand containers
 		for (Card card : huP.getHand()) {
 			JTextField field = createCardField(card.getCardName());
-
+			
 			switch (card.getCardType()) {
-				case PERSON: peopleHandPanel.add(field);
-				case ROOM: roomsHandPanel.add(field);
-				case WEAPON: weaponsHandPanel.add(field);
+				case PERSON: peopleHandPanel.add(field); break;
+				case ROOM: roomsHandPanel.add(field); break;
+				case WEAPON: weaponsHandPanel.add(field); break;
 			}
 
 			field.setBackground(huP.getColor());
@@ -168,6 +169,9 @@ public class KnownCardsPanel extends JPanel {
 		add(weaponsPanel);
 
 		refreshCardsGUI();
+
+		// Connect panel to the human player
+    	((HumanPlayer) huP).setKnownCardsPanel(this);
 	}
 
 	// Will update the seen panels whenever a new card is seen
@@ -178,10 +182,20 @@ public class KnownCardsPanel extends JPanel {
 
 		for (Card card : huP.getSeen()) {
 			JTextField field = createCardField(card.getCardName());
+
+			for (Player player : Board.getInstance().getPlayers()) {
+				for (Card heldCard : player.getHand()) {
+					if (heldCard.getCardType() == card.getCardType() && heldCard.getCardName().equals(card.getCardName())) {
+						Color color = player.getColor();
+						field.setBackground(color);
+						break;
+					}
+				}
+			}
 			switch(card.getCardType()) {
-				case PERSON: peopleSeenPanel.add(field);
-				case ROOM: roomsSeenPanel.add(field);
-				case WEAPON: weaponsSeenPanel.add(field);
+				case PERSON: peopleSeenPanel.add(field); break;
+				case ROOM: roomsSeenPanel.add(field); break;
+				case WEAPON: weaponsSeenPanel.add(field); break;
 			}
 		}
 
@@ -194,6 +208,9 @@ public class KnownCardsPanel extends JPanel {
 		if (weaponsSeenPanel.getComponentCount() == 0) {
 			weaponsSeenPanel.add(createCardField("None"));
 		}
+
+		revalidate();
+		repaint();
 	}
 
 	private JTextField createCardField(String text) {
@@ -213,6 +230,10 @@ public class KnownCardsPanel extends JPanel {
 	}
 	
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(KnownCardsPanel::showPreview);
+	}
+
+	private static void showPreview() {
 		Board board = Board.getInstance();
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize();
@@ -223,6 +244,13 @@ public class KnownCardsPanel extends JPanel {
 		frame.setSize(250, 1000);;  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
+
+		// Test filling in seen containers
+		for (Card card : board.getCards()) {
+			if (!panel.huP.getHand().contains(card)) {
+				panel.huP.updateSeen(card);
+			}
+		}
 	}
 
 }
