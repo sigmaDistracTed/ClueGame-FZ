@@ -154,38 +154,51 @@ public class GameControlPanel extends JPanel {
         	}
         	
         	if(e.getSource() == makeAccusation) {
-        		ArrayList<Card> people = new ArrayList<Card>(); 
-        		ArrayList<Card> weapons = new ArrayList<Card>(); 
-        		ArrayList<Card> room = new ArrayList<Card>(); 
+        		ArrayList<String> people = new ArrayList<String>(); 
+        		ArrayList<String> weapons = new ArrayList<String>(); 
+        		ArrayList<String> room = new ArrayList<String>(); 
         		for(Card c : board.getCards()) {
         			switch(c.getCardType()) { 
         			case CardType.PERSON:
-        				people.add(c);
+        				people.add(c.getCardName());
+        				break;
         			case CardType.WEAPON:
-        				weapons.add(c);
+        				weapons.add(c.getCardName());
+        				break;
         			case CardType.ROOM:
-        				room.add(c);
+        				room.add(c.getCardName());
+        				break;
         			default: 
         				break;
         			}
         		}
         		
-        		peopleBox = new JComboBox((ComboBoxModel) people);
+        		String[] people2 = people.toArray(new String[0]);
+        		String[] weapon2 = weapons.toArray(new String[0]);
+        		String[] room2 = room.toArray(new String[0]);
+        		
+        		
+        		peopleBox = new JComboBox(people2);
         		peopleBox.setSelectedIndex(0);
         		peopleBox.addActionListener(this);
         		
-        		weaponBox = new JComboBox((ComboBoxModel) weapons);
+        		weaponBox = new JComboBox(weapon2);
         		weaponBox.setSelectedIndex(0);
         		weaponBox.addActionListener(this);
         		
-        		roomBox = new JComboBox((ComboBoxModel) room);
+        		roomBox = new JComboBox(room2);
         		roomBox.setSelectedIndex(0);
         		roomBox.addActionListener(this);
         		
-        		
+        		JPanel accusation = new JPanel();
+        		accusation.add(peopleBox);
+        		accusation.add(weaponBox);
+        		accusation.add(roomBox);
+        		add(accusation);
         	}
-        		
-        	//}
+        		//TODO:
+        	// find a way to update the sprite panel 
+        	//Get the results of accusation from drop down menu
         	
         }
 	}
