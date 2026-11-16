@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.BorderFactory;
+import javax.swing.ComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -29,11 +31,17 @@ public class GameControlPanel extends JPanel {
     private final JTextField nameTF;
     private final JTextField rollTF;
 	private JButton next;
+	private JButton makeAccusation;
 	private JPanel turns;
 	private ArrayList<Player> playerList = new ArrayList<Player>(); 
 	private int idx;
 	private int roll;
-	private String path;
+	private String playerName;
+	private static PlayersPanel players; 
+	private JComboBox peopleBox;
+	private JComboBox weaponBox;
+	private JComboBox roomBox;
+	
 	
 	public GameControlPanel() {
 		gui = this;
@@ -62,7 +70,9 @@ public class GameControlPanel extends JPanel {
 		
 		//putting in human player to start
 		Player p = playerList.get(idx);
-		nameTF.setText(p.getName());
+		playerName = p.getName();
+		players = new PlayersPanel(playerName);
+		nameTF.setText(playerName); 
 		nameTF.setBackground(p.getColor());
 		if(p.getColor().equals(Color.decode("#000000"))) { 
 			nameTF.setForeground(Color.WHITE); 
@@ -86,7 +96,7 @@ public class GameControlPanel extends JPanel {
 		rollp.add(rollTF);
 		
 		// Buttons
-		JButton makeAccusation = new JButton("Make Accusation"); 
+		makeAccusation = new JButton("Make Accusation"); 
 		next = new JButton("Next Turn"); 
 		makeAccusation.addActionListener(new ButtonListener());
 		next.addActionListener(new ButtonListener());
@@ -116,17 +126,18 @@ public class GameControlPanel extends JPanel {
 		bottomHalf.add(guessPanel);
 		bottomHalf.add(guessResultPanel);
 		add(bottomHalf);
+		add(players);
 		
 		
 	}
 	
 	private class ButtonListener implements ActionListener {
-		private int idx = 0;
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
         		++idx; //gets wonky and misses turns somehow?????
         		Player nextPlayer = playerList.get(idx%playerList.size());
+        		playerName = nextPlayer.getName();
         		nameTF.setBackground(nextPlayer.getColor());
         		if(nextPlayer.getColor().equals(Color.decode("#000000"))) { 
         			nameTF.setForeground(Color.WHITE);
@@ -134,18 +145,89 @@ public class GameControlPanel extends JPanel {
         		else { 
         			nameTF.setForeground(Color.BLACK);
         		}
-        		nameTF.setText(nextPlayer.getName()); 
+        		nameTF.setText(playerName); 
         		roll = (int)((Math.random() * 6)+1);
         		rollTF.setText(String.valueOf(roll));
-        	//	sprites.add(new JLabel(new ImageIcon(path+nextPlayer.getName()+".png")));
-        		//turns.add(sprites);
+        		players.removeAll();
+        		players = new PlayersPanel(playerName);
+        		add(players, BorderLayout.WEST); //erm 
         	}
         	
-        //	if(e.getSource() == makeAccusation) {
+        	if(e.getSource() == makeAccusation) {
+        		ArrayList<Card> people = new ArrayList<Card>(); 
+        		ArrayList<Card> weapons = new ArrayList<Card>(); 
+        		ArrayList<Card> room = new ArrayList<Card>(); 
+        		for(Card c : board.getCards()) {
+        			switch(c.getCardType()) { 
+        			case CardType.PERSON:
+        				people.add(c);
+        			case CardType.WEAPON:
+        				weapons.add(c);
+        			case CardType.ROOM:
+        				room.add(c);
+        			default: 
+        				break;
+        			}
+        		}
+        		
+        		peopleBox = new JComboBox((ComboBoxModel) people);
+        		peopleBox.setSelectedIndex(0);
+        		peopleBox.addActionListener(this);
+        		
+        		weaponBox = new JComboBox((ComboBoxModel) weapons);
+        		weaponBox.setSelectedIndex(0);
+        		weaponBox.addActionListener(this);
+        		
+        		roomBox = new JComboBox((ComboBoxModel) room);
+        		roomBox.setSelectedIndex(0);
+        		roomBox.addActionListener(this);
+        		
+        		
+        	}
         		
         	//}
         	
         }
+	}
+	
+	private class ComboBox implements ActionListener {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+	    	if(e.getSource() == peopleBox) {
+	    		Object pc = peopleBox.getSelectedItem(); 
+	    		for(Card c : board.getCards()) { 
+	    			if(c.getCardName().equals(pc)) {
+	    				System.out.println("Get Person Card");
+	    			}
+	    		}
+	    		
+	    	}
+	    	
+	    	else if(e.getSource() == weaponBox) {
+	    		Object wc = weaponBox.getSelectedItem(); 
+	    		for(Card c : board.getCards()) { 
+	    			if(c.getCardName().equals(wc)) {
+	    				System.out.println("Get Weapon Card");
+	    			}
+	    		}
+	    		
+	    	}
+	    	
+	    	else if(e.getSource() == roomBox) {
+	    		Object rc = roomBox.getSelectedItem(); 
+	    		for(Card c : board.getCards()) { 
+	    			if(c.getCardName().equals(rc)) {
+	    				System.out.println("Get room Card");
+	    			}
+	    		}
+	    		
+	    	}
+	    }
+
+	}
+	
+	public String getPlayerName() {
+		return playerName;
 	}
 	
 
@@ -153,9 +235,9 @@ public class GameControlPanel extends JPanel {
 	public static void main(String[] args) {
 		
 		GameControlPanel panel = new GameControlPanel();  // create the panel
-		PlayersPanel players = new PlayersPanel();
+	//	players = new PlayersPanel(panel.getPlayerName());
 		JFrame frame = new JFrame("Clue Controls"); 
-		frame.add(players, BorderLayout.EAST);// create the frame 
+		frame.add(players, BorderLayout.WEST);// create the frame 
 		frame.add(panel, BorderLayout.CENTER); // put the panel in the frame
 		//dont set content pane
 		frame.setSize(950, 180);  // size the frame
