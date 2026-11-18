@@ -1,7 +1,5 @@
 package clueGame;
 
-import java.awt.Color;
-
 public class HumanPlayer extends Player {
     private KnownCardsPanel knownCardsPanel;
 
