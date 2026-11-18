@@ -150,11 +150,13 @@ public class GameControlPanel extends JPanel {
         		rollTF.setText(String.valueOf(roll));
         		players.removeAll();
         		players = new PlayersPanel(playerName);
-        		add(players, BorderLayout.WEST); //erm 
+        		repaint();
+        		add(players, BorderLayout.WEST);
+        		//erm 
         	}
         	
         	if(e.getSource() == makeAccusation) {
-        		ArrayList<String> people = new ArrayList<String>(); 
+        	/*	ArrayList<String> people = new ArrayList<String>(); 
         		ArrayList<String> weapons = new ArrayList<String>(); 
         		ArrayList<String> room = new ArrayList<String>(); 
         		for(Card c : board.getCards()) {
@@ -194,11 +196,9 @@ public class GameControlPanel extends JPanel {
         		accusation.add(peopleBox);
         		accusation.add(weaponBox);
         		accusation.add(roomBox);
-        		add(accusation);
+        		add(accusation); */
         	}
-        		//TODO:
-        	// find a way to update the sprite panel 
-        	//Get the results of accusation from drop down menu
+
         	
         }
 	}

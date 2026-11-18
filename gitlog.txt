@@ -1,0 +1,769 @@
+commit dd308d4fe37751e9c6c49ffe351436cc4657e732
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 16 12:48:16 2026 -0700
+
+    push
+
+commit 3c5f960fd896e777ff9fc7c4e145e94581ea386b
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 15 21:01:57 2026 -0700
+
+    Worked on accusation functionality
+
+commit 3d32fc06d82786c8c8b570851e3220abb8003275
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 15 19:44:31 2026 -0700
+
+    Tried working more on sprites and accusation methods
+
+commit fd667ccfa513f0ae7f09249072ea7e40fedba541
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Nov 13 13:38:13 2026 -0700
+
+    updateSeen() correctly fills in new cards with respective player who holds that card
+
+commit eaed135a096f62ab1b2d0db715b7c3e31dbb7643
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 13 12:50:49 2026 -0700
+
+    Sprites sort of working
+
+commit 5c514eea1c2132c168164fb5e168e86eb4fa9c2b
+Merge: 648c031 480beec
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 13 12:02:45 2026 -0700
+
+    Worked on sprite display functionality
+
+commit 648c0313e1d999cc71a020fc15a54b469b907d18
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 13 12:01:47 2026 -0700
+
+    Worked on sprite display functionality
+
+commit 480beecd4867b398556e5039a8f9b5cf2be90e78
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Nov 13 12:01:47 2026 -0700
+
+    PlayersPanel
+
+commit 83894f20eae877a7ff0e9a9974238043401f0962
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 12 17:07:58 2026 -0700
+
+    Human player cards are now color coded
+
+commit b9465d360db2106b2355220d1bb1fc164e9a7394
+Merge: 9d13a7c e238884
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 12 16:35:31 2026 -0700
+
+    Merge remote changes
+
+commit 9d13a7c3a8d03c7e3e533bd1528c911b3ffa2120
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 12 16:27:44 2026 -0700
+
+    GUI works, still need to implement seeing cards
+
+commit e2388841e872399a76ae2f458c6fe723191a52c3
+Merge: a57d2b7 b529020
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Nov 12 15:49:56 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    erm
+
+commit a57d2b7a18a35c76bf35e0521897d6d1fdfa424f
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Nov 12 15:49:44 2026 -0700
+
+    Implemented functionality for name appearances and rolls
+
+commit b5290203d9015bebac262a1204e2dc1a604e982b
+Merge: 84e340f ba86f68
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 12 13:24:22 2026 -0700
+
+    Merge origin/main
+
+commit 84e340f75bf2d441dafa69d820164ec835a6020f
+Merge: 65a8872 0833a10
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 12 13:21:01 2026 -0700
+
+    KnownCardsGUI loads cards, no color functionality yet
+
+commit ba86f68872ce61e7d3cdc38ad3e8a21766e67fc0
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Nov 12 12:11:32 2026 -0700
+
+    Started working on functionality to show player names/color box, but its getting weird
+
+commit 152f265b4af3cd70beb97113d641ca94f2926035
+Merge: 65a8872 0833a10
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 11 21:42:35 2026 -0700
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 65a8872feb6848865d501421c47a10a8ba4d6c60
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 11 21:38:41 2026 -0700
+
+    Basic cards gui layout created
+
+commit 0833a10cb60c1139ce58ccebe1e03a6e85a6f9f5
+Merge: 18186bc 232c6f9
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 11 20:52:24 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    what hellish branch is merching
+
+commit 18186bc38670311bd095efb3c132e1ffafa18713
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 11 20:52:11 2026 -0700
+
+    Finished sprites
+
+commit 232c6f965bb935c325aebc531100daa562e3a99a
+Merge: f615f60 38bef49
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 11 13:07:01 2026 -0700
+
+    Merge origin/main and preserve control panel source changes
+
+commit f615f60f4e8619b28847af1da4000f8b0b16e13b
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 11 13:04:11 2026 -0700
+
+    Added bottom half
+
+commit 38bef494c19a9690e6529b335aefae5391af8692
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 11 12:45:38 2026 -0700
+
+    Formatting works
+
+commit 7fcd2f877c454657f6610ec6452aec6f7d71a7b0
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 11 12:35:37 2026 -0700
+
+    GUI work
+
+commit eed8b684c18e3e3315f6707178e0ec093d6c83a4
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 11 12:01:37 2026 -0700
+
+    Accidentally deleted the sprites and had to readd because the Sprites folder is cursed somehow
+
+commit 9e331c43fb22a9981172d9f24bb8bb195623f50e
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 10 22:30:16 2026 -0700
+
+    Added 3/6 sprites
+
+commit 8317019581f85bc42a5e76bbe5e1d69e5a9029b0
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 10 15:31:03 2026 -0700
+
+    Added the button listener code, not sure how to update it for our buttons yet
+
+commit c8563c3bd7c5fdc8b954193ed8f58f3d0f2f5cf4
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 10 15:03:46 2026 -0700
+
+    Outlined first half of control gui
+
+commit 36ca8db7d968a3ffba550f007e08a3141fdee700
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 10 12:30:51 2026 -0700
+
+    Began work on came control constructor
+
+commit c0520bf0cb7f8a60c2951b103c172fc6a29edda0
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 9 23:23:31 2026 -0700
+
+    ComputerAITest all pass
+
+commit 9bf70e0a965ffd7152cca06e0faef9a3fa54ebcf
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 9 16:14:54 2026 -0700
+
+    Computer player implementation added
+
+commit 625ae71f90cb33ec95f2520a3751ac6e0e1d5637
+Merge: fbf9258 8edbc5e
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 9 13:17:47 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    I really dont know what is up with this mystical swap file
+    .
+
+commit fbf9258705c89b35a11e1c478d0afaa60ad6f2c2
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 9 13:17:38 2026 -0700
+
+    Finished tests for gamesolutions, all pass
+
+commit 8edbc5e260811e8db591477ab9847d92448e4ea7
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 9 13:15:22 2026 -0700
+
+    Fixed initialization so that cards are dealt when initialize() is called
+
+commit 26a2010cf55fe3448b9702571d4f52d8f78d1bfe
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 9 12:49:23 2026 -0700
+
+    Computer tests skeleton
+
+commit a0c351275129a964384634dee810feb777bfb0ba
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 9 12:33:03 2026 -0700
+
+    GUI
+
+commit 6365c0fc858a28a22c8148d1b4d5c514bb01bc5a
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 8 15:03:03 2026 -0700
+
+    Began writing tests for handling suggestions
+
+commit 2723797c79ffb38bd75e30e0232c76bf5e95c1ca
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 8 14:28:38 2026 -0700
+
+    Disprove suggestion tests not passing
+
+commit 5ade3853350b3851b3f02cf3bd6fe71286f341d3
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 8 13:58:03 2026 -0700
+
+    Wrote test for disproving suggestion
+
+commit 38d2afe7a424e66e4ba891543316018c49d49179
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Nov 8 13:00:14 2026 -0700
+
+    Wrote test for checking accusations
+
+commit c535fda9da1e148d0885056680f83d4cad238605
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Nov 6 13:47:19 2026 -0700
+
+    Fixed problem with counting solution size
+
+commit 0973b21ce7c2e4fd7f156c14158e8a60803ee626
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Nov 6 13:33:34 2026 -0700
+
+    All GameSetupTests passing
+
+commit 8c39dfbcbf3e991ecbc634b51e3c599f97231abf
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 6 12:00:47 2026 -0700
+
+    Almost finished with tests
+
+commit 71c4a6cc7ec00f840490884c4aeb89798ccd3b45
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 6 10:43:14 2026 -0700
+
+    Made a test for checking each card was dealt once
+
+commit ac84c01ac9992cf9d0b9205fb512bb94f209744c
+Merge: e1b2ef7 c85e4fb
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 6 10:14:07 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    babygirl i MUST do something about this
+
+commit e1b2ef77f1f60201d9b147d314441b8afb10e101
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Nov 6 10:14:03 2026 -0700
+
+    Idk what i changed but its not letting me pull
+
+commit c85e4fb9a35273341cd7363c4ff02d7592c6c20e
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Thu Nov 5 13:45:01 2026 -0700
+
+    Added test to ensure cards are loaded in properly
+
+commit c60bda7ed031c94a755eb1490b77dcfa8210831f
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Nov 5 11:45:38 2026 -0700
+
+    Worked more on card dealing tests
+
+commit de2d12c5d1228885f621f3ef9adfccc9146ffde7
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 4 13:52:34 2026 -0700
+
+    Added GUI example from class to get a look at it
+
+commit 0eb643e3aebee8509741778b29dbeb6f5b4fe632
+Merge: 18470ce 23e0461
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 4 13:31:37 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    HELP
+
+commit 18470ce81bcae0aded62d3391883ecf08bdc97a6
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 4 13:31:23 2026 -0700
+
+    answer
+
+commit 23e04616325f5074efff596430e8151d0f5efe96
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Nov 4 12:49:12 2026 -0700
+
+    Implemented checkAccusation()
+
+commit 780054a1e380cd0ee75c2251f0b3970a812d97f1
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 4 12:16:17 2026 -0700
+
+    Working on card dealing tests
+
+commit 0abffe49ca8c36604af12c7915c9551023b68686
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Nov 4 12:02:19 2026 -0700
+
+    Began work on dealing cards functionality
+
+commit 87ed3becf686d7a2176bab3694649d76994ceb01
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 20:03:45 2026 -0700
+
+    Completed test for random human player assignment
+
+commit c219d1961bb3f3e8adae86084e6db184dd93181a
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 18:10:18 2026 -0700
+
+    Began test for testing randomness of player assignment
+
+commit 3d2e738877d95216c6ac69bf147214bce5b1c226
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 17:47:46 2026 -0700
+
+    First test now passes
+
+commit e78f98bc3a59bfc0a76d2de4f24e11b843cdd694
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 11:51:02 2026 -0700
+
+    Wrote card constructors, began working on them in the setup config, and added players to ClueSetup (Still need 4 weapons which I will do tonight)
+
+commit f3baee95f3ab7f3ff1013f34622dff0bbe999c13
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 10:44:06 2026 -0700
+
+    Wrote the first test aand made it fail
+
+commit 17dfc08ae0b4195c7d50af6eb2a268d1e80c68f0
+Merge: 8761100 3fa8416
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 10:31:11 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    Merge evil message
+
+commit 8761100856c73e5389c37c3c1f23cb026a6cfeb8
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Nov 3 10:30:54 2026 -0700
+
+    Began writing tests for CluePlayers1:
+
+commit 3fa841629003db85fe229afdedb5aaff452de1ff
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Tue Nov 3 09:41:44 2026 -0700
+
+    Class skeletons added for LO16A
+
+commit da880a825e0cfc26c228e5cffe0f1ea272d85acd
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 13:16:49 2026 -0700
+
+    Reduced the total number of break and continue statements in findAllTargets()
+
+commit ebacf78222f9231da03d528dc6231864f5143080
+Merge: 777c449 f5d2134
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 2 12:50:18 2026 -0700
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+    IDK
+
+commit f5d213484730a717784b3f7ea66dd0bc9cfd7e1e
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 12:49:53 2026 -0700
+
+    Added code block before refactor
+
+commit 777c4498e11cc71b7d779535138ea798f9ff98c9
+Merge: d3098fb 6e728d2
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 2 12:49:52 2026 -0700
+
+    Pulling changes
+
+commit d3098fbb961cbf5134f1eb6f214773e41730ff75
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 2 12:48:00 2026 -0700
+
+    Refactored our file handling to a switch case to allow for easier readability and scalability
+
+commit 6e728d2b437fb0c3f0f8e0702afdc687bc67971e
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 12:47:54 2026 -0700
+
+    Removed distracting commented out line of code
+
+commit 64c2485230817e2dd42dff036aba43f51df598bc
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 12:45:05 2026 -0700
+
+    Removed print statement in test
+
+commit b121e75d5b58d1123307ba4660557fd4b0956d09
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 12:43:22 2026 -0700
+
+    Refactoring changes .txt
+
+commit 9ae995640671be0679c647147182209e2b69756d
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Nov 2 12:42:40 2026 -0700
+
+    @Override added for toString()
+
+commit 2847aa2b571a15d1f67ac8c77830c5673228be18
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Mon Nov 2 12:36:22 2026 -0700
+
+    Refactoring update: Made a variable for tracking the last character in our input reading string
+
+commit 913376cd4f6fbe38a699b1a7b666e92aac301fae
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 30 19:30:14 2026 -0600
+
+    All tests pass
+
+commit 9b153f24a4b52bc5006cce41a34381bfbc5e76f1
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 30 15:42:28 2026 -0600
+
+    Worked on tests and and switched numbers o make tests pass
+
+commit 5d304cca21072af366f8af1dacc5be18380c34a4
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Oct 29 20:09:34 2026 -0600
+
+    Updated CSV file to allow for calcAdj to properly read it
+
+commit 217a1ee71cf1f0f3105562cce3845b6182ebe62d
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Thu Oct 29 14:22:00 2026 -0600
+
+    Added out clue layouts
+
+commit 738cc1c3baac637f80e9983e2de0015e4fec9751
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 28 14:01:58 2026 -0600
+
+    Wrote outlines for target testing
+
+commit 5c48fddf7ab55590786a83f608ab877267e27ec0
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 28 13:44:25 2026 -0600
+
+    Wrote failing tests for testing secret passage adjacencies
+
+commit 6e1ebfdfa4ebeae14039b7ff32104accf51a0f69
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Oct 27 16:57:49 2026 -0600
+
+    Worked on more failing adjacency tests
+
+commit fb5b197124832f1345106878a8a9024cd0563c53
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Oct 27 16:22:36 2026 -0600
+
+    Committing so git likes me
+
+commit 79c0c61f36c4754949987a368ef03365f85e016f
+Merge: e797e67 1520fe3
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Oct 27 15:58:14 2026 -0600
+
+    merge cleanup in board.java
+
+commit e797e678a31dae0d43d4ead67d3f6fa2c910cb40
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Tue Oct 27 15:53:49 2026 -0600
+
+    Worked on failing adjacency tests
+
+commit 1520fe363f872a7daf2aca4b642e1ea8460161a7
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Tue Oct 27 00:54:38 2026 -0600
+
+    BoardAdjTargetTest skeleton
+
+commit 4427eb04c17db4d664b075899824b7a986c2457b
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Oct 26 21:10:39 2026 -0600
+
+    findAllTargets() logic modified, all tests pass
+
+commit b03b42be00ed7d0c169a7421914c5acf0584ddc0
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Oct 26 19:17:37 2026 -0600
+
+    Some tests passings
+
+commit 1f7c9fcdd8cef61da7741386a4eb13eb15fdecce
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 17:53:38 2026 -0600
+
+    Fixed error in clueLayout.csv
+
+commit 98eb22f079cbd71664db639e98c60348a10edc17
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 17:50:27 2026 -0600
+
+    Add custom board configuration and updated debugging notes
+
+commit d49579cfe62d08da949eedbd5c0d879b5c196588
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 17:48:58 2026 -0600
+
+    FileInitTests all pass.
+
+commit 489ce1bbedd601dc3a02e0c4a9b194c8b924e4b4
+Merge: c9ff490 b09586b
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 13:36:56 2026 -0600
+
+    Merge cleaning
+
+commit c9ff49095e2bb35ffcd543a945b6484d380f9a04
+Merge: 777e83c 26670d6
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 13:28:40 2026 -0600
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+
+commit b09586bbb9e19e38ffc4d0ebc47d96b4a151fe94
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 13:27:14 2026 -0600
+
+    All FileInitTests306 pass
+
+commit 777e83cc28a6ebb4bb7a609c6a24795547dbc63f
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 13:26:56 2026 -0600
+
+    working tests for FileInit Tests
+
+commit 26670d65a8544bac8b641fd30d6f3d92adddcfa9
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 13:17:51 2026 -0600
+
+    Label and Room center cell tests pass
+
+commit e769d98ef5ea36b5aff94df44ec4ba89654be1a8
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 23 12:41:32 2026 -0600
+
+    Walkway debug
+
+commit 7a9c2513b089f920cfa1fd2726aae1dc22e8609e
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 12:23:40 2026 -0600
+
+    Got door tests working
+
+commit 38f99e8bb9cac0cbb69add2fe26ab62ae822dc0d
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 12:13:14 2026 -0600
+
+    Minor changes but pushing jsut in case
+
+commit b72f7f310f9bbbb1fedee3470dc1e5a8da0936e4
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 11:47:17 2026 -0600
+
+    Continued working on FileInit testing- Exception Tests all pass
+
+commit 1a06efc58c57d8c6e0d7a7ea81f4a50196b2bf2d
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Fri Oct 23 10:16:45 2026 -0600
+
+    FileInitTests306 Now Passing
+
+commit 5ee4595641f5d486f8e1a5f58c1cdfd3a63faa5d
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 21 23:35:50 2026 -0600
+
+    testBoardDimensions() pass
+
+commit a72463d07868a88c73dacebf2e32be196781a0b0
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 21 21:40:17 2026 -0600
+
+    loadSetupConfig() fixed
+
+commit c2e672268cdb2fec5d81c2fd154bc7294e098076
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 20:31:37 2026 -0600
+
+    Added more code outlines for BoardAdjTargets tests
+
+commit 2498b1701ce8d62810e59a31e1f221b637902395
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 20:21:00 2026 -0600
+
+    Added more skeleton code for ezception handling
+
+commit c71c1501bba9745fb0993adea38e64f967c6f0c2
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 19:19:07 2026 -0600
+
+    Added enough skeleton code to allow FileInitTests to (almost) compile
+
+commit 2a28f7e466d512c4ad6bed584b63e856ba9b7c57
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 19:01:03 2026 -0600
+
+    Added more skeleton code so tests will fail
+
+commit 30dc6056d0bd85c7378a3dde85adaa51af0dba72
+Merge: 3184332 da932ab
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 15:03:30 2026 -0600
+
+    Merge branch 'main' of https://github.com/sigmaDistracTed/ClueGame-FZ
+
+commit 3184332aa47a973832f417e8f351f2f5305fd415
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 15:01:34 2026 -0600
+
+    Worked on file processing functionality
+
+commit da932ab458d77079bae5648e693a3602d5d18267
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 21 13:29:06 2026 -0600
+
+    Variables
+
+commit 1a5b13f99c6cf7df74bcc434a0407dc5cad66b43
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 21 13:01:27 2026 -0600
+
+    Enum DoorDirection
+
+commit dc297f4dd0f560337ae108f9ab028a75278467fe
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 12:50:17 2026 -0600
+
+    Began work on file processing in Board.java
+
+commit 51ffdd25fca243f9e185eeaa5b3c1c39dbb8a50e
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 21 12:43:04 2026 -0600
+
+    Initial commit
+
+commit 0792d0096293a576b9cce69ac2ada204d0a8bcca
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 21 12:29:14 2026 -0600
+
+    Added file from lecture
+
+commit 7309e9698ed8a60f627d1d0493f45f9fef91a279
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Mon Oct 19 13:33:35 2026 -0600
+
+    All tests pass
+
+commit cab88cad0d8168b92ccf5a41c6a60262e51931c0
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Oct 18 13:54:38 2026 -0600
+
+    Updated target testing for occupied rooms, now passing 8/10
+
+commit 3d76b3edbbe97d0596d33d1d3b4ad081eda0d77b
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Oct 18 13:49:53 2026 -0600
+
+    Updated target testing functionality, now passing 7/10
+
+commit ddb2965a6ed5efb16bad6e0778653df8aa3600e5
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Sun Oct 18 13:32:28 2026 -0600
+
+    Added functionality for adjacency tests, now passing 5/10
+
+commit cb3c1c4c25e2c736c90e30f9dac968125cf20963
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Fri Oct 16 13:16:34 2026 -0600
+
+    calcTargets() and findAllTargets() functionality
+
+commit 82ffbc3c9e6d137d7012bc47622c17c894203d23
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 14 16:51:32 2026 -0600
+
+    Complete failing tests
+
+commit b5bbf704a552c30643c133fbfa01b12aec8bf2d0
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 14 16:01:29 2026 -0600
+
+    Added adjacency tests
+
+commit c439efee8afae09e34d6fca6057d67465c814d18
+Author: Aiden Zeigler <118232891+iamziden@users.noreply.github.com>
+Date:   Wed Oct 14 15:23:51 2026 -0600
+
+    Added basic implementation of TestBoard, TestBoardExp
+
+commit d7c2b713a03a3333d8a58180903bc03ea949beac
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 14 14:44:43 2026 -0600
+
+    Filled out skeleton for TestBoardCell
+
+commit 8f5f65125a0db756f87db3014223891e3494bb59
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 14 14:34:13 2026 -0600
+
+    Added classes to use in tests
+
+commit 06aa47679bb1454f800420e308f08cdf1d80bc27
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 14 14:20:39 2026 -0600
+
+    Commit testing
+
+commit 4571833f52dad5c1b94fcb91fb734c9d0e671f69
+Author: Alexandra <alexandrafield@mines.edu>
+Date:   Wed Oct 14 14:10:47 2026 -0600
+
+    initial commit
+
+commit 3a16e2af36cfccaccb88b1c6ff3d6e2fdb7b8925
+Author: ajf-79 <alexandrafield@mines.edu>
+Date:   Wed Oct 14 14:07:51 2026 -0600
+
+    Initial commit
