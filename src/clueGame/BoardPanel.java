@@ -20,9 +20,9 @@ import javax.swing.border.TitledBorder;
 
 public class BoardPanel extends JPanel {
     private static Board board;
-    public BoardPanel(Board board) {
-    	this.board = board.getInstance();
-        board.initialize();
+
+    public BoardPanel() {
+		board = Board.getInstance();
         
         for(int r = 0; r < board.getGrid().length; r++) {
         	for(int c = 0; c < board.getGrid().length; c++) {
@@ -62,7 +62,7 @@ public class BoardPanel extends JPanel {
     
     public static void main(String args[]) {
     	JFrame frame = new JFrame(); 
-    	BoardPanel bp = new BoardPanel(board);
+    	BoardPanel bp = new BoardPanel();
     	frame.add(bp);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); 

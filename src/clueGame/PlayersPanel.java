@@ -18,8 +18,8 @@ public class PlayersPanel extends JPanel {
 	
 	public PlayersPanel(String playerName) {
 		board = Board.getInstance(); 
-		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		board.initialize(); //so we have the players
+		//board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+		//board.initialize(); //so we have the players
 		
 		
 		nameTF.setText(playerName);

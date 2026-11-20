@@ -38,8 +38,8 @@ public class GameControlPanel extends JPanel {
 		setLayout(new GridLayout(2, 0));
 		
 		board = Board.getInstance(); 
-		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		board.initialize(); //so we have the players
+		//board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+		//board.initialize(); //so we have the players
 		
 		for (Player p : board.getPlayers()) {
 			playerList.add(p);
@@ -61,9 +61,10 @@ public class GameControlPanel extends JPanel {
 		//putting in human player to start
 		Player p = playerList.get(idx);
 		playerName = p.getName();
-		players = new PlayersPanel(playerName);
+		//players = new PlayersPanel(playerName);
 		nameTF.setText(playerName); 
 		nameTF.setBackground(p.getColor());
+		nameTF.setEditable(false);
 		if(p.getColor().equals(Color.decode("#000000"))) { 
 			nameTF.setForeground(Color.WHITE); 
 		}
@@ -82,6 +83,7 @@ public class GameControlPanel extends JPanel {
 		rollTF = new JTextField(10);
 		roll = (int)((Math.random() * 6)+1); 
 		rollTF.setText(String.valueOf(roll));
+		rollTF.setEditable(false);
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
 		
@@ -116,7 +118,7 @@ public class GameControlPanel extends JPanel {
 		bottomHalf.add(guessPanel);
 		bottomHalf.add(guessResultPanel);
 		add(bottomHalf);
-		add(players);
+		//add(players);
 		
 		
 	}
@@ -136,12 +138,14 @@ public class GameControlPanel extends JPanel {
         			nameTF.setForeground(Color.BLACK);
         		}
         		nameTF.setText(playerName); 
+				nameTF.setEditable(false);
         		roll = (int)((Math.random() * 6)+1);
         		rollTF.setText(String.valueOf(roll));
-        		players.removeAll();
-        		players = new PlayersPanel(playerName);
+				rollTF.setEditable(false);
+        		//players.removeAll();
+        		//players = new PlayersPanel(playerName);
         		repaint();
-        		add(players, BorderLayout.WEST);
+        		//add(players, BorderLayout.WEST);
         		//erm 
         	}
         	

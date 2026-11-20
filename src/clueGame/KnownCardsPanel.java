@@ -226,8 +226,8 @@ public class KnownCardsPanel extends JPanel {
 
 	private static void showPreview() {
 		Board board = Board.getInstance();
-		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		board.initialize();
+		//board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+		//board.initialize();
 
 		KnownCardsPanel panel = new KnownCardsPanel();  // create the panel
 		JFrame frame = new JFrame("Clue Controls");  // create the frame 

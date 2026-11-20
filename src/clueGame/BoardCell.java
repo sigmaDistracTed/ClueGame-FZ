@@ -47,6 +47,10 @@ public class BoardCell {
 		return col;
 	}
 
+	public void draw(int width, int height, int cellSize, int offset) {
+
+	}
+
 	// Get cell inital
 	public char getInitial() {
 		return initial;

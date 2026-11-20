@@ -3,6 +3,7 @@ package clueGame;
 import javax.swing.JFrame;
 import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.TreeUI;
 
 public class ClueGame extends JFrame {
     private Board board;
@@ -12,6 +13,7 @@ public class ClueGame extends JFrame {
     private BoardPanel boardPanel;
     private GameControlPanel gameControlPanel;
     private KnownCardsPanel knownCardsPanel;
+    private KnownCardsPanel knownCardsPanel2;
 
     public ClueGame() {
         initializeGame();
@@ -33,21 +35,27 @@ public class ClueGame extends JFrame {
             board.initialize();
         } catch (Exception e) {
             System.out.println("Could not load ClueGame");
+            System.out.println(e.getMessage());
         }
 
         gameControlPanel = new GameControlPanel();
         knownCardsPanel = new KnownCardsPanel();
+        knownCardsPanel2 = new KnownCardsPanel();
         boardPanel = new BoardPanel();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
         add(boardPanel, "Center");
         add(gameControlPanel, "South");
         add(knownCardsPanel, "East");
+        add(knownCardsPanel2, "West");
+
+        setSize(1000,1000);
     }
 
     public static final void main(String args[]) {
-        new ClueGame();
+        new ClueGame("ClueLayout.csv", "ClueSetup.txt");
     }
 
 }
