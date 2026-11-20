@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.awt.Graphics;
 
 public abstract class Player {
     private String name;
@@ -46,6 +47,17 @@ public abstract class Player {
     	return null;
     }
     
+    // Draw player on board
+    public void draw(Graphics g, int cellSize, int offsetX, int offsetY) {
+        int x = offsetX + getCol() * cellSize;
+        int y = offsetY + getRow() * cellSize;
+
+        g.setColor(getColor());
+        g.fillOval(x, y, cellSize, cellSize);
+
+        g.setColor(Color.BLACK);
+        g.drawOval(x, y, cellSize - 1, cellSize - 1);
+    }
 
     // Get player name
     public String getName() {

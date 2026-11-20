@@ -2,9 +2,11 @@ package clueGame;
 
 import java.util.Set;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.util.HashSet;
+import java.awt.FontMetrics;
 
 /**
 * BoardCell Class
@@ -71,8 +73,23 @@ public class BoardCell {
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 
-		g.setColor(Color.BLACK);
-		g.drawRect(x, y, cellSize - 1, cellSize - 1);
+		if (!isRoom) {
+			g.setColor(Color.BLACK);
+			g.drawRect(x, y, cellSize - 1, cellSize - 1);
+		}
+	}
+
+	// Write the room label
+	public void drawLabel(Graphics g, String name, int cellSize, int offsetX, int offsetY) {
+		int x = offsetX + col * cellSize;
+		int y = offsetY + row * cellSize;
+
+		g.setFont(new Font("Calibri", Font.BOLD, 14));
+		FontMetrics metrics = g.getFontMetrics();
+		int baseline = y + (cellSize - metrics.getHeight()) / 2 + metrics.getAscent();
+
+		g.setColor(Color.BLUE);
+		g.drawString(name, x + 2, baseline);
 	}
 
 	// Get cell inital

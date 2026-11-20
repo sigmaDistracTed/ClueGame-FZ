@@ -61,7 +61,6 @@ public class Board {
 			calcAdj();
 			if (!players.isEmpty()) {
 				dealCards(cards);
-				System.out.println("here");
 			}
 		} catch (BadConfigFormatException e) {
 			throw new IllegalStateException("Could not initialize board.", e);
