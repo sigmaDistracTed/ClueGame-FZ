@@ -154,7 +154,7 @@ public class Board {
 
 		numRows = rows.size();
 		numCols = rows.get(0).length;
-		grid = new BoardCell[numRows][numCols];
+		setGrid(new BoardCell[numRows][numCols]);
 
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
@@ -163,7 +163,7 @@ public class Board {
 
 				BoardCell cell = new BoardCell(row, col);
 				cell.setInital(info.charAt(0));
-				grid[row][col] = cell;
+				getGrid()[row][col] = cell;
 
 				// doorway checking
 				switch (lastChar) {
@@ -217,7 +217,7 @@ public class Board {
 	public void calcAdj() {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
-				BoardCell cell = grid[row][col];
+				BoardCell cell = getGrid()[row][col];
 		
 
 				// Add adjacencies for secret passage
@@ -423,7 +423,7 @@ public class Board {
 
 	// Return a cell
 	public BoardCell getCell(int row, int col) {
-		return grid[row][col];
+		return getGrid()[row][col];
 	}
 
 	// Get cell targets
@@ -456,6 +456,14 @@ public class Board {
 
 	private void setHumanPlayerIndex(int index) {
 		humanPlayerIndex = index;
+	}
+
+	public BoardCell[][] getGrid() {
+		return grid;
+	}
+
+	public void setGrid(BoardCell[][] grid) {
+		this.grid = grid;
 	}
 	
 	
