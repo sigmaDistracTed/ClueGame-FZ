@@ -164,6 +164,8 @@ public class Board {
 
 				BoardCell cell = new BoardCell(row, col);
 				cell.setInital(info.charAt(0));
+				cell.setIsRoom(cell.getInitial() != 'W' && cell.getInitial() != 'X');
+				cell.setIsUnused(cell.getInitial() == 'X');
 				getGrid()[row][col] = cell;
 
 				// doorway checking
@@ -190,7 +192,7 @@ public class Board {
 						break;
 				}
 
-				// If the cell isn't a room label, center, or passage
+				// If the cell isn't a room label, center, passage, or unused
 				if (info.length() == 1) {
 					cell.setIsRoomLabel(false);
 					cell.setIsRoomCenter(false);  

@@ -1,7 +1,9 @@
 package clueGame;
 
-
 import java.util.Set;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
 import java.util.HashSet;
 
 /**
@@ -24,6 +26,7 @@ public class BoardCell {
 	private boolean isRoomCenter;
 	private boolean isDoorway;
 	private boolean isSecretPassage;
+	private boolean isUnused;
 	private char secretPassage;
 
 	boolean isRoom; 
@@ -47,8 +50,29 @@ public class BoardCell {
 		return col;
 	}
 
-	public void draw(int width, int height, int cellSize, int offset) {
+	public void draw(Graphics g, int cellSize, int offsetX, int offsetY) {
+		int x = offsetX + col * cellSize;
+		int y = offsetY + row * cellSize;
 
+		if (getIsRoom()) {
+			g.setColor(Color.GRAY);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+		else if (isUnused()) {
+			g.setColor(Color.BLACK);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+		else if (isDoorway()) {
+			g.setColor(Color.BLUE);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+		else {
+			g.setColor(Color.YELLOW);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+
+		g.setColor(Color.BLACK);
+		g.drawRect(x, y, cellSize - 1, cellSize - 1);
 	}
 
 	// Get cell inital
@@ -109,6 +133,16 @@ public class BoardCell {
 	// Set cell isSecretPassage
 	public void setIsSecretPassagey(boolean isSecretPassage) {
 		this.isSecretPassage = isSecretPassage;
+	}
+
+	// Get cell isUnused
+	public boolean isUnused() {
+		return isUnused;
+	}
+
+	// Set cell isUnused
+	public void setIsUnused(boolean isUnused) {
+		this.isUnused = isUnused;
 	}
 
 	// Get cell secretPassage

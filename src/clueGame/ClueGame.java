@@ -13,7 +13,7 @@ public class ClueGame extends JFrame {
     private BoardPanel boardPanel;
     private GameControlPanel gameControlPanel;
     private KnownCardsPanel knownCardsPanel;
-    private KnownCardsPanel knownCardsPanel2;
+    private KnownCardsPanel playersPanel;
 
     public ClueGame() {
         initializeGame();
@@ -40,7 +40,7 @@ public class ClueGame extends JFrame {
 
         gameControlPanel = new GameControlPanel();
         knownCardsPanel = new KnownCardsPanel();
-        knownCardsPanel2 = new KnownCardsPanel();
+        playersPanel = new KnownCardsPanel();
         boardPanel = new BoardPanel();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +49,7 @@ public class ClueGame extends JFrame {
         add(boardPanel, "Center");
         add(gameControlPanel, "South");
         add(knownCardsPanel, "East");
-        add(knownCardsPanel2, "West");
+        add(playersPanel, "West");
 
         setSize(1000,1000);
     }
