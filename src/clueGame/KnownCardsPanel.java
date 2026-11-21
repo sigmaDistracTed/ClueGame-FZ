@@ -79,8 +79,14 @@ public class KnownCardsPanel extends JPanel {
 				case ROOM: roomsHandPanel.add(field); break;
 				case WEAPON: weaponsHandPanel.add(field); break;
 			}
-
-			field.setBackground(huP.getColor());
+			Color hupC = huP.getColor();
+			if(hupC.equals(Color.decode("#000000"))) {
+				field.setForeground(Color.white);
+			}
+			else { 
+				field.setForeground(Color.BLACK);
+			}
+			field.setBackground(hupC);
 		}
 
 		if (peopleHandPanel.getComponentCount() == 0) {
@@ -179,6 +185,9 @@ public class KnownCardsPanel extends JPanel {
 					if (heldCard.getCardType() == card.getCardType() && heldCard.getCardName().equals(card.getCardName())) {
 						Color color = player.getColor();
 						field.setBackground(color);
+						if(color.equals(Color.decode("#000000"))) { 
+							field.setForeground(Color.WHITE);
+						}
 						break;
 					}
 				}

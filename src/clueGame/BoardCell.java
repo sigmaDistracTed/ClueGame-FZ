@@ -101,6 +101,7 @@ public class BoardCell {
 		//	g.drawString(doorDirection.toString(), x, y); maybe? if i can make it work
 			g.fillRect(x, y, cellSize, cellSize);
 		}
+		
 		else {
 			g.setColor(Color.decode("#423a32"));
 			g.fillRect(x, y, cellSize, cellSize);

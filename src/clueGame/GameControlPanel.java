@@ -27,7 +27,7 @@ public class GameControlPanel extends JPanel {
 	private int idx;
 	private int roll;
 	private String playerName;
-	private PlayersPanel players; 
+	private static PlayersPanel players; 
 	private JComboBox peopleBox;
 	private JComboBox weaponBox;
 	private JComboBox roomBox;
@@ -240,7 +240,7 @@ public class GameControlPanel extends JPanel {
 	
 	public static void main(String[] args) {
 		
-		GameControlPanel panel = new GameControlPanel();  // create the panel
+		GameControlPanel panel = new GameControlPanel(players);  // create the panel
 	//	players = new PlayersPanel(panel.getPlayerName());
 		JFrame frame = new JFrame("Clue Controls"); 
 		frame.add(players, BorderLayout.WEST);// create the frame 

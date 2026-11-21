@@ -47,6 +47,17 @@ public class BoardPanel extends JPanel {
 				}
 			}
 		}
+		
+		//secret passage
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols; col++) {
+				BoardCell thisCell = board.getCell(row, col);
+				if (thisCell.isSecretPassage()) {
+					char name = thisCell.getSecretPassage();
+					thisCell.drawLabel(g, String.valueOf(name), cellSize, offsetX, offsetY);
+				}
+			}
+		}
 
 		// Draw players
 		for (Player player : board.getPlayers()) {
