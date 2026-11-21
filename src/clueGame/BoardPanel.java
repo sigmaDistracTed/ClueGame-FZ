@@ -1,6 +1,9 @@
 package clueGame;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel {
@@ -34,6 +37,7 @@ public class BoardPanel extends JPanel {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 board.getCell(row, col).draw(g, cellSize, offsetX, offsetY);
+                board.getCell(row, col).addMouseListener(new CellListener());
             }
         }
 
@@ -66,8 +70,31 @@ public class BoardPanel extends JPanel {
 		
 		//paint targets
 		for (BoardCell t : board.getTargets()) {
-	        t.drawTargets(g, cellSize);
+	        t.drawTargets(g, cellSize,  offsetX, offsetY);
 	    }
+    }
+    
+    public class CellListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {}
+
+		@Override
+		public void mouseExited(MouseEvent e) {} 
+    	
     }
 
     public static void main(String[] args) {

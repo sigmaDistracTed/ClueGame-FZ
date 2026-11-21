@@ -1,6 +1,9 @@
 package clueGame;
 
 import java.util.Set;
+
+import clueGame.BoardPanel.CellListener;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
@@ -129,9 +132,9 @@ public class BoardCell {
 		g.drawString(name, x + 2, baseline);
 	}
 	
-	public void drawTargets(Graphics g, int cellSize) { 
-		int x = col * cellSize;
-	    int y = row * cellSize;
+	public void drawTargets(Graphics g, int cellSize, int offsetX, int offsetY) { 
+		int x = offsetX + col * cellSize;
+	    int y = offsetY + row * cellSize;
 		if(getIsRoom()) { 
 			for(BoardCell c : adjList) { 
 				while(c.getIsRoom()) {
@@ -258,5 +261,10 @@ public class BoardCell {
 	@Override
 	public String toString() {
 		return(this.row + "," + this.col);
+	}
+
+	public void addMouseListener(CellListener cellListener) {
+		this.addMouseListener(cellListener);
+		
 	}
 }

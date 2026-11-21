@@ -152,7 +152,6 @@ public class GameControlPanel extends JPanel {
         		while(!humanFinished) { 
         			JOptionPane error = new JOptionPane();
         			error.showMessageDialog(null, "Please finish your turn.");
-        			break;
         		}
         		roll = (int)((Math.random() * 6)+1);
         		
