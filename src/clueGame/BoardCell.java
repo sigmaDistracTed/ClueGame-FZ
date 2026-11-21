@@ -57,24 +57,57 @@ public class BoardCell {
 		int y = offsetY + row * cellSize;
 
 		if (getIsRoom()) {
-			g.setColor(Color.GRAY);
+			switch(getInitial()) { 
+			case 'H': 
+				g.setColor(Color.decode("#4ead51"));
+				break;
+			case 'O': 
+				g.setColor(Color.decode("#8997e0"));
+				break;
+			case 'G':
+				g.setColor(Color.decode("#497539"));
+				break;
+			case 'L':
+				g.setColor(Color.decode("#665b54"));
+				break;
+			case 'M':
+				g.setColor(Color.decode("#a18db0"));
+				break;
+			case 'A':
+				g.setColor(Color.decode("#c5f0e8"));
+				break;
+			case 'F':
+				g.setColor(Color.decode("#e8ce97"));
+				break;
+			case 'R':
+				g.setColor(Color.decode("#b8b9bf"));
+				break;
+			case 'T':
+				g.setColor(Color.decode("#4b4b4d"));
+				break;
+			default: 
+				g.setColor(Color.GRAY);
+				break;
+				
+			}
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 		else if (isUnused()) {
-			g.setColor(Color.BLACK);
+			g.setColor(Color.decode("#17181a")); //contrast w/night
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 		else if (isDoorway()) {
-			g.setColor(Color.BLUE);
+			g.setColor(Color.decode("#756759"));
+		//	g.drawString(doorDirection.toString(), x, y); maybe? if i can make it work
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 		else {
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.decode("#423a32"));
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 
 		if (!isRoom) {
-			g.setColor(Color.BLACK);
+			g.setColor(Color.decode("#17181a")); //more contrast with night
 			g.drawRect(x, y, cellSize - 1, cellSize - 1);
 		}
 	}
@@ -84,11 +117,11 @@ public class BoardCell {
 		int x = offsetX + col * cellSize;
 		int y = offsetY + row * cellSize;
 
-		g.setFont(new Font("Calibri", Font.BOLD, 14));
+		g.setFont(new Font("Goudy Old Style", Font.BOLD, 15));
 		FontMetrics metrics = g.getFontMetrics();
 		int baseline = y + (cellSize - metrics.getHeight()) / 2 + metrics.getAscent();
 
-		g.setColor(Color.BLUE);
+		g.setColor(Color.BLACK);
 		g.drawString(name, x + 2, baseline);
 	}
 

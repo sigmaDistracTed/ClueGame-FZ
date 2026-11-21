@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+//pulled froma  java forum
 public class FontTest extends JPanel {
 	
 	public static void main( String[] args )
