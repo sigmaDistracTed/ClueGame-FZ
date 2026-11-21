@@ -27,14 +27,15 @@ public class GameControlPanel extends JPanel {
 	private int idx;
 	private int roll;
 	private String playerName;
-	private static PlayersPanel players; 
+	private PlayersPanel players; 
 	private JComboBox peopleBox;
 	private JComboBox weaponBox;
 	private JComboBox roomBox;
 	
 	
-	public GameControlPanel() {
+	public GameControlPanel(PlayersPanel players) {
 		gui = this;
+		this.players = players;
 		setLayout(new GridLayout(2, 0));
 		
 		board = Board.getInstance(); 
@@ -127,7 +128,7 @@ public class GameControlPanel extends JPanel {
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
-        		++idx; //gets wonky and misses turns somehow?????
+        		++idx; 
         		Player nextPlayer = playerList.get(idx%playerList.size());
         		playerName = nextPlayer.getName();
         		nameTF.setBackground(nextPlayer.getColor());
@@ -142,11 +143,9 @@ public class GameControlPanel extends JPanel {
         		roll = (int)((Math.random() * 6)+1);
         		rollTF.setText(String.valueOf(roll));
 				rollTF.setEditable(false);
-        		//players.removeAll();
-        		//players = new PlayersPanel(playerName);
-        		repaint();
-        		//add(players, BorderLayout.WEST);
-        		//erm 
+				
+				players.UpdatePanel(playerName);
+
         	}
         	
         	if(e.getSource() == makeAccusation) {

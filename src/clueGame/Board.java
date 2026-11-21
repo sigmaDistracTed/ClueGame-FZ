@@ -468,6 +468,16 @@ public class Board {
 		this.grid = grid;
 	}
 	
+	//use this multiple times, might as well make it its own thing #refactoring #noCodeSmellsHere
+	public Player getHumanPlayer() {
+		for(Player p : players) {
+			if(p instanceof HumanPlayer) { 
+				return p;
+			}
+		} 
+		return null;
+	}
+	
 	
 
 }

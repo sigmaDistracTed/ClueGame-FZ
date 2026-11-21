@@ -117,7 +117,10 @@ public class BoardCell {
 		int x = offsetX + col * cellSize;
 		int y = offsetY + row * cellSize;
 
-		g.setFont(new Font("Goudy Old Style", Font.BOLD, 15));
+		g.setFont(new Font("Goudy Old Style", Font.BOLD, 16));
+		if(name.equals("Observatory")) {
+			g.setFont(new Font("Goudy Old Style", Font.BOLD, 14)); //doesnt fit otherwise
+		}
 		FontMetrics metrics = g.getFontMetrics();
 		int baseline = y + (cellSize - metrics.getHeight()) / 2 + metrics.getAscent();
 

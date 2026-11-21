@@ -34,9 +34,8 @@ public class PlayersPanel extends JPanel {
 	
 	public void UpdatePanel(String playerName) {
 		sprites.setIcon(new ImageIcon(new ImageIcon(path+playerName+".png").getImage().getScaledInstance(800, 800, Image.SCALE_SMOOTH)));
-		repaint();
-		add(sprites);
-		repaint();
+		revalidate();
+	    repaint();
 	}
 	
 }
