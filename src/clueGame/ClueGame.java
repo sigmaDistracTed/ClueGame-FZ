@@ -66,8 +66,8 @@ public class ClueGame extends JFrame {
         add(knownCardsPanel, "East");
         
         JOptionPane intro = new JOptionPane("Welcome to clue!");
-        intro.showMessageDialog(null, "Welcome to Clue! \n" + "You are " + playerName + ". \n" + "Since the one and only detective is out, can you solve the murder (that you maybe commited?)");
-        add(intro);
+        intro.showMessageDialog(null, "Welcome to Clue! \n" + "You are " + playerName + ". \n");
+        add(intro); //ill make the message cooler later
 
       //  setSize(1000,1000);
     }

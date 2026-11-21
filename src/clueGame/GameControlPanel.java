@@ -6,11 +6,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
@@ -31,6 +34,9 @@ public class GameControlPanel extends JPanel {
 	private JComboBox peopleBox;
 	private JComboBox weaponBox;
 	private JComboBox roomBox;
+	private boolean humanFinished;
+	private int rows, cols;
+	
 	
 	
 	public GameControlPanel(PlayersPanel players) {
@@ -41,6 +47,9 @@ public class GameControlPanel extends JPanel {
 		board = Board.getInstance(); 
 		//board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		//board.initialize(); //so we have the players
+		
+		  rows = board.getNumRows();
+	      cols = board.getNumColumns();
 		
 		for (Player p : board.getPlayers()) {
 			playerList.add(p);
@@ -73,6 +82,8 @@ public class GameControlPanel extends JPanel {
 			nameTF.setForeground(Color.BLACK);
 		}
 		
+		
+		
 		//adding to panel
 		turns.add(whosTurn);
 		turns.add(nameTF);
@@ -87,6 +98,12 @@ public class GameControlPanel extends JPanel {
 		rollTF.setEditable(false);
 		rollp.add(rollLabel);
 		rollp.add(rollTF);
+		
+		int startX = p.getRow();
+		int startY = p.getCol();
+		 board.calcTargets(board.getCell(startX, startY), roll);
+		 Set<BoardCell> targets = board.getTargets();
+		 repaint(); 
 		
 		// Buttons
 		makeAccusation = new JButton("Make Accusation"); 
@@ -128,6 +145,26 @@ public class GameControlPanel extends JPanel {
         @Override 
         public void actionPerformed(ActionEvent e) {
         	if(e.getSource() == next) {
+        		Player currTurn = playerList.get(idx%playerList.size());
+        		if(currTurn.equals(playerName) ) {
+        			humanFinished = false;
+        		}
+        		while(!humanFinished) { 
+        			JOptionPane error = new JOptionPane();
+        			error.showMessageDialog(null, "Please finish your turn.");
+        			break;
+        		}
+        		roll = (int)((Math.random() * 6)+1);
+        		
+        		int x = currTurn.getRow(); 
+        		int y = currTurn.getCol();
+        		
+        		board.calcTargets(board.getCell(x, y), roll);
+        		 Set<BoardCell> targets = board.getTargets();
+        		 repaint(); 
+        		
+        		
+        		
         		++idx; 
         		Player nextPlayer = playerList.get(idx%playerList.size());
         		playerName = nextPlayer.getName();

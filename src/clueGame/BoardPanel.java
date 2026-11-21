@@ -63,6 +63,11 @@ public class BoardPanel extends JPanel {
 		for (Player player : board.getPlayers()) {
 			player.draw(g, cellSize, offsetX, offsetY);
 		}
+		
+		//paint targets
+		for (BoardCell t : board.getTargets()) {
+	        t.drawTargets(g, cellSize);
+	    }
     }
 
     public static void main(String[] args) {

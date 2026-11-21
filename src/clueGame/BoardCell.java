@@ -102,7 +102,7 @@ public class BoardCell {
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 		
-		else {
+		else { //walkway
 			g.setColor(Color.decode("#423a32"));
 			g.fillRect(x, y, cellSize, cellSize);
 		}
@@ -127,6 +127,22 @@ public class BoardCell {
 
 		g.setColor(Color.BLACK);
 		g.drawString(name, x + 2, baseline);
+	}
+	
+	public void drawTargets(Graphics g, int cellSize) { 
+		int x = col * cellSize;
+	    int y = row * cellSize;
+		if(getIsRoom()) { 
+			for(BoardCell c : adjList) { 
+				while(c.getIsRoom()) {
+					g.setColor(Color.decode("#FCFFBF"));
+					g.fillRect(x, y, cellSize, cellSize);
+				}
+			}
+		}
+		g.setColor(Color.decode("#FCFFBF"));
+		g.fillRect(x, y, cellSize, cellSize);
+		
 	}
 
 	// Get cell inital
