@@ -18,7 +18,6 @@ import clueGame.Card;
 import clueGame.CardType;
 import clueGame.Player;
 import clueGame.Solution;
-import clueGame.Board.SuggestionResult;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 
