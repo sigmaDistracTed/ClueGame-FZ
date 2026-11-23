@@ -23,6 +23,8 @@ public class GameControlPanel extends JPanel {
 	private static Board board;
     private final JTextField nameTF;
     private final JTextField rollTF;
+    private JTextField guessField;
+    private JTextField guessResultField;
 	private JButton next;
 	private JButton makeAccusation;
 	private JPanel turns;
@@ -30,7 +32,8 @@ public class GameControlPanel extends JPanel {
 	private int idx;
 	private int roll;
 	private String playerName;
-	private static PlayersPanel players; 
+	private static PlayersPanel players;
+	private ModalBox mb;
 	private JComboBox peopleBox;
 	private JComboBox weaponBox;
 	private JComboBox roomBox;
@@ -113,14 +116,14 @@ public class GameControlPanel extends JPanel {
 
 		// Guess
 		JPanel guessPanel = new JPanel(new GridLayout(1,0));
-		JTextField guessField = new JTextField("No Guess!");
+		guessField = new JTextField("No Guess!");
 		guessPanel.setBorder(BorderFactory.createTitledBorder("Guess"));
 		guessPanel.setName("Guess");
 		guessPanel.add(guessField);
 
 		// Guess Result
 		JPanel guessResultPanel = new JPanel(new GridLayout(1,0));
-		JTextField guessResultField = new JTextField("So you have nothing?");
+		guessResultField = new JTextField("So you have nothing?");
 		guessResultPanel.setBorder(BorderFactory.createTitledBorder("Guess Result"));
 		guessResultPanel.setName("Guess Result");
 		guessResultPanel.add(guessResultField);
@@ -185,97 +188,39 @@ public class GameControlPanel extends JPanel {
 				int currCol = currTurn.getCol();
 				
 				if (board.getCell(currRow, currCol).isRoomCenter()) {
-					//display suggestion 
+					mb = new ModalBox(true, board.getName()); 
+					add(mb);
+					setGuessField(); 
+					setGuessResult("card"); 
 				}
 
         	}
         	
         	if(e.getSource() == makeAccusation) {
-        	/*	ArrayList<String> people = new ArrayList<String>(); 
-        		ArrayList<String> weapons = new ArrayList<String>(); 
-        		ArrayList<String> room = new ArrayList<String>(); 
-        		for(Card c : board.getCards()) {
-        			switch(c.getCardType()) { 
-        			case CardType.PERSON:
-        				people.add(c.getCardName());
-        				break;
-        			case CardType.WEAPON:
-        				weapons.add(c.getCardName());
-        				break;
-        			case CardType.ROOM:
-        				room.add(c.getCardName());
-        				break;
-        			default: 
-        				break;
-        			}
-        		}
-        		
-        		String[] people2 = people.toArray(new String[0]);
-        		String[] weapon2 = weapons.toArray(new String[0]);
-        		String[] room2 = room.toArray(new String[0]);
-        		
-        		
-        		peopleBox = new JComboBox(people2);
-        		peopleBox.setSelectedIndex(0);
-        		peopleBox.addActionListener(this);
-        		
-        		weaponBox = new JComboBox(weapon2);
-        		weaponBox.setSelectedIndex(0);
-        		weaponBox.addActionListener(this);
-        		
-        		roomBox = new JComboBox(room2);
-        		roomBox.setSelectedIndex(0);
-        		roomBox.addActionListener(this);
-        		
-        		JPanel accusation = new JPanel();
-        		accusation.add(peopleBox);
-        		accusation.add(weaponBox);
-        		accusation.add(roomBox);
-        		add(accusation); */
+        		mb = new ModalBox(false, null); 
         	}
 
         	
         }
 	}
 	
-	private class ComboBox implements ActionListener {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-	    	if(e.getSource() == peopleBox) {
-	    		Object pc = peopleBox.getSelectedItem(); 
-	    		for(Card c : board.getCards()) { 
-	    			if(c.getCardName().equals(pc)) {
-	    				System.out.println("Get Person Card");
-	    			}
-	    		}
-	    		
-	    	}
-	    	
-	    	else if(e.getSource() == weaponBox) {
-	    		Object wc = weaponBox.getSelectedItem(); 
-	    		for(Card c : board.getCards()) { 
-	    			if(c.getCardName().equals(wc)) {
-	    				System.out.println("Get Weapon Card");
-	    			}
-	    		}
-	    		
-	    	}
-	    	
-	    	else if(e.getSource() == roomBox) {
-	    		Object rc = roomBox.getSelectedItem(); 
-	    		for(Card c : board.getCards()) { 
-	    			if(c.getCardName().equals(rc)) {
-	    				System.out.println("Get room Card");
-	    			}
-	    		}
-	    		
-	    	}
-	    }
-
-	}
+	
 	
 	public String getPlayerName() {
 		return playerName;
+	}
+	
+	public void setGuessField(String p, String r, String w) {
+		guessField.setText("It was " + p + "in the " + r + "with the " + w + "!");
+	}
+	
+	public void setGuessField() {
+		guessField.setText("No guess");
+	}
+	
+	public void setGuessResult(String card) {
+		guessResultField.setText(card);
+		
 	}
 	
 
