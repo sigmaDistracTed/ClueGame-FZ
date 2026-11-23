@@ -15,6 +15,7 @@ public abstract class Player {
     
     private int row;
     private int col;
+    private boolean turnFinished;
 
     // Constructor
     public Player(String name, String color, int row, int col) {
@@ -120,6 +121,14 @@ public abstract class Player {
 	public void setCol(int col) { 
 		this.col = col;
 	}
-
+	
+	 public boolean getTurnFinished() {
+	    	return turnFinished;
+	    }
+	    
+	    public void setTurnFinished(boolean turnFinished) {
+	    	this.turnFinished = turnFinished;
+	    }
+	
 
 }

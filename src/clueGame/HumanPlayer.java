@@ -2,6 +2,7 @@ package clueGame;
 
 public class HumanPlayer extends Player {
     private KnownCardsPanel knownCardsPanel;
+    
 
     // Constructor
     public HumanPlayer(String name, String color, int row, int col) {
@@ -20,4 +21,6 @@ public class HumanPlayer extends Player {
     public void setKnownCardsPanel(KnownCardsPanel panel) {
         this.knownCardsPanel = panel;
     }
+    
+   
 }

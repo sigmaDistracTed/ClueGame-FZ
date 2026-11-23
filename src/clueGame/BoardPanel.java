@@ -98,6 +98,7 @@ public class BoardPanel extends JPanel {
 		        player.setCol(col);
 
 		        repaint();
+		        player.setTurnFinished(true);
 		    	}
 			}
 			

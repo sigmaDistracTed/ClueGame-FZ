@@ -147,7 +147,7 @@ public class GameControlPanel extends JPanel {
         	if(e.getSource() == next) {
         		Player currTurn = playerList.get(idx%playerList.size());
         		if(currTurn.equals(playerName) ) {
-        			humanFinished = false;
+        			humanFinished = currTurn.getTurnFinished();
         		}
         		if(!humanFinished) { 
         			JOptionPane error = new JOptionPane();
@@ -161,9 +161,8 @@ public class GameControlPanel extends JPanel {
         		board.calcTargets(board.getCell(x, y), roll);
         		 Set<BoardCell> targets = board.getTargets();
         		 repaint(); 
-        		
-        		
-        		
+        		 
+   
         		++idx; 
         		Player nextPlayer = playerList.get(idx%playerList.size());
         		playerName = nextPlayer.getName();
@@ -181,6 +180,13 @@ public class GameControlPanel extends JPanel {
 				rollTF.setEditable(false);
 				
 				players.UpdatePanel(playerName);
+				
+				int currRow = currTurn.getRow();
+				int currCol = currTurn.getCol();
+				
+				if (board.getCell(currRow, currCol).isRoomCenter()) {
+					//display suggestion 
+				}
 
         	}
         	
