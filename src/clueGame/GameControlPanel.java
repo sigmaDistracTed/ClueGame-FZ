@@ -149,7 +149,7 @@ public class GameControlPanel extends JPanel {
         		if(currTurn.equals(playerName) ) {
         			humanFinished = false;
         		}
-        		while(!humanFinished) { 
+        		if(!humanFinished) { 
         			JOptionPane error = new JOptionPane();
         			error.showMessageDialog(null, "Please finish your turn.");
         		}

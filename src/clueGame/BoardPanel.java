@@ -11,12 +11,13 @@ public class BoardPanel extends JPanel {
 
     public BoardPanel() {
         board = Board.getInstance();
+        addMouseListener(new CellListener());
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
         int rows = board.getNumRows();
         int cols = board.getNumColumns();
         if (rows == 0 || cols == 0) {
@@ -37,7 +38,7 @@ public class BoardPanel extends JPanel {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 board.getCell(row, col).draw(g, cellSize, offsetX, offsetY);
-                board.getCell(row, col).addMouseListener(new CellListener());
+                
             }
         }
 
@@ -63,39 +64,58 @@ public class BoardPanel extends JPanel {
 			}
 		}
 
-		// Draw players
-		for (Player player : board.getPlayers()) {
-			player.draw(g, cellSize, offsetX, offsetY);
-		}
 		
 		//paint targets
 		for (BoardCell t : board.getTargets()) {
 	        t.drawTargets(g, cellSize,  offsetX, offsetY);
 	    }
+		
+		// Draw players
+				for (Player player : board.getPlayers()) {
+					player.draw(g, cellSize, offsetX, offsetY);
+				}
     }
     
     public class CellListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			int rows = board.getNumRows();
+	        int cols = board.getNumColumns();
+	        int cellSize = Math.min(getWidth() / cols, getHeight() / rows);
+			int offsetX = (getWidth() - cols * cellSize) / 2;
+	        int offsetY = (getHeight() - rows * cellSize) / 2;
+	        
+			int x = e.getX();
+			int y = e.getY();
 			
-			// TODO Auto-generated method stub
-			
-		}
+			int col = (x - offsetX) / cellSize;
+			int row = (y - offsetY) / cellSize;
+			if (board.getTargets().contains(board.getCell(row, col))) {
+		        Player player = board.getHumanPlayer();
+		     
+		        player.setRow(row);
+		        player.setCol(col);
 
-		@Override
+		        repaint();
+		    	}
+			}
+			
+		
+
 		public void mousePressed(MouseEvent e) {}
 
-		@Override
+		
 		public void mouseReleased(MouseEvent e) {}
 
-		@Override
+		
 		public void mouseEntered(MouseEvent e) {}
 
-		@Override
+		
 		public void mouseExited(MouseEvent e) {} 
     	
     }
+
 
     public static void main(String[] args) {
         ClueGame.main(args);
