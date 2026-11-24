@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.TreeUI;
 
+import javax.swing.SwingUtilities;
+
 public class ClueGame extends JFrame {
     private Board board;
     private String setupConfigFile;
@@ -51,29 +53,34 @@ public class ClueGame extends JFrame {
         
         
         gameControlPanel.setPreferredSize(new Dimension(800, 200));
-        playersPanel.setPreferredSize(new Dimension(800, 800));
+        playersPanel.setPreferredSize(new Dimension(500, 500));
         boardPanel.setPreferredSize(new Dimension(800, 800));
         knownCardsPanel.setPreferredSize(new Dimension(200, 800));
         
         
-        setExtendedState(JFrame.MAXIMIZED_BOTH); //opens in full screen for sprite appearances
+        //setExtendedState(JFrame.MAXIMIZED_BOTH); //opens in full screen for sprite appearances
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        //setVisible(true);
 
         add(playersPanel, "West");
         add(boardPanel, "Center");
         add(gameControlPanel, "South");
         add(knownCardsPanel, "East");
         
-        JOptionPane intro = new JOptionPane("Welcome to clue!");
-        intro.showMessageDialog(null, "Welcome to Clue! \n" + "You are " + playerName + ". \n");
-        add(intro); //ill make the message cooler later
+       // JOptionPane intro = new JOptionPane("Welcome to clue!");
+        //intro.showMessageDialog(null, "Welcome to Clue! \n" + "You are " + playerName + ". \n");
+        //add(intro); //ill make the message cooler later
 
       //  setSize(1000,1000);
+      pack();
+      setExtendedState(JFrame.MAXIMIZED_BOTH); //opens in full screen for sprite appearances
+      setVisible(true);
+      JOptionPane.showMessageDialog(this, "Welcome to Clue!\nYou are " + playerName + ".");
+      gameControlPanel.startGame();
     }
 
     public static final void main(String args[]) {
-        new ClueGame("ClueLayout.csv", "ClueSetup.txt");
+        SwingUtilities.invokeLater(() -> new ClueGame("ClueLayout.csv", "ClueSetup.txt"));
     }
 
 }

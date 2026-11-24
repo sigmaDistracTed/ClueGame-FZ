@@ -52,7 +52,10 @@ public abstract class Player {
     public void draw(Graphics g, int cellSize, int offsetX, int offsetY) {
         int x = offsetX + getCol() * cellSize;
         int y = offsetY + getRow() * cellSize;
+        drawPiece(g, x, y, cellSize);
+    }
 
+    public void drawPiece(Graphics g, int x, int y, int cellSize) {
         g.setColor(getColor());
         g.fillOval(x, y, cellSize, cellSize);
 

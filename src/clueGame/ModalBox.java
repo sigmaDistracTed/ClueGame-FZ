@@ -70,9 +70,9 @@ public class ModalBox extends JDialog {
 		
 		else { //accusation 
 			String message = JOptionPane.showInputDialog("Make your accusation!");
-			JComboBox room = new JComboBox(rooms);
-			JComboBox person = new JComboBox(people);
-			JComboBox weapon = new JComboBox(weapons);
+			JComboBox<String> room = new JComboBox<>(rooms);
+			JComboBox<String> person = new JComboBox<>(people);
+			JComboBox<String> weapon = new JComboBox<>(weapons);
 			
 			add(room);
 			add(person);

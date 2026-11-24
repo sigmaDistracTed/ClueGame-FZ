@@ -135,17 +135,8 @@ public class BoardCell {
 	public void drawTargets(Graphics g, int cellSize, int offsetX, int offsetY) { 
 		int x = offsetX + col * cellSize;
 	    int y = offsetY + row * cellSize;
-		if(getIsRoom()) { 
-			for(BoardCell c : adjList) { 
-				while(c.getIsRoom()) {
-					g.setColor(Color.decode("#FCFFBF"));
-					g.fillRect(x, y, cellSize, cellSize);
-				}
-			}
-		}
 		g.setColor(Color.decode("#FCFFBF"));
 		g.fillRect(x, y, cellSize, cellSize);
-		
 	}
 
 	// Get cell inital

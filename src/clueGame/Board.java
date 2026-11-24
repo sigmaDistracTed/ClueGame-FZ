@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 /**
  * Board Class
@@ -31,9 +32,13 @@ public class Board {
 	private BoardCell[][] grid;
 	private int numRows;
 	private int numCols;
-	
-	private Set<Player> players = new HashSet<>();
+
+	private Set<Player> players = new LinkedHashSet<>();
 	private Set<Card> cards = new HashSet<>();
+	private final List<Player> turnOrder = new ArrayList<>();
+	private int currentTurn = -1;
+	private int currentRoll;
+	private boolean moveBlocked;
 
 	private static Board theInstance = new Board();
 
@@ -54,6 +59,11 @@ public class Board {
 	public void initialize() {
 		players.clear();
 		cards.clear();
+		targets.clear();
+		turnOrder.clear();
+		currentTurn = -1;
+		currentRoll = 0;
+		moveBlocked = false;
 
 		try {
 			loadSetupConfig();
@@ -276,6 +286,85 @@ public class Board {
 					centerCell.addAdjacency(cell);
 				}
 			}
+		}
+	}
+
+	// Start the turns
+	public void startTurns() {
+		turnOrder.clear();
+		turnOrder.addAll(players);
+		currentTurn = turnOrder.indexOf(getHumanPlayer());
+		for (Player player : turnOrder) {
+			BoardCell cell = getCell(player.getRow(), player.getCol());
+			if (!cell.isRoomCenter()) {
+				cell.setOccupied(true);
+			}
+		}
+		beginTurn();
+	}
+
+	// Get current player
+	public Player getCurrentPlayer() {
+		return currentTurn < 0 ? null : turnOrder.get(currentTurn);
+	}
+
+	// Get current roll
+	int getCurrentRoll() {
+		return currentRoll;
+	}
+
+	// True if the move is blocked, false otherwise
+	boolean isMoveBlocked() {
+		return moveBlocked;
+	}
+
+	// True if game is waiting for human's turn, false otherwise
+	boolean isWaitingForHumanMove() {
+		Player player = getCurrentPlayer();
+		return player instanceof HumanPlayer && !player.getTurnFinished();
+	}
+
+	public boolean advanceTurn() {
+		if (currentTurn < 0 || isWaitingForHumanMove()) {
+			return false;
+		}
+		currentTurn = (currentTurn + 1) % turnOrder.size();
+		beginTurn();
+		return true;
+	}
+
+	public void beginTurn() {
+		Player player = getCurrentPlayer();
+		currentRoll = (int) (Math.random() * 6) + 1;
+		calcTargets(getCell(player.getRow(), player.getCol()), currentRoll);
+		moveBlocked = targets.isEmpty();
+		if (player instanceof ComputerPlayer computer) {
+			BoardCell target = computer.selectTarget();
+			if (target != null) {
+				movePlayer(player, target);
+			}
+			targets.clear();
+		}
+		player.setTurnFinished(targets.isEmpty());
+	}
+
+	public boolean moveHumanPlayer(BoardCell target) {
+		if (!isWaitingForHumanMove() || !targets.contains(target)) {
+			return false;
+		}
+		Player player = getCurrentPlayer();
+		movePlayer(player, target);
+		player.setTurnFinished(true);
+		targets.clear();
+		return true;
+	}
+
+	public void movePlayer(Player player, BoardCell target) {
+		getCell(player.getRow(), player.getCol()).setOccupied(false);
+		player.setRow(target.getRow());
+		player.setCol(target.getCell());
+		if (!target.isRoomCenter()) {
+			target.setOccupied(true);
 		}
 	}
 

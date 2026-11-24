@@ -27,13 +27,13 @@ public class PlayersPanel extends JPanel {
 		//sprites
 		sprites = new JLabel();
 		path = "../ClueGame/Sprites/";
-		sprites.setIcon(new ImageIcon(new ImageIcon(path+playerName+".png").getImage().getScaledInstance(800, 800, Image.SCALE_SMOOTH)));
+		sprites.setIcon(new ImageIcon(new ImageIcon(path+playerName+".png").getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
 		add(sprites);
 		//adding to panel
 	}
 	
 	public void UpdatePanel(String playerName) {
-		sprites.setIcon(new ImageIcon(new ImageIcon(path+playerName+".png").getImage().getScaledInstance(800, 800, Image.SCALE_SMOOTH)));
+		sprites.setIcon(new ImageIcon(new ImageIcon(path+playerName+".png").getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
 		revalidate();
 	    repaint();
 	}

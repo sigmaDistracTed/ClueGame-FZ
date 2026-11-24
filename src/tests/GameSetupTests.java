@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.Assert.*;
+
+import java.awt.Color;
 import java.util.*;
 
 import java.util.ArrayList;
@@ -57,7 +59,7 @@ private static Board board;
 		for (Player p : board.getPlayers()) {
 			if (p.getName().equals("Numerologist Night")) {
 				foundPlayer = true;
-				assertEquals("BLACK", p.getColor());
+				assertEquals(Color.BLACK, p.getColor());
 				assertEquals(0, p.getRow());
 				assertEquals(7, p.getCol());
 			}
