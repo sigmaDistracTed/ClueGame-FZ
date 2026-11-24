@@ -324,6 +324,7 @@ public class Board {
 		return player instanceof HumanPlayer && !player.getTurnFinished();
 	}
 
+	// Next turn
 	public boolean advanceTurn() {
 		if (currentTurn < 0 || isWaitingForHumanMove()) {
 			return false;
@@ -333,6 +334,7 @@ public class Board {
 		return true;
 	}
 
+	// Begin new turn
 	public void beginTurn() {
 		Player player = getCurrentPlayer();
 		currentRoll = (int) (Math.random() * 6) + 1;
@@ -348,6 +350,7 @@ public class Board {
 		player.setTurnFinished(targets.isEmpty());
 	}
 
+	// Returns true if the human player successfully moved
 	public boolean moveHumanPlayer(BoardCell target) {
 		if (!isWaitingForHumanMove() || !targets.contains(target)) {
 			return false;
@@ -359,6 +362,7 @@ public class Board {
 		return true;
 	}
 
+	// Moves the player
 	public void movePlayer(Player player, BoardCell target) {
 		getCell(player.getRow(), player.getCol()).setOccupied(false);
 		player.setRow(target.getRow());
